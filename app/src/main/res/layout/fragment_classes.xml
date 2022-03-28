@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_purple"
+    android:orientation="vertical"
+    tools:context=".facultySection.fragments.ClassesFragment">
+
+    <!--toolbar-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp">
+
+        <!--back arrow-->
+        <RelativeLayout
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="25dp"
+            android:background="@drawable/circular_normal_white"
+            android:elevation="8dp">
+
+            <ImageView
+                android:id="@+id/arrowBack"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="11dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_arrow_back_ios_black" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/signUpTVBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="end"
+            android:layout_marginEnd="25dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_notification_icon"
+            tools:ignore="RelativeOverlap" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/fredoka_regular"
+            android:text="Faculty Dashboard"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="normal" />
+
+    </RelativeLayout>
+
+    <!--profile-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp">
+
+        <RelativeLayout
+            android:id="@+id/profilePicContainerRl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/profile_circular_background"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/initialCharOfNameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/fredoka_semi_bold"
+                android:text="..."
+                android:textColor="@color/white"
+                android:textSize="27sp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/facultyProfileIV"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="2dp" />
+
+
+        </RelativeLayout>
+
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/header_loading_animation"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/profilePicContainerRl">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@color/grey" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/grey" />
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="15dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="1.5dp"
+                    android:background="@color/grey"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <TextView
+            android:id="@+id/greetingTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/fredoka_regular"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            tools:text="Hello," />
+
+        <TextView
+            android:id="@+id/facultyNameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/greetingTV"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/profilePicContainerRl"
+            android:fontFamily="@font/fredoka_semi_bold"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            tools:text="Sharukh Khan" />
+
+        <TextView
+            android:id="@+id/facultyDesignationTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/facultyNameTV"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/profilePicContainerRl"
+            android:fontFamily="@font/fredoka_regular"
+            android:includeFontPadding="false"
+            android:textColor="#DDDDDD"
+            android:textSize="12sp"
+            android:visibility="gone"
+            tools:text="Assistance Professor" />
+
+        <TextView
+            android:id="@+id/branchNameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/facultyDesignationTV"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/profilePicContainerRl"
+            android:fontFamily="@font/fredoka_regular"
+            android:includeFontPadding="false"
+            android:textColor="#DDDDDD"
+            android:textSize="12sp"
+            android:visibility="gone"
+            tools:text="CSE" />
+
+    </RelativeLayout>
+
+    <!--classes container-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <LinearLayout
+            android:id="@+id/llClassesContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/curved_top_left_right_white"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/fredoka_semi_bold"
+                android:includeFontPadding="false"
+                android:text="Filter"
+                android:textColor="@color/theme_color_v1"
+                android:textSize="15sp"
+                app:drawableStartCompat="@drawable/ic_filter_black"
+                app:drawableTint="@color/theme_color_v1" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#A9F6F6F6"
+                android:gravity="center"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/filterChip"
+                        style="@style/Widget.Material3.Chip.Assist.Elevated"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:text="Filter by"
+                        app:closeIcon="@drawable/ic_arrow_drop_down"
+                        app:closeIconEnabled="true" />
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/filterChipGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp" />
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
+
+            <!--classes text-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/fredoka_semi_bold"
+                android:text="Classes"
+                android:textColor="@color/theme_color_v1"
+                android:textSize="15sp"
+                app:drawableStartCompat="@drawable/ic_school"
+                app:drawableTint="@color/theme_color_v1" />
+
+            <!--classes rv-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvAllClasses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/recycler_all_classes_items" />
+
+            <!--Lottie - no Classes found-->
+            <LinearLayout
+                android:id="@+id/llNoClassesFound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/noClassLottie"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="false"
+                    app:lottie_rawRes="@raw/no_class_found" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-20dp"
+                    android:fontFamily="@font/fredoka_regular"
+                    android:text="@string/no_classes_found"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <!--Shimmer - no class found-->
+        <LinearLayout
+            android:id="@+id/llShimmerClasses"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/curved_top_left_right_white"
+            android:orientation="vertical">
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/shimmerFilterChips"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="50dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="100dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/curved_background_grey" />
+
+                    <View
+                        android:layout_width="100dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="12dp"
+                        android:background="@drawable/curved_background_grey" />
+
+                    <View
+                        android:layout_width="100dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="12dp"
+                        android:background="@drawable/curved_background_grey" />
+
+                    <View
+                        android:layout_width="100dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="12dp"
+                        android:background="@drawable/curved_background_grey" />
+
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+            <!--classes rv shimmer-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvAllClassesShimmer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="40dp"
+                android:visibility="visible"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/recycler_shimmer_classes_items" />
+
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addNewClassFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="24dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_round_add_24"
+            android:tint="@color/pink"
+            tools:ignore="RelativeOverlap" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

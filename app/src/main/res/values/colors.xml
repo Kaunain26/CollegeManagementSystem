@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <!--<color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>-->
+    <!--    <color name="theme_color">#6998A9</color>-->
+
+    <!-- for night mode colors
+      1. dark code -> 2b2b2e
+      2. light dark code ->  3E3E3E
+    -->
+
+    <!-- for light mode colors
+     1. light -> 311f4f
+    -->
+    <color name="theme_color_v1">#6998A9</color>
+    <color name="dark_purple">#311f4f</color>
+    <color name="light_purple">#E3D3FD</color>
+    <color name="night_theme_color">#2b2b2e</color>
+    <color name="night_theme_light">#3E3E3E</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="grey">#C6C6C6</color>
+    <color name="app_theme">#344893</color>
+    <color name="pink">#DF1996</color>
+    <color name="peach_pink">#FFD5F0</color>
+    <color name="light_pink">#f6eefd</color>
+    <color name="red">#E53935</color>
+    <color name="hint_color">#534646</color>
+    <color name="purple">#FF3700B3</color>
+    <color name="shimmerBG">#F7DCDCDC</color>
+    <color name="green">#008000</color>
+
+</resources>

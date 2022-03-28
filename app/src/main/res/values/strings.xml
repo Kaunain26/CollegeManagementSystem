@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">College Management System</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="choose_your_role">Choose your role</string>
+    <string name="teacher">Faculty</string>
+    <string name="choose_role_desc">Choose your role to proceed further.</string>
+    <string name="sign_up">Sign up</string>
+    <string name="your_password">Your password</string>
+    <string name="your_email">Your email</string>
+    <string name="create_your_account">Sign Up</string>
+    <string name="full_name">Full name</string>
+    <string name="sign_in">Sign in</string>
+    <string name="classes">Classes</string>
+    <string name="leaves">Leaves</string>
+    <string name="profile">Profile</string>
+    <string name="branch">Branch</string>
+    <string name="semester">Semester</string>
+    <string name="no_classes_found">Click on `+` icon to add a new class</string>
+    <string name="add_student">Add Student</string>
+    <string name="no_students_in_class">Looks like there is no students in class</string>
+</resources>

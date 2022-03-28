@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/app_theme_background_drawable"
+    android:orientation="vertical"
+    tools:context=".singin_signup.SignInSignUpHostActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/arrowBackIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="45dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_arrow_back_ios" />
+
+        <TextView
+            android:id="@+id/chooseRoleTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:text="@string/choose_your_role"
+            android:textColor="@color/white"
+            android:textSize="21sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/choose_role_desc"
+            android:textColor="@color/grey"
+            android:textSize="14sp"
+            android:textStyle="normal" />
+
+        <!-- <androidx.cardview.widget.CardView
+             android:id="@+id/cvStudent"
+             android:layout_width="160dp"
+             android:layout_height="160dp"
+             android:layout_marginTop="40dp"
+             android:outlineAmbientShadowColor="#EF6C00"
+             android:outlineSpotShadowColor="#EF6C00"
+             app:cardCornerRadius="20dp"
+             app:cardElevation="0dp">
+
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:gravity="center_horizontal"
+                 android:orientation="vertical">
+
+                 <ImageView
+                     android:layout_width="110dp"
+                     android:layout_height="110dp"
+                     android:layout_marginTop="10dp"
+                     android:contentDescription="@null"
+                     android:scaleType="centerCrop"
+                     android:src="@drawable/student_avatar_png" />
+
+                 <RelativeLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="10dp">
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_centerHorizontal="true"
+                         android:text="Student"
+                         android:textColor="#1C1C1C"
+                         android:textStyle="bold" />
+
+                     <ImageView
+                         android:id="@+id/studentCheckIV"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_alignParentEnd="true"
+                         android:layout_marginEnd="10dp"
+                         android:contentDescription="@null"
+                         android:src="@drawable/ic_check_circle"
+                         android:visibility="gone" />
+                 </RelativeLayout>
+
+             </LinearLayout>
+
+
+         </androidx.cardview.widget.CardView>
+
+         <androidx.cardview.widget.CardView
+             android:id="@+id/cvFaculty"
+             android:layout_width="150dp"
+             android:layout_height="150dp"
+             android:layout_marginTop="40dp"
+             android:outlineAmbientShadowColor="#EF6C00"
+             android:outlineSpotShadowColor="#EF6C00"
+             app:cardCornerRadius="20dp"
+             app:cardElevation="0dp">
+
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:gravity="center_horizontal"
+                 android:orientation="vertical">
+
+                 <com.google.android.material.imageview.ShapeableImageView
+                     android:layout_width="100dp"
+                     android:layout_height="100dp"
+                     android:layout_marginTop="10dp"
+                     android:contentDescription="@null"
+                     android:src="@drawable/teacher_avatar"
+                     app:shapeAppearanceOverlay="@style/circular" />
+
+                 <RelativeLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="10dp">
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_centerHorizontal="true"
+                         android:text="@string/teacher"
+                         android:textColor="#1C1C1C"
+                         android:textStyle="bold" />
+
+
+                     <ImageView
+                         android:id="@+id/FacultyCheckIV"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_alignParentEnd="true"
+                         android:layout_marginEnd="10dp"
+                         android:contentDescription="@null"
+                         android:src="@drawable/ic_check_circle"
+                         android:visibility="gone" />
+                 </RelativeLayout>
+
+             </LinearLayout>
+
+         </androidx.cardview.widget.CardView>-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/chooseRoleMenu"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="15dp"
+            android:hint="@string/choose_your_role"
+            app:boxBackgroundMode="filled"
+            app:boxStrokeColor="@color/pink"
+            app:expandedHintEnabled="true"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:hintTextColor="@color/pink">
+
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="true"
+                android:inputType="none"
+                android:textColor="@color/black"
+                tools:ignore="LabelFor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="20dp"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_arrow_forward_ios"
+        app:backgroundTint="@color/white"
+        app:layout_anchorGravity="bottom" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

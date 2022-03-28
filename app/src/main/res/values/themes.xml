@@ -1,0 +1,68 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.CollegeManagementApp" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/dark_purple</item>
+        <item name="colorPrimaryVariant">@color/dark_purple</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/light_purple</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/light_purple</item>
+        <item name="colorSecondaryVariant">@color/light_purple</item>
+        <item name="colorOnSecondary">@color/light_purple</item>
+        <item name="colorSecondaryContainer">@color/light_purple</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
+        <!--popup menu style-->
+        <item name="textAppearanceLargePopupMenu">@style/TextAppearance.App.Subtitle1</item>
+        <item name="textAppearanceSmallPopupMenu">@style/TextAppearance.App.Subtitle1</item>
+        <item name="popupMenuBackground">@drawable/custom_popup_background</item>
+        <item name="bottomSheetDialogTheme">@style/AppModalDialogTheme</item>
+
+        <!--<item name="android:ambientShadowAlpha">1</item>
+        <item name="android:spotShadowAlpha">1</item>-->
+
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="TextAppearance.App.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/rubik_font</item>
+        <item name="android:fontFamily">@font/rubik_font</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="circular">
+        <item name="cornerSize">20dp</item>
+    </style>
+
+    <style name="profile_circular">
+        <item name="cornerSize">45dp</item>
+    </style>
+
+    <!--App Model style as Bottom Sheet-->
+    <style name="AppModelStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="behavior_draggable">true</item>
+    </style>
+
+    <style name="AppModalDialogTheme" parent="Theme.Material3.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModelStyle</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+
+    <style name="MonthPickerDialogStyle">
+        <item name="monthBgColor">@color/white</item>
+        <item name="monthBgSelectedColor">@color/pink</item>
+        <item name="monthFontColorSelected">@color/pink</item>
+        <item name="monthFontColorNormal">@color/black</item>
+        <item name="monthFontColorDisabled">@color/grey</item>
+        <item name="headerBgColor">@color/dark_purple</item>
+        <item name="headerFontColorSelected">#fff</item>
+        <item name="headerFontColorNormal">#85FFFFFF</item>
+        <item name="headerTitleColor">#fff</item>
+
+        <item name="dialogActionButtonColor">@color/dark_purple</item>
+    </style>
+
+</resources>
