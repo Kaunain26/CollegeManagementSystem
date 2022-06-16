@@ -3,17 +3,18 @@ package `in`.kit.college_management_system.singin_signup
 import `in`.kit.college_management_system.R
 import `in`.kit.college_management_system.databinding.ActivitySignInSignUpHostBinding
 import `in`.kit.college_management_system.singin_signup.fragments.ChooseRoleFragment
-import `in`.kit.college_management_system.singin_signup.fragments.ChooseSignInOrSignUpFrag
-import `in`.kit.college_management_system.singin_signup.fragments.SignInFragment
-import `in`.kit.college_management_system.singin_signup.fragments.SignUpFragment
+import `in`.kit.college_management_system.singin_signup.fragments.FacultyExtraDetailsFragment
+import `in`.kit.college_management_system.singin_signup.fragments.SignInWithGoogleFragment
+import `in`.kit.college_management_system.singin_signup.fragments.StudentExtraDetailsFragment
 import `in`.kit.college_management_system.utils.MakeStatusBarTransparent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 
-class SignInSignUpHostActivity : AppCompatActivity() {
+class AuthenticationActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignInSignUpHostBinding
-
+    private lateinit var mAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,19 +36,19 @@ class SignInSignUpHostActivity : AppCompatActivity() {
                 super.onBackPressed()
             }
 
-            is SignUpFragment -> {
+            is StudentExtraDetailsFragment -> {
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.fragmentContainer, ChooseRoleFragment(), "chooseRoleFragment")
                     .commit()
             }
 
-            is SignInFragment -> {
+            is FacultyExtraDetailsFragment -> {
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainer, ChooseRoleFragment(), "signUpFragment")
+                    .replace(R.id.fragmentContainer, ChooseRoleFragment(), "chooseRoleFragment")
                     .commit()
             }
 
-            is ChooseSignInOrSignUpFrag -> {
+            is SignInWithGoogleFragment -> {
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.fragmentContainer, ChooseRoleFragment(), "chooseRoleFragment")
                     .commit()

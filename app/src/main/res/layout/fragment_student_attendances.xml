@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_purple"
+    android:orientation="vertical"
+    tools:context=".facultySection.fragments.ClassesFragment">
+
+    <!--toolbar-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp">
+
+        <!--back arrow-->
+        <RelativeLayout
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="25dp"
+            android:background="@drawable/circular_normal_white"
+            android:elevation="8dp">
+
+            <ImageView
+                android:id="@+id/arrowBack"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="11dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_arrow_back_ios_black" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/signUpTVBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="end"
+            android:layout_marginEnd="25dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_notification"
+            tools:ignore="RelativeOverlap" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/fredoka_regular"
+            android:text="Student Dashboard"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="normal" />
+
+    </RelativeLayout>
+
+    <!--profile-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp">
+
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/header_loading_animation"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@color/grey" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/grey" />
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="15dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="1.5dp"
+                    android:background="@color/grey"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <TextView
+            android:id="@+id/greetingTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:textStyle="normal"
+            tools:text="Welcom Back," />
+
+        <TextView
+            android:id="@+id/studentNameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/greetingTV"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/fredoka_semi_bold"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            tools:text="@tools:sample/full_names[1]" />
+
+    </RelativeLayout>
+
+    <!--classes container-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/curved_top_left_right_white">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/llClassesContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:orientation="vertical">
+
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/curved_top_left_right_white">
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-13dp"
+                    android:title=""
+                    app:layout_scrollFlags="scroll|enterAlways">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!--filter-->
+                        <TextView
+                            android:id="@+id/filterTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="22dp"
+                            android:layout_gravity="start"
+                            android:layout_marginStart="25dp"
+                            android:layout_marginTop="10dp"
+                            android:drawablePadding="10dp"
+                            android:fontFamily="@font/fredoka_semi_bold"
+                            android:includeFontPadding="false"
+                            android:text="Filter"
+                            android:textAllCaps="false"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+                            android:textColor="@color/theme_color_v1"
+                            android:textSize="15sp"
+                            app:drawableStartCompat="@drawable/ic_filter_black"
+                            app:drawableTint="@color/theme_color_v1" />
+
+                        <LinearLayout
+                            android:id="@+id/filterClassesBySem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#A9ECECEC"
+                            android:orientation="horizontal"
+                            android:padding="8dp">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/chooseSemesterMenu"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                android:layout_width="150dp"
+                                android:layout_height="50dp"
+                                android:layout_marginStart="15dp"
+                                android:hint="Choose Sem"
+                                android:textColorHint="@color/black"
+                                android:visibility="visible"
+                                app:boxBackgroundMode="filled"
+                                app:boxStrokeColor="@color/pink"
+                                app:expandedHintEnabled="true"
+                                app:helperTextEnabled="true"
+                                app:helperTextTextColor="@color/white"
+                                app:hintAnimationEnabled="true"
+                                app:hintEnabled="true"
+                                app:hintTextColor="@color/pink"
+                                app:startIconTint="@color/night_theme_color">
+
+                                <AutoCompleteTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:focusableInTouchMode="true"
+                                    android:inputType="none"
+                                    android:maxLines="1"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    tools:ignore="LabelFor" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </com.google.android.material.appbar.MaterialToolbar>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <!--recycler view-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+                <!--classes text-->
+                <TextView
+                    android:id="@+id/classesTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="10dp"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/fredoka_semi_bold"
+                    android:text="Classes"
+                    android:textAllCaps="false"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+                    android:textColor="@color/theme_color_v1"
+                    android:textSize="15sp"
+                    app:drawableStartCompat="@drawable/ic_school"
+                    app:drawableTint="@color/theme_color_v1" />
+
+                <!--classes rv-->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvAllClasses"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:visibility="visible"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/recycler_all_classes_items_for_std" />
+
+            </LinearLayout>
+
+            <!--Lottie - no Classes found-->
+            <RelativeLayout
+                android:id="@+id/llNoClassesFound"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/noClassLottie"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="false"
+                    app:lottie_rawRes="@raw/no_class_found" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/noClassLottie"
+                    android:layout_marginTop="-20dp"
+                    android:fontFamily="@font/fredoka_regular"
+                    android:text="@string/no_classes_found"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <!--Shimmer - no class found-->
+        <LinearLayout
+            android:id="@+id/llShimmerClasses"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/curved_top_left_right_white"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerFilterChips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="50dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="100dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/curved_background_grey" />
+
+                    <View
+                        android:layout_width="100dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="12dp"
+                        android:background="@drawable/curved_background_grey" />
+
+                    <View
+                        android:layout_width="100dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="12dp"
+                        android:background="@drawable/curved_background_grey" />
+
+                    <View
+                        android:layout_width="100dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="12dp"
+                        android:background="@drawable/curved_background_grey" />
+
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+            <!--classes rv shimmer-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvAllClassesShimmer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="40dp"
+                android:visibility="visible"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/recycler_shimmer_classes_items" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

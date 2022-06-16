@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/app_theme_background_drawable"
-    tools:context=".facultySection.activity.StudentInCLassActivity">
+    tools:context=".facultySection.activity.StudentInClassActivity">
 
     <!--toolbar-->
     <RelativeLayout
@@ -15,6 +15,7 @@
 
         <!--back arrow-->
         <RelativeLayout
+            android:id="@+id/rlBack"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_centerVertical="true"
@@ -33,18 +34,27 @@
 
         </RelativeLayout>
 
-        <!--  <ImageView
-              android:id="@+id/signUpTVBtn"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_alignParentEnd="true"
-              android:layout_centerVertical="true"
-              android:layout_gravity="end"
-              android:layout_marginEnd="25dp"
-              android:background="?selectableItemBackgroundBorderless"
-              android:contentDescription="@null"
-              android:src="@drawable/ic_notification_icon"
-              tools:ignore="RelativeOverlap" /> -->
+        <RelativeLayout
+            android:id="@+id/rlSaveAttandance"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/circular_normal_white"
+            android:elevation="8dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/saveBtn"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_save" />
+
+        </RelativeLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,7 +63,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/toolbarTitleTV"
+                android:id="@+id/classNameTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/fredoka_regular"
@@ -63,6 +73,7 @@
                 android:textStyle="normal" />
 
             <TextView
+                android:id="@+id/sem_batch_sub_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
@@ -83,6 +94,37 @@
         android:layout_marginTop="100dp"
         android:background="@drawable/curved_top_left_right_white">
 
+        <LinearLayout
+            android:id="@+id/llMarkAllPresent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mark_all_present"
+                android:textStyle="bold"
+                app:fontFamily="@font/fredoka_regular" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cbMarkAllPresent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp" />
+
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvStudents"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/recycler_students" />
+
         <!--no Student found-->
         <LinearLayout
             android:id="@+id/llNoStudentFound"
@@ -90,7 +132,9 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
 
             <com.airbnb.lottie.LottieAnimationView
                 android:layout_width="180dp"

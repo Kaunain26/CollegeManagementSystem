@@ -155,7 +155,7 @@
             android:fontFamily="@font/fredoka_semi_bold"
             android:textColor="@color/white"
             android:textSize="22sp"
-            tools:text="Sharukh Khan" />
+            tools:text="@tools:sample/full_names[1]" />
 
         <TextView
             android:id="@+id/facultyDesignationTV"
@@ -204,25 +204,31 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/filterTV"
                 android:layout_width="wrap_content"
                 android:layout_height="22dp"
+                android:layout_gravity="start"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="20dp"
                 android:drawablePadding="10dp"
                 android:fontFamily="@font/fredoka_semi_bold"
                 android:includeFontPadding="false"
                 android:text="Filter"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
                 android:textColor="@color/theme_color_v1"
                 android:textSize="15sp"
                 app:drawableStartCompat="@drawable/ic_filter_black"
                 app:drawableTint="@color/theme_color_v1" />
 
             <HorizontalScrollView
+                android:id="@+id/filterChipScrollView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#A9F6F6F6"
                 android:gravity="center"
-                android:scrollbars="none">
+                android:scrollbars="none"
+                >
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -244,6 +250,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp" />
+
                 </LinearLayout>
 
 
@@ -251,13 +258,17 @@
 
             <!--classes text-->
             <TextView
+                android:id="@+id/classesTV"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
+                android:layout_gravity="start"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="10dp"
                 android:drawablePadding="10dp"
                 android:fontFamily="@font/fredoka_semi_bold"
                 android:text="Classes"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
                 android:textColor="@color/theme_color_v1"
                 android:textSize="15sp"
                 app:drawableStartCompat="@drawable/ic_school"
@@ -269,22 +280,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:visibility="visible"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/recycler_all_classes_items" />
 
             <!--Lottie - no Classes found-->
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/llNoClassesFound"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/noClassLottie"
                     android:layout_width="200dp"
                     android:layout_height="200dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
                     app:lottie_autoPlay="true"
                     app:lottie_loop="false"
                     app:lottie_rawRes="@raw/no_class_found" />
@@ -292,11 +307,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/noClassLottie"
                     android:layout_marginTop="-20dp"
                     android:fontFamily="@font/fredoka_regular"
                     android:text="@string/no_classes_found"
+                    android:textAlignment="center"
                     android:textSize="18sp" />
-            </LinearLayout>
+            </RelativeLayout>
 
 
         </LinearLayout>
@@ -310,12 +327,13 @@
             android:layout_marginTop="25dp"
             android:layout_marginEnd="5dp"
             android:background="@drawable/curved_top_left_right_white"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="visible">
 
             <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerFilterChips"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/shimmerFilterChips"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="50dp">
 

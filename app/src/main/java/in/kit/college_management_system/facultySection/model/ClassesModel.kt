@@ -1,13 +1,16 @@
 package `in`.kit.college_management_system.facultySection.model
 
 data class ClassesModel(
-    var key: String,
+    var classSubKey: String,
     var className: String,
     var subjectCode: String,
     var sem: String,
     var branch: String,
     var batchOrYear: String,
 ) {
+    var facultyUid = ""
+    var totalAttendancePercentage = "0" //For student section only
+
     constructor() : this("", "", "", "", "", "")
 
     override fun equals(other: Any?): Boolean {
@@ -16,14 +19,14 @@ data class ClassesModel(
 
         other as ClassesModel
 
-        if (key != other.key) return false
+        if (classSubKey != other.classSubKey) return false
         if (subjectCode != other.subjectCode) return false
 
         return true
     }
 
     override fun hashCode(): Int {
-        var result = key.hashCode()
+        var result = classSubKey.hashCode()
         result = 31 * result + subjectCode.hashCode()
         return result
     }

@@ -64,7 +64,7 @@
                 android:paddingEnd="5dp">
 
                 <TextView
-                    android:id="@+id/semTv"
+                    android:id="@+id/batch_andsem_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
@@ -74,7 +74,7 @@
                     android:textSize="13sp" />
             </RelativeLayout>
 
-            <RelativeLayout
+            <!--<RelativeLayout
                 android:id="@+id/rlBatch"
                 android:layout_width="wrap_content"
                 android:layout_height="18dp"
@@ -96,7 +96,7 @@
                     android:text="18th Batch"
                     android:textColor="@color/pink"
                     android:textSize="13sp" />
-            </RelativeLayout>
+            </RelativeLayout>-->
             <!--forward arrow-->
             <RelativeLayout
                 android:layout_width="30dp"
@@ -128,7 +128,7 @@
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:src="@drawable/sharukh" />
+                    android:src="@drawable/student_avatar" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="15dp"
@@ -140,7 +140,7 @@
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_marginStart="-3dp"
-                    android:src="@drawable/sharukh" />
+                    android:src="@drawable/student_avatar" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="15dp"
@@ -152,7 +152,7 @@
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_marginStart="-3dp"
-                    android:src="@drawable/sharukh" />
+                    android:src="@drawable/student_avatar" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="15dp"

@@ -3,47 +3,98 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/absent_datetextview_selector.xml" value="0.212" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/absent_drawable.xml" value="0.212" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/absent_view_selector.xml" value="0.212" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/app_theme_background_drawable.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/button_gradient.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/circular.xml" value="0.26458333333333334" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/circular_forward.xml" value="0.212" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/circular_normal_grey.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/circular_normal_white.xml" value="0.26458333333333334" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/circular_theme_color.xml" value="0.212" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/curved_background_grey.xml" value="0.212" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/curved_top_left_right.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/curved_top_left_right_grey.xml" value="0.24537037037037038" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/curved_top_left_right_theme_color.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/custom_popup_background.xml" value="0.26458333333333334" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/default_datetextview_selector.xml" value="0.212" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/default_normal.xml" value="0.212" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/default_pressed.xml" value="0.212" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/default_view_selector.xml" value="0.212" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/g_image.xml" value="0.1" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/ic_arrow_back_ios.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/ic_arrow_back_ios_black.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/ic_arrow_drop_down.xml" value="0.26458333333333334" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/ic_calender.xml" value="0.212" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/ic_check_circle.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/ic_close.xml" value="0.26458333333333334" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/ic_close_white.xml" value="0.212" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/ic_date_from_icon.xml" value="0.212" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/ic_date_to_icon.xml" value="0.212" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/ic_edit.xml" value="0.212" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/ic_leave_application.xml" value="0.212" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/ic_leave_request.xml" value="0.212" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/ic_leaves.xml" value="0.26458333333333334" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/ic_logout.xml" value="0.195" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/ic_more.xml" value="0.26458333333333334" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/ic_notification.xml" value="0.212" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/ic_notification_icon.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/ic_outline_lock.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/ic_round_add_24.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/ic_round_add_black.xml" value="0.26458333333333334" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/ic_save_white.xml" value="0.212" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/ic_school.xml" value="0.26458333333333334" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/ic_send.xml" value="0.212" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/present_absent_datetextview_selector.xml" value="0.212" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/present_absent_drawable.xml" value="0.212" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/present_absent_view_selector.xml" value="0.212" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/present_drawable.xml" value="0.212" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/present_view_selector.xml" value="0.212" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/profile_circular_background.xml" value="0.212" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/progress_custom_shape.xml" value="0.212" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/selected_circle.xml" value="0.212" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/splash.xml" value="0.195" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/activity_faculty_home_page.xml" value="0.264" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/activity_home.xml" value="0.2484375" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/activity_splash.xml" value="0.2484375" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/activity_student_attendance_details.xml" value="0.2484375" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/activity_student_home_page.xml" value="0.2484375" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/activity_student_in_class.xml" value="0.264" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/bottom_sheet_add_new_class.xml" value="0.264" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/bottom_sheet_create_new_class.xml" value="0.264" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/bottom_sheet_filter_classes.xml" value="0.264" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/bottom_sheet_leave_request.xml" value="0.264" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/bottomsheet_attendance_history.xml" value="0.2484375" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/cal_absent_view.xml" value="0.2484375" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/cal_present_absent_view.xml" value="0.2484375" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/cal_present_view.xml" value="0.2484375" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/choose_role_item_layout.xml" value="0.264" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/fragment_choose_role.xml" value="0.287375415282392" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/fragment_choose_sign_in_or_sign_up.xml" value="0.2484375" />
-        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/fragment_classes.xml" value="0.264" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/fragment_classes.xml" value="0.2484375" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/fragment_classes_for_std_section.xml" value="0.2484375" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/fragment_faculty_classes.xml" value="0.2484375" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/fragment_faculty_classes_for_std_section.xml" value="0.264" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/fragment_faculty_extra_details.xml" value="0.2484375" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/fragment_faculty_profile.xml" value="0.264" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/fragment_leaves.xml" value="0.2484375" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/fragment_sign_in.xml" value="0.264" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/fragment_sign_in_with_google.xml" value="0.2484375" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/fragment_sign_up.xml" value="0.264" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/fragment_student_attendances.xml" value="0.264" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/fragment_student_extra_details.xml" value="0.2484375" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/fragment_student_leaves.xml" value="0.264" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/fragment_student_profile.xml" value="0.2484375" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/item_layout.xml" value="0.2484375" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/recycler_all_classes_items.xml" value="0.4" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/recycler_all_classes_items_for_std.xml" value="0.4" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/recycler_attendance_history_item.xml" value="0.2" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/recycler_shimmer_classes_items.xml" value="0.264" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/recycler_students.xml" value="0.264" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2484375" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/menu/bottom_navigation_student_menu.xml" value="0.2484375" />
       </map>
     </option>
   </component>

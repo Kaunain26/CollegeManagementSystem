@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="9dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="12dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="12dp">
+
+            <TextView
+                android:id="@+id/classNameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="2dp"
+                android:fontFamily="@font/fredoka_regular"
+                android:includeFontPadding="false"
+                android:text="Artificial Intelligence"
+                android:textSize="20sp" />
+
+            <RelativeLayout
+                android:id="@+id/rlSubCode"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_below="@id/classNameTV"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_toEndOf="@id/rlSem"
+                android:background="@drawable/circular_normal_white"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp">
+
+                <TextView
+                    android:id="@+id/subjectCodeTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/fredoka_regular"
+                    android:text="18CS71"
+                    android:textColor="@color/pink"
+                    android:textSize="13sp" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rlSem"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_below="@id/classNameTV"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/circular_normal_white"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp">
+
+                <TextView
+                    android:id="@+id/batch_andsem_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/fredoka_regular"
+                    android:text="7th sem"
+                    android:textColor="@color/pink"
+                    android:textSize="13sp" />
+            </RelativeLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/facultyNameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+                android:textSize="10sp"
+                android:textStyle="normal"
+                tools:ignore="RelativeOverlap"
+                tools:text="@tools:sample/full_names[0]" />
+
+            <!--<RelativeLayout
+                android:id="@+id/rlBatch"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_below="@id/classNameTV"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_toEndOf="@id/rlSubCode"
+                android:visibility="invisible"
+                android:background="@drawable/circular_normal_white"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp">
+
+                <TextView
+                    android:id="@+id/batchTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/fredoka_regular"
+                    android:text="18th Batch"
+                    android:textColor="@color/pink"
+                    android:textSize="13sp" />
+            </RelativeLayout>-->
+            <!--forward arrow-->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/totalStudentPercentage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/fredoka_regular" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:text="%"
+                    android:textSize="15sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</RelativeLayout>

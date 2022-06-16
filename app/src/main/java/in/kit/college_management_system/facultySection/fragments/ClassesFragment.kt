@@ -1,14 +1,14 @@
 package `in`.kit.college_management_system.facultySection.fragments
 
 import `in`.kit.college_management_system.R
-import `in`.kit.college_management_system.databinding.FragmentClassesBinding
+import `in`.kit.college_management_system.databinding.FragmentFacultyClassesBinding
 import `in`.kit.college_management_system.facultySection.adapter.ClassesAdapter
 import `in`.kit.college_management_system.facultySection.adapter.ClassesShimmerAdapter
 import `in`.kit.college_management_system.facultySection.database.DatabaseClient
 import `in`.kit.college_management_system.facultySection.database.FilterClassesChip
 import `in`.kit.college_management_system.facultySection.model.ClassesModel
 import `in`.kit.college_management_system.facultySection.model.FacultyDetails
-import `in`.kit.college_management_system.interfaces.OnFirebaseActionCallback
+import `in`.kit.college_management_system.interfaces.IOnFirebaseActionCallback
 import `in`.kit.college_management_system.utils.AlertDialogHelperClass
 import `in`.kit.college_management_system.utils.FirebaseHelperClass
 import android.annotation.SuppressLint
@@ -21,6 +21,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -35,7 +36,7 @@ import java.util.concurrent.CopyOnWriteArrayList
 
 class ClassesFragment : Fragment() {
 
-    private var _binding: FragmentClassesBinding? = null
+    private var _binding: FragmentFacultyClassesBinding? = null
     private val binding get() = _binding
     private lateinit var firebaseHelperClass: FirebaseHelperClass
     private lateinit var mAuth: FirebaseAuth
@@ -49,7 +50,7 @@ class ClassesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentClassesBinding.inflate(inflater, container, false)
+        _binding = FragmentFacultyClassesBinding.inflate(inflater, container, false)
         val view = binding?.root
 
         binding!!.arrowBack.setOnClickListener {
@@ -62,8 +63,8 @@ class ClassesFragment : Fragment() {
         mAuth = FirebaseAuth.getInstance()
         firebaseHelperClass = FirebaseHelperClass()
         firebaseHelperClass.getFacultyDetails(
-            FirebaseAuth.getInstance(),
-            object : OnFirebaseActionCallback {
+            mAuth.uid.toString(),
+            object : IOnFirebaseActionCallback {
                 @SuppressLint("SetTextI18n")
                 override fun getAllFacultyDetailsCallback(facultyDetails: FacultyDetails) {
                     tempFacultyDetails = facultyDetails
@@ -78,7 +79,7 @@ class ClassesFragment : Fragment() {
                 }
             })
 
-        loadShimmer()
+        loadShimmer(activity as Context)
         setUpRecyclerView()
 
         addNewClass()
@@ -144,7 +145,7 @@ class ClassesFragment : Fragment() {
         }
 
         if (allSelectedChip.isNotEmpty()) {
-            loadShimmer()
+            loadShimmer(mContext)
         }
 
         for (selectedChips in allSelectedChip) {
@@ -171,7 +172,7 @@ class ClassesFragment : Fragment() {
                 "20$batch",
                 "$sem Sem",
                 mContext,
-                object : OnFirebaseActionCallback {
+                object : IOnFirebaseActionCallback {
                     @SuppressLint("NotifyDataSetChanged")
                     override fun getFilteredClass(
                         classModel: ClassesModel,
@@ -186,11 +187,17 @@ class ClassesFragment : Fragment() {
                         }
                         if (tempList.isNotEmpty()) {
                             // there is a class - so hide shimmer
-                            disableShimmer()
+                            disableShimmer(context)
                             binding?.llNoClassesFound?.visibility = View.GONE
+                            binding?.filterTV?.visibility = View.VISIBLE
+                            binding?.filterChipScrollView?.visibility = View.VISIBLE
+                            binding?.classesTV?.visibility = View.VISIBLE
                         } else {
-                            disableShimmer()
+                            disableShimmer(context)
                             binding?.llNoClassesFound?.visibility = View.VISIBLE
+                            binding?.filterTV?.visibility = View.GONE
+                            binding?.filterChipScrollView?.visibility = View.GONE
+                            binding?.classesTV?.visibility = View.GONE
                         }
                     }
                 }
@@ -219,43 +226,60 @@ class ClassesFragment : Fragment() {
     }
 
     private fun getAllClassesFromFirebase(notifyAdapter: Boolean) {
-        firebaseHelperClass.getAllClassesFromFirebase(
+        firebaseHelperClass.getFacultyClassFromFirebase(
             mAuth,
             tempFacultyDetails.branch,
-            object : OnFirebaseActionCallback {
-                override fun getAllClassesCallback(classModel: ClassesModel, context: Context) {
-                    //Toast.makeText(context, "New class detected", Toast.LENGTH_SHORT).show()
-                    if (!classList.contains(classModel)) {
-                        classList.add(classModel)
+            object : IOnFirebaseActionCallback {
+                override fun getAllClassesCallback(classModel: ClassesModel?, context: Context) {
+                    if (classModel != null) {
+                        if (!classList.contains(classModel)) {
+                            classList.add(classModel)
 
-                        if (notifyAdapter)
-                            classesAdapter.submitList(classList)
+                            if (notifyAdapter) {
+                                Toast.makeText(context, "New class detected", Toast.LENGTH_SHORT)
+                                    .show()
+                                Log.d("classList", "getAllClassesCallback:$classList ")
+                                /** this is a hack to refresh the recycler view */
+                                // making a newTempList and adding all data to it, In this way adapter refresh itself when we submit this newTempLl̥ist
+                                val newTempClassList = ArrayList<ClassesModel>()
+                                newTempClassList.addAll(classList)
+
+                                classesAdapter.submitList(newTempClassList)
+                            }
+                        }
                     }
+
                     if (classList.isNotEmpty()) {
                         // there is a class - so hide shimmer
-                        disableShimmer()
+                        disableShimmer(context)
                         binding?.llNoClassesFound?.visibility = View.GONE
+                        binding?.filterTV?.visibility = View.VISIBLE
+                        binding?.filterChipScrollView?.visibility = View.VISIBLE
+                        binding?.classesTV?.visibility = View.VISIBLE
                     } else {
-                        disableShimmer()
+                        disableShimmer(context)
                         binding?.llNoClassesFound?.visibility = View.VISIBLE
+                        binding?.filterTV?.visibility = View.GONE
+                        binding?.filterChipScrollView?.visibility = View.GONE
+                        binding?.classesTV?.visibility = View.GONE
                     }
                 }
             }, activity as Context
         )
     }
 
-    private fun disableShimmer() {
+    private fun disableShimmer(context: Context) {
         //disable shimmer
         binding?.shimmerFilterChips!!.stopShimmerAnimation()
-        val classesShimmerAdapter = ClassesShimmerAdapter(activity as Context, false, 0)
+        val classesShimmerAdapter = ClassesShimmerAdapter(context, false, 0)
         binding?.rvAllClassesShimmer?.adapter = classesShimmerAdapter
         binding?.llShimmerClasses?.visibility = View.GONE
         binding?.llClassesContainer?.visibility = View.VISIBLE
     }
 
-    private fun loadShimmer() {
+    private fun loadShimmer(mContext: Context) {
         binding?.shimmerFilterChips!!.startShimmerAnimation()
-        val classesShimmerAdapter = ClassesShimmerAdapter(activity as Context, true, 4)
+        val classesShimmerAdapter = ClassesShimmerAdapter(mContext, true, 4)
         binding?.llShimmerClasses?.visibility = View.VISIBLE
         binding?.llClassesContainer?.visibility = View.INVISIBLE
         binding?.rvAllClassesShimmer?.adapter = classesShimmerAdapter

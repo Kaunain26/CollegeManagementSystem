@@ -23,6 +23,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#C6C6C6</color>
+    <color name="dark_grey">#6A6A6A</color>
     <color name="app_theme">#344893</color>
     <color name="pink">#DF1996</color>
     <color name="peach_pink">#FFD5F0</color>
@@ -32,5 +33,8 @@
     <color name="purple">#FF3700B3</color>
     <color name="shimmerBG">#F7DCDCDC</color>
     <color name="green">#008000</color>
+    <color name="parrot_green">#12AD2B</color>
+    <color name="splash_bg">#212121</color>
+    <color name="edit_text_background">#ECECEC</color>
 
 </resources>

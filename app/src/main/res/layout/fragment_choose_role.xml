@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/app_theme_background_drawable"
     android:orientation="vertical"
-    tools:context=".singin_signup.SignInSignUpHostActivity">
+    tools:context=".singin_signup.AuthenticationActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

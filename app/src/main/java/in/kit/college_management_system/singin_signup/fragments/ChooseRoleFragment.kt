@@ -78,12 +78,12 @@ class ChooseRoleFragment : Fragment() {
             // if (!isStudent) {
             val bundle = Bundle()
             bundle.putLong("role", selectedRole)
-            val chooseSignInOrSignUpFrag = ChooseSignInOrSignUpFrag()
-            chooseSignInOrSignUpFrag.arguments = bundle
+            val signInWithGoogleFragment = SignInWithGoogleFragment()
+            signInWithGoogleFragment.arguments = bundle
             (activity as AppCompatActivity).supportFragmentManager.beginTransaction()
                 .replace(
                     R.id.fragmentContainer,
-                    chooseSignInOrSignUpFrag,
+                    signInWithGoogleFragment,
                     "chooseSignInOrSignUpFrag"
                 ).commit()
             // }

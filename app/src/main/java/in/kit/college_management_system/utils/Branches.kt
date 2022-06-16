@@ -1,13 +1,13 @@
 package `in`.kit.college_management_system.utils
 
-class Branches {
-    companion object {
-        const val CSE = "CSE"
-        const val MECH = "Mech"
-        const val AERO = "Aero"
-        const val CIVIL = "Civil"
-        const val EC = "EC"
-        const val EE = "EE"
-        const val BS = "BS"
-    }
+object Branches {
+
+    const val CSE = "CS"
+    const val MECH = "ME"
+    const val AERO = "AE"
+    const val CIVIL = "CV"
+    const val EC = "EC"
+    const val EE = "EE"
+    const val BS = "BS"
+
 }

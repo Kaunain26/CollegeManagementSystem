@@ -24,7 +24,7 @@
 
     </RelativeLayout>
 
-    <!--back arrow-->
+    <!--save button-->
     <RelativeLayout
         android:id="@+id/rlSave"
         android:layout_width="35dp"

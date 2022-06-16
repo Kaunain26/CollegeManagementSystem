@@ -3,11 +3,18 @@ package `in`.kit.college_management_system.facultySection.fragments
 import `in`.kit.college_management_system.R
 import `in`.kit.college_management_system.databinding.BottomSheetFilterClassesBinding
 import `in`.kit.college_management_system.facultySection.model.ClassesModel
-import `in`.kit.college_management_system.utils.Branches
+import `in`.kit.college_management_system.utils.Branches.AERO
+import `in`.kit.college_management_system.utils.Branches.BS
+import `in`.kit.college_management_system.utils.Branches.CIVIL
+import `in`.kit.college_management_system.utils.Branches.CSE
+import `in`.kit.college_management_system.utils.Branches.EC
+import `in`.kit.college_management_system.utils.Branches.EE
+import `in`.kit.college_management_system.utils.Branches.MECH
 import `in`.kit.college_management_system.utils.FirebaseHelperClass
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -58,37 +65,37 @@ class BottomSheetFilterClasses(
         firebaseHelperClass = FirebaseHelperClass()
 
         when (branch) {
-            Branches.CSE -> {
+            CSE -> {
                 binding?.rlCSE?.background =
                     ContextCompat.getDrawable(activity as Context, R.color.dark_purple)
             }
 
-            Branches.MECH -> {
+            MECH -> {
                 binding?.rlMech?.background =
                     ContextCompat.getDrawable(activity as Context, R.color.dark_purple)
             }
 
-            Branches.AERO -> {
+            AERO -> {
                 binding?.rlAero?.background =
                     ContextCompat.getDrawable(activity as Context, R.color.dark_purple)
             }
 
-            Branches.CIVIL -> {
+            CIVIL -> {
                 binding?.rlCivil?.background =
                     ContextCompat.getDrawable(activity as Context, R.color.dark_purple)
             }
 
-            Branches.EE -> {
+            EE -> {
                 binding?.rlEE?.background =
                     ContextCompat.getDrawable(activity as Context, R.color.dark_purple)
             }
 
-            Branches.EC -> {
+            EC -> {
                 binding?.rlEandC?.background =
                     ContextCompat.getDrawable(activity as Context, R.color.dark_purple)
             }
 
-            Branches.BS -> {
+            BS -> {
                 binding?.rlBasicScience?.background =
                     ContextCompat.getDrawable(activity as Context, R.color.dark_purple)
             }
@@ -120,43 +127,43 @@ class BottomSheetFilterClasses(
             } else {
                 if (selectedCSEChipList.isNotEmpty()) {
                     for ((index, chips) in selectedCSEChipList.withIndex()) {
-                        selectedCSEChipList[index] = "$chips ${Branches.CSE}"
+                        selectedCSEChipList[index] = "$chips ${CSE}"
                     }
                     allSelectedChip.addAll(selectedCSEChipList)
                 }
                 if (selectedMechChipList.isNotEmpty()) {
                     for ((index, chips) in selectedMechChipList.withIndex()) {
-                        selectedMechChipList[index] = "$chips ${Branches.MECH}"
+                        selectedMechChipList[index] = "$chips ${MECH}"
                     }
                     allSelectedChip.addAll(selectedMechChipList)
                 }
                 if (selectedAeroChipList.isNotEmpty()) {
                     for ((index, chips) in selectedAeroChipList.withIndex()) {
-                        selectedAeroChipList[index] = "$chips ${Branches.AERO}"
+                        selectedAeroChipList[index] = "$chips ${AERO}"
                     }
                     allSelectedChip.addAll(selectedAeroChipList)
                 }
                 if (selectedEEChipList.isNotEmpty()) {
                     for ((index, chips) in selectedEEChipList.withIndex()) {
-                        selectedEEChipList[index] = "$chips ${Branches.EE}"
+                        selectedEEChipList[index] = "$chips ${EE}"
                     }
                     allSelectedChip.addAll(selectedEEChipList)
                 }
                 if (selectedEandCChipList.isNotEmpty()) {
                     for ((index, chips) in selectedEandCChipList.withIndex()) {
-                        selectedEandCChipList[index] = "$chips ${Branches.EC}"
+                        selectedEandCChipList[index] = "$chips ${EC}"
                     }
                     allSelectedChip.addAll(selectedEandCChipList)
                 }
                 if (selectedCivilChipList.isNotEmpty()) {
                     for ((index, chips) in selectedCivilChipList.withIndex()) {
-                        selectedCivilChipList[index] = "$chips ${Branches.CIVIL}"
+                        selectedCivilChipList[index] = "$chips ${CIVIL}"
                     }
                     allSelectedChip.addAll(selectedCivilChipList)
                 }
                 if (selectedBasicScienceChipList.isNotEmpty()) {
                     for ((index, chips) in selectedBasicScienceChipList.withIndex()) {
-                        selectedBasicScienceChipList[index] = "$chips ${Branches.BS}"
+                        selectedBasicScienceChipList[index] = "$chips ${BS}"
                     }
                     allSelectedChip.addAll(selectedBasicScienceChipList)
                 }
@@ -177,7 +184,7 @@ class BottomSheetFilterClasses(
                 ContextCompat.getDrawable(activity as Context, R.color.dark_purple)
             binding?.tvCse?.setTextColor(ContextCompat.getColor(activity as Context, R.color.white))
             binding?.filterChipGroup?.removeAllViews()
-            addChip(Branches.CSE)
+            addChip(CSE)
         }
 
         binding?.rlMech!!.setOnClickListener {
@@ -193,7 +200,7 @@ class BottomSheetFilterClasses(
             )
             binding?.filterChipGroup?.removeAllViews()
 
-            addChip(Branches.MECH)
+            addChip(MECH)
         }
 
         binding?.rlCivil!!.setOnClickListener {
@@ -208,7 +215,7 @@ class BottomSheetFilterClasses(
                 )
             )
             binding?.filterChipGroup?.removeAllViews()
-            addChip(Branches.CIVIL)
+            addChip(CIVIL)
         }
 
         binding?.rlAero!!.setOnClickListener {
@@ -223,7 +230,7 @@ class BottomSheetFilterClasses(
                 )
             )
             binding?.filterChipGroup?.removeAllViews()
-            addChip(Branches.AERO)
+            addChip(AERO)
         }
 
         binding?.rlEE!!.setOnClickListener {
@@ -233,7 +240,7 @@ class BottomSheetFilterClasses(
                 ContextCompat.getDrawable(activity as Context, R.color.dark_purple)
             binding?.tvEE?.setTextColor(ContextCompat.getColor(activity as Context, R.color.white))
             binding?.filterChipGroup?.removeAllViews()
-            addChip(Branches.EE)
+            addChip(EE)
         }
 
         binding?.rlEandC!!.setOnClickListener {
@@ -248,7 +255,7 @@ class BottomSheetFilterClasses(
                 )
             )
             binding?.filterChipGroup?.removeAllViews()
-            addChip(Branches.EC)
+            addChip(EC)
         }
 
         binding?.rlBasicScience!!.setOnClickListener {
@@ -263,7 +270,7 @@ class BottomSheetFilterClasses(
                 )
             )
             binding?.filterChipGroup?.removeAllViews()
-            addChip(Branches.BS)// Basic Science
+            addChip(BS)// Basic Science
         }
 
     }
@@ -333,6 +340,7 @@ class BottomSheetFilterClasses(
         //Log.d("classList", "addChip:$classList ")
         val chipList = ArrayList<String>()
         for (_class in classList) {
+            Log.d("addChip", "addChip: $branch , ${_class.branch}")
             if (_class.branch == branch) {
                 val batch =
                     _class.batchOrYear[_class.batchOrYear.length - 2].toString() + _class.batchOrYear[_class.batchOrYear.length - 1].toString()
@@ -356,7 +364,7 @@ class BottomSheetFilterClasses(
 
             //selecting chips if it's selected
             when (branch) {
-                Branches.CSE -> {
+                CSE -> {
                     if (selectedCSEChipList.isNotEmpty()) {
                         for (cseChips in selectedCSEChipList) {
                             if (chip.text.toString() == cseChips) {
@@ -366,7 +374,7 @@ class BottomSheetFilterClasses(
                     }
                 }
 
-                Branches.MECH -> {
+                MECH -> {
                     if (selectedMechChipList.isNotEmpty()) {
                         for (mechChips in selectedMechChipList) {
                             if (chip.text.toString() == mechChips) {
@@ -376,7 +384,7 @@ class BottomSheetFilterClasses(
                     }
                 }
 
-                Branches.AERO -> {
+                AERO -> {
                     if (selectedAeroChipList.isNotEmpty()) {
                         for (aeroChips in selectedAeroChipList) {
                             if (chip.text.toString() == aeroChips) {
@@ -386,7 +394,7 @@ class BottomSheetFilterClasses(
                     }
                 }
 
-                Branches.CIVIL -> {
+                CIVIL -> {
                     if (selectedCivilChipList.isNotEmpty()) {
                         for (civilChips in selectedCivilChipList) {
                             if (chip.text.toString() == civilChips) {
@@ -396,7 +404,7 @@ class BottomSheetFilterClasses(
                     }
                 }
 
-                Branches.EE
+                EE
                 -> {
                     if (selectedEEChipList.isNotEmpty()) {
                         for (eeChips in selectedEEChipList) {
@@ -407,7 +415,7 @@ class BottomSheetFilterClasses(
                     }
                 }
 
-                Branches.EC -> {
+                EC -> {
                     if (selectedEandCChipList.isNotEmpty()) {
                         for (eAndcChips in selectedEandCChipList) {
                             if (chip.text.toString() == eAndcChips) {
@@ -417,7 +425,7 @@ class BottomSheetFilterClasses(
                     }
                 }
 
-                Branches.BS -> {
+                BS -> {
                     if (selectedBasicScienceChipList.isNotEmpty()) {
                         for (basicScienceChips in selectedBasicScienceChipList) {
                             if (chip.text.toString() == basicScienceChips) {
@@ -435,33 +443,33 @@ class BottomSheetFilterClasses(
                 if (boolean) {
                     // if checked then add to particular list...
                     when (branch) {
-                        Branches.CSE -> {
+                        CSE -> {
                             selectedCSEChipList.add(chip.text.toString())
                         }
 
-                        Branches.MECH -> {
+                        MECH -> {
                             selectedMechChipList.add(chip.text.toString())
                         }
 
-                        Branches.AERO -> {
+                        AERO -> {
                             selectedAeroChipList.add(chip.text.toString())
                         }
 
-                        Branches.CIVIL -> {
+                        CIVIL -> {
 
                             selectedCivilChipList.add(chip.text.toString())
                         }
 
-                        Branches.EE -> {
+                        EE -> {
                             selectedEEChipList.add(chip.text.toString())
                         }
 
-                        Branches.EC -> {
+                        EC -> {
                             selectedEandCChipList.add(chip.text.toString())
 
                         }
 
-                        Branches.BS -> {
+                        BS -> {
                             selectedBasicScienceChipList.add(chip.text.toString())
 
                         }
@@ -470,33 +478,33 @@ class BottomSheetFilterClasses(
 
                 } else {
                     when (branch) {
-                        Branches.CSE -> {
+                        CSE -> {
                             selectedCSEChipList.remove(chip.text.toString())
                         }
 
-                        Branches.MECH -> {
+                        MECH -> {
                             selectedMechChipList.remove(chip.text.toString())
                         }
 
-                        Branches.AERO -> {
+                        AERO -> {
                             selectedAeroChipList.remove(chip.text.toString())
                         }
 
-                        Branches.CIVIL -> {
+                        CIVIL -> {
 
                             selectedCivilChipList.remove(chip.text.toString())
                         }
 
-                        Branches.EE -> {
+                        EE -> {
                             selectedEEChipList.remove(chip.text.toString())
                         }
 
-                        Branches.EC -> {
+                        EC -> {
                             selectedEandCChipList.remove(chip.text.toString())
 
                         }
 
-                        Branches.BS -> {
+                        BS -> {
                             selectedBasicScienceChipList.remove(chip.text.toString())
 
                         }

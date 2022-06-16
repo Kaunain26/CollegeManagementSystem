@@ -5,7 +5,7 @@ import `in`.kit.college_management_system.databinding.FragmentSignInBinding
 import `in`.kit.college_management_system.facultySection.activity.FacultyHomePage
 import `in`.kit.college_management_system.hodSection.HODHomePage
 import `in`.kit.college_management_system.principalSection.PrincipalHomePage
-import `in`.kit.college_management_system.studentSection.StudentHomePage
+import `in`.kit.college_management_system.studentSection.activity.StudentHomePage
 import `in`.kit.college_management_system.utils.FirebaseHelperClass
 import `in`.kit.college_management_system.utils.Preferences
 import android.content.Context
@@ -161,6 +161,7 @@ class SignInFragment : Fragment() {
                     "Signed in successful!!",
                     Toast.LENGTH_SHORT
                 ).show()
+
                 binding?.progressBar?.visibility = View.GONE
                 binding?.signInBtn?.visibility = View.VISIBLE
 

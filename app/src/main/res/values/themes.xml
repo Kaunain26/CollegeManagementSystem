@@ -7,7 +7,7 @@
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorPrimaryContainer">@color/light_purple</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/light_purple</item>
+        <item name="colorSecondary">@color/dark_purple</item>
         <item name="colorSecondaryVariant">@color/light_purple</item>
         <item name="colorOnSecondary">@color/light_purple</item>
         <item name="colorSecondaryContainer">@color/light_purple</item>
@@ -24,6 +24,11 @@
         <item name="android:spotShadowAlpha">1</item>-->
 
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
     <style name="TextAppearance.App.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
@@ -63,6 +68,15 @@
         <item name="headerTitleColor">#fff</item>
 
         <item name="dialogActionButtonColor">@color/dark_purple</item>
+    </style>
+
+    <style name="SearchChipStyle" parent="Widget.Material3.Chip.Filter">
+        <item name="android:checked">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="checkedIconVisible">false</item>
+        <item name="chipEndPadding">10dp</item>
+        <item name="chipMinHeight">40dp</item>
+        <item name="chipStartPadding">10dp</item>
     </style>
 
 </resources>

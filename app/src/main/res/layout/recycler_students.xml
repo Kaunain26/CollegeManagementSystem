@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/std_details_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="9dp"
+        android:animateLayoutChanges="true"
+        app:cardCornerRadius="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardProfile"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:cardBackgroundColor="#416998A9"
+                app:cardCornerRadius="50dp"
+                app:strokeColor="#434343"
+                app:strokeWidth="1dp">
+
+                <ImageView
+                    android:id="@+id/profile_img"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="start"
+                    android:contentDescription="@null"
+                    android:scaleType="centerCrop"
+                    tools:src="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/name_initials_TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:text="KN"
+                    tools:visibility="visible" />
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/studentNameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="-2dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@id/rlForwardArrow"
+                android:layout_toEndOf="@id/cardProfile"
+                android:ellipsize="marquee"
+                android:fontFamily="@font/fredoka_regular"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:textSize="18sp"
+                tools:text="@tools:sample/full_names" />
+
+            <RelativeLayout
+                android:id="@+id/rlUsn"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_below="@id/studentNameTV"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@id/cardProfile">
+
+                <TextView
+                    android:id="@+id/usnTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/fredoka_regular"
+                    android:textColor="@color/pink"
+                    android:textSize="13sp"
+                    tools:text="4KM18CS025" />
+            </RelativeLayout>
+
+            <FrameLayout
+                android:id="@+id/flExpandedView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rlUsn"
+                android:layout_marginTop="10dp"
+                android:visibility="gone">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/circular_normal_grey" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        tools:ignore="UselessParent">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Present"
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            app:fontFamily="@font/fredoka_regular" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/present_days"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0 day"
+                            android:textSize="12sp"
+                            app:fontFamily="@font/roboto" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        tools:ignore="UselessParent">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Absent"
+                            android:textColor="@color/red"
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            app:fontFamily="@font/fredoka_regular" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/absent_days"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0 day"
+                            android:textColor="@color/red"
+                            android:textSize="12sp"
+                            app:fontFamily="@font/roboto" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        tools:ignore="UselessParent">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Leaves"
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            app:fontFamily="@font/fredoka_regular" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/leaves_days"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="12sp"
+                            app:fontFamily="@font/roboto" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <!--forward arrow-->
+            <RelativeLayout
+                android:id="@+id/rlForwardArrow"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/circular_normal_white"
+                android:elevation="6dp"
+                android:rotation="90">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="4dp"
+                    android:contentDescription="@null"
+                    android:rotation="180"
+                    android:src="@drawable/ic_arrow_back_ios_black" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</RelativeLayout>

@@ -7,7 +7,7 @@
     android:background="@drawable/app_theme_background_drawable"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".singin_signup.fragments.ChooseSignInOrSignUpFrag">
+    tools:context=".singin_signup.fragments.SignInWithGoogleFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"

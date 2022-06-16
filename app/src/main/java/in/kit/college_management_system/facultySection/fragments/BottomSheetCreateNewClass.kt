@@ -167,13 +167,6 @@ class BottomSheetCreateNewClass(var mContext: Context) : BottomSheetDialogFragme
             AdapterView.OnItemClickListener { p0, p1, position, p2 ->
                 // ...  Positions ... //
 
-                //0 -> CSE
-                //1 -> E&C
-                //2 -> EE
-                //3 -> Mech
-                //4 -> Aero
-                //4 -> Civil
-
                 selectedSem = p0.getItemAtPosition(position).toString()
                 selectedSemPos = position
 
@@ -182,7 +175,7 @@ class BottomSheetCreateNewClass(var mContext: Context) : BottomSheetDialogFragme
 
     private fun handleBranchMenuOption() {
         val branchList =
-            listOf("BS - Basic Science", "CSE", "EC", "EE", "Mech", "Aero", "Civil")
+            listOf("BS - Basic Science", "CS", "EC", "EE", "ME", "AE", "CV")
         val branchListArrayAdapter =
             ArrayAdapter(activity as Context, R.layout.choose_item_layout, branchList)
         (binding?.chooseBranchMenu?.editText as? AutoCompleteTextView)?.setAdapter(

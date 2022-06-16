@@ -1,7 +1,7 @@
 package `in`.kit.college_management_system.facultySection.adapter
 
 import `in`.kit.college_management_system.databinding.RecyclerAllClassesItemsBinding
-import `in`.kit.college_management_system.facultySection.activity.StudentInCLassActivity
+import `in`.kit.college_management_system.facultySection.activity.StudentInClassActivity
 import `in`.kit.college_management_system.facultySection.model.ClassesModel
 import android.annotation.SuppressLint
 import android.content.Context
@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 
 class ClassesAdapter(var context: Context) :
     ListAdapter<ClassesModel, ClassesAdapter.ClassAdapterViewHolder>(AllClassesCallback()) {
@@ -24,11 +25,16 @@ class ClassesAdapter(var context: Context) :
             binding.subjectCodeTV.text = _class.subjectCode
             val batch =
                 _class.batchOrYear[_class.batchOrYear.length - 2].toString() + _class.batchOrYear[_class.batchOrYear.length - 1].toString()
-            binding.semTv.text = "$batch - ${_class.sem}"
-            binding.batchTV.text = "${batch}th Batch"
+            binding.batchAndsemTv.text = "$batch - ${_class.sem}"
+            //binding.batchTV.text = "${batch}th Batch"
 
             binding.root.setOnClickListener {
-                context.startActivity(Intent(context, StudentInCLassActivity::class.java))
+                val gson = Gson()
+                val classModelGson: String = gson.toJson(_class)
+                context.startActivity(Intent(context, StudentInClassActivity::class.java).apply {
+                    putExtra("batch_and_sem", binding.batchAndsemTv.text.toString())
+                    putExtra("classModelGson", classModelGson)
+                })
             }
         }
 
@@ -36,7 +42,7 @@ class ClassesAdapter(var context: Context) :
 
     class AllClassesCallback : DiffUtil.ItemCallback<ClassesModel>() {
         override fun areItemsTheSame(oldItem: ClassesModel, newItem: ClassesModel): Boolean {
-            return oldItem.key == newItem.key
+            return oldItem.classSubKey == newItem.classSubKey
         }
 
         override fun areContentsTheSame(oldItem: ClassesModel, newItem: ClassesModel): Boolean {
