@@ -13,10 +13,13 @@
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/circular_normal_grey.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/circular_normal_white.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/circular_theme_color.xml" value="0.212" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/circular_yellow.xml" value="0.1" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/curved_background_grey.xml" value="0.212" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/curved_top_left_right.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/curved_top_left_right_grey.xml" value="0.24537037037037038" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/curved_top_left_right_theme_color.xml" value="0.26458333333333334" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/curved_top_left_right_white.xml" value="0.254" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/curved_yellow.xml" value="0.1665" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/custom_popup_background.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/default_datetextview_selector.xml" value="0.212" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/default_normal.xml" value="0.212" />
@@ -88,11 +91,14 @@
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/fragment_student_leaves.xml" value="0.264" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/fragment_student_profile.xml" value="0.2484375" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/item_layout.xml" value="0.2484375" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/recycler.xml" value="0.2484375" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/recycler_all_classes_items.xml" value="0.4" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/recycler_all_classes_items_for_std.xml" value="0.4" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/recycler_attendance_history_item.xml" value="0.2" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/recycler_shimmer_classes_items.xml" value="0.264" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/recycler_student_leaves_items.xml" value="0.4" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/recycler_students.xml" value="0.264" />
+        <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/layout/sub_header.xml" value="0.2484375" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2484375" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/menu/bottom_navigation_student_menu.xml" value="0.2484375" />
       </map>

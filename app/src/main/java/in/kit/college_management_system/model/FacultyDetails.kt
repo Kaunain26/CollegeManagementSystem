@@ -1,4 +1,4 @@
-package `in`.kit.college_management_system.facultySection.model
+package `in`.kit.college_management_system.model
 
 data class FacultyDetails(var name: String, var email: String, var branch: String) {
 

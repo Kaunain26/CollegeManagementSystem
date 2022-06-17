@@ -4,8 +4,8 @@ import `in`.kit.college_management_system.R
 import `in`.kit.college_management_system.databinding.FragmentStudentAttendancesBinding
 import `in`.kit.college_management_system.facultySection.adapter.ClassesShimmerAdapter
 import `in`.kit.college_management_system.facultySection.database.DatabaseClient
-import `in`.kit.college_management_system.facultySection.model.ClassesModel
-import `in`.kit.college_management_system.facultySection.model.StudentDetailsModel
+import `in`.kit.college_management_system.model.ClassesModel
+import `in`.kit.college_management_system.model.StudentDetailsModel
 import `in`.kit.college_management_system.interfaces.IOnFirebaseActionCallback
 import `in`.kit.college_management_system.studentSection.adapters.StudentAttendanceAdapter
 import `in`.kit.college_management_system.utils.FirebaseHelperClass
@@ -60,7 +60,7 @@ class StudentAttendancesFragment : Fragment() {
             mAuth.uid.toString(),
             object : IOnFirebaseActionCallback {
                 @SuppressLint("SetTextI18n")
-                override fun getAllStudentDetailsCallback(studentDetails: StudentDetailsModel) {
+                override fun getSingleStudentDetailsCallback(studentDetails: StudentDetailsModel) {
                     tempStudentDetails = studentDetails
                     binding!!.studentNameTV.text = studentDetails.name
                     //binding!!.branchNameTV.text = facultyDetails.branch

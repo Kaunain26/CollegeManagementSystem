@@ -90,14 +90,13 @@
                     android:id="@+id/llNote"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="gone"
                     android:layout_marginTop="20dp"
-                    tools:visibility="visible">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="wrap_content"
                         android:id="@+id/noteText1"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:fontFamily="@font/fredoka_regular"
@@ -106,15 +105,34 @@
                         android:textSize="17sp" />
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/noteText2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="5dp"
-                        android:id="@+id/noteText2"
                         android:fontFamily="@font/fredoka_regular"
                         android:text="@string/hod_and_principal_note"
                         android:textColor="@color/white"
                         android:textSize="17sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llHelperNote"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:fontFamily="@font/fredoka_regular"
+                        android:text="@string/helper_leave_note"
+                        android:textColor="@color/white"
+                        android:textSize="17sp" />
+
                 </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout

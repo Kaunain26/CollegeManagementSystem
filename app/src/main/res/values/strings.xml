@@ -35,10 +35,10 @@
     <string name="reason">Reason</string>
     <string name="hod_and_principal_note">So this leave request will be sent to <i><b>HOD and Principal</b></i>. </string>
     <string name="hod_note">So this leave request will be sent only to <i><b>HOD</b></i> . </string>
-    <string name="faculty_note">So this leave request will be sent only to <i><b>Faculty</b></i> . </string>
     <string name="more_than_three_days_leave_waring">\u25CF Since you are taking leave of more than 3 days.</string>
     <string name="three_days_leave_waring">\u25CF Since you are taking leave of 3 days.</string>
     <string name="two_days_leave_waring">\u25CF Since you are taking leave of 2 days.</string>
     <string name="half_day_leave_waring">\u25CF Since you are taking leave of Half day.</string>
     <string name="full_day_leave_waring">\u25CF Since you are taking leave of Full day.</string>
+    <string name="helper_leave_note"><b>Note:</b>\n\u25CF <u>From Half Day to 3 days</u> - Leave will be requested to HOD.\n\u25CF <u>More than 3 days</u> - Leave will be requested to Principal.</string>
 </resources>

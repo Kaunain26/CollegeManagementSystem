@@ -16,5 +16,13 @@ object FirebaseKeys {
     const val PRESENT = "present"
     const val ABSENT = "absent"
     const val LEAVES = "leaves"
+    const val LEAVES_TYPE = "leave_type"
+    const val LEAVES_REASON = "leave_reason"
+    const val IS_PRINCIPAL_PERMISSION_GRANTED = "is_principal_permission_granted"
+    const val IS_HOD_PERMISSION_GRANTED = "is_hod_permission_granted"
+    const val NO_OF_DAYS = "no_of_days"
+    const val REQUESTED_TO = "requested_to"
+    const val FROM_DATE = "from_date"
+    const val TO_DATE = "to_date"
 
 }

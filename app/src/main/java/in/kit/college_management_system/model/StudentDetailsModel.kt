@@ -1,4 +1,4 @@
-package `in`.kit.college_management_system.facultySection.model
+package `in`.kit.college_management_system.model
 
 data class StudentDetailsModel(
     var uid: String,
@@ -16,7 +16,6 @@ data class StudentDetailsModel(
     var leaves: String = ""
     var isExpanded: Boolean = false
     var isSelected: Boolean = false
-
 
     constructor() : this("", "", "", "", "", 0, "", "", "", "")
 

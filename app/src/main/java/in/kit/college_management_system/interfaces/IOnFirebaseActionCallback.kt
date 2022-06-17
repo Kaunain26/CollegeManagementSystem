@@ -36,7 +36,7 @@ interface IOnFirebaseActionCallback {
     ) {
     }
 
-    fun getAllStudentDetailsCallback(studentDetails: StudentDetailsModel) {
+    fun getSingleStudentDetailsCallback(studentDetails: StudentDetailsModel) {
 
     }
 }

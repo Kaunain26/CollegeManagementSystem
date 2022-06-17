@@ -3,9 +3,9 @@ package `in`.kit.college_management_system.studentSection.adapters
 import `in`.kit.college_management_system.R
 import `in`.kit.college_management_system.databinding.RecyclerAllClassesItemsForStdBinding
 import `in`.kit.college_management_system.facultySection.activity.StudentAttendanceDetailsActivity
-import `in`.kit.college_management_system.facultySection.model.ClassesModel
-import `in`.kit.college_management_system.facultySection.model.FacultyDetails
-import `in`.kit.college_management_system.facultySection.model.StudentDetailsModel
+import `in`.kit.college_management_system.model.ClassesModel
+import `in`.kit.college_management_system.model.FacultyDetails
+import `in`.kit.college_management_system.model.StudentDetailsModel
 import `in`.kit.college_management_system.interfaces.IOnFirebaseActionCallback
 import `in`.kit.college_management_system.utils.Constants
 import `in`.kit.college_management_system.utils.FirebaseHelperClass

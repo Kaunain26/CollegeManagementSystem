@@ -2,7 +2,7 @@ package `in`.kit.college_management_system.facultySection.adapter
 
 import `in`.kit.college_management_system.R
 import `in`.kit.college_management_system.databinding.RecyclerNoOfAttendancePerDayItemBinding
-import `in`.kit.college_management_system.facultySection.model.StudentAttendanceHistoryModel
+import `in`.kit.college_management_system.model.StudentAttendanceHistoryModel
 import `in`.kit.college_management_system.interfaces.IMarkAbsentAndPresent
 import android.content.Context
 import android.content.res.ColorStateList

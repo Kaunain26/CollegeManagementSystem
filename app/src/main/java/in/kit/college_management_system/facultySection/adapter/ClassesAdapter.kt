@@ -2,7 +2,7 @@ package `in`.kit.college_management_system.facultySection.adapter
 
 import `in`.kit.college_management_system.databinding.RecyclerAllClassesItemsBinding
 import `in`.kit.college_management_system.facultySection.activity.StudentInClassActivity
-import `in`.kit.college_management_system.facultySection.model.ClassesModel
+import `in`.kit.college_management_system.model.ClassesModel
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent

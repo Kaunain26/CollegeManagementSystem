@@ -2,8 +2,8 @@ package `in`.kit.college_management_system.facultySection.activity
 
 import `in`.kit.college_management_system.databinding.ActivityStudentInClassBinding
 import `in`.kit.college_management_system.facultySection.adapter.StudentsInClassAdapter
-import `in`.kit.college_management_system.facultySection.model.ClassesModel
-import `in`.kit.college_management_system.facultySection.model.StudentDetailsModel
+import `in`.kit.college_management_system.model.ClassesModel
+import `in`.kit.college_management_system.model.StudentDetailsModel
 import `in`.kit.college_management_system.interfaces.IOnClickAndLongClickListener
 import `in`.kit.college_management_system.interfaces.IOnFirebaseActionCallback
 import `in`.kit.college_management_system.utils.CalendarHelperClass

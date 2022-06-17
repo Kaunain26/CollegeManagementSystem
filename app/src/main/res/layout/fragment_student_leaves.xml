@@ -90,7 +90,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:background="#A9F6F6F6"
+                android:background="#EFEFEF"
                 android:orientation="horizontal">
 
                 <com.google.android.material.chip.ChipGroup
@@ -159,9 +159,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:visibility="visible"
-                tools:visibility="gone"
+                tools:visibility="visible"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/recycler_all_classes_items" />
+                tools:listitem="@layout/recycler_student_leaves_items" />
 
             <!--Lottie - no leaves found-->
             <RelativeLayout

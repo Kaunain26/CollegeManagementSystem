@@ -2,8 +2,8 @@ package `in`.kit.college_management_system.facultySection.fragments
 
 import `in`.kit.college_management_system.databinding.BottomsheetAttendanceHistoryBinding
 import `in`.kit.college_management_system.facultySection.adapter.StudentNoOfAttendancePerDayAdapter
-import `in`.kit.college_management_system.facultySection.model.StudentAttendanceHistoryModel
-import `in`.kit.college_management_system.facultySection.model.StudentDetailsModel
+import `in`.kit.college_management_system.model.StudentAttendanceHistoryModel
+import `in`.kit.college_management_system.model.StudentDetailsModel
 import `in`.kit.college_management_system.interfaces.IMarkAbsentAndPresent
 import `in`.kit.college_management_system.utils.FirebaseHelperClass
 import `in`.kit.college_management_system.utils.FirebaseKeys

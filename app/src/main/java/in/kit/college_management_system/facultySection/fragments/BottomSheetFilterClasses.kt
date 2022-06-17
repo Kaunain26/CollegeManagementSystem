@@ -2,7 +2,7 @@ package `in`.kit.college_management_system.facultySection.fragments
 
 import `in`.kit.college_management_system.R
 import `in`.kit.college_management_system.databinding.BottomSheetFilterClassesBinding
-import `in`.kit.college_management_system.facultySection.model.ClassesModel
+import `in`.kit.college_management_system.model.ClassesModel
 import `in`.kit.college_management_system.utils.Branches.AERO
 import `in`.kit.college_management_system.utils.Branches.BS
 import `in`.kit.college_management_system.utils.Branches.CIVIL

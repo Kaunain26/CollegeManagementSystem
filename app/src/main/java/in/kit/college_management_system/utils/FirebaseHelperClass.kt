@@ -1,15 +1,24 @@
 package `in`.kit.college_management_system.utils
 
-import `in`.kit.college_management_system.facultySection.model.ClassesModel
-import `in`.kit.college_management_system.facultySection.model.FacultyDetails
-import `in`.kit.college_management_system.facultySection.model.StudentAttendanceHistoryModel
-import `in`.kit.college_management_system.facultySection.model.StudentDetailsModel
+import `in`.kit.college_management_system.model.ClassesModel
+import `in`.kit.college_management_system.model.FacultyDetails
+import `in`.kit.college_management_system.model.StudentAttendanceHistoryModel
+import `in`.kit.college_management_system.model.StudentDetailsModel
 import `in`.kit.college_management_system.interfaces.IOnFirebaseActionCallback
 import `in`.kit.college_management_system.utils.Constants.ABSENT
 import `in`.kit.college_management_system.utils.Constants.PRESENT
 import `in`.kit.college_management_system.utils.Constants.PRESENT_ABSENT
 import `in`.kit.college_management_system.utils.FirebaseKeys.Attendances_history
+import `in`.kit.college_management_system.utils.FirebaseKeys.FROM_DATE
+import `in`.kit.college_management_system.utils.FirebaseKeys.IS_HOD_PERMISSION_GRANTED
+import `in`.kit.college_management_system.utils.FirebaseKeys.IS_PRINCIPAL_PERMISSION_GRANTED
+import `in`.kit.college_management_system.utils.FirebaseKeys.LEAVES
+import `in`.kit.college_management_system.utils.FirebaseKeys.LEAVES_REASON
+import `in`.kit.college_management_system.utils.FirebaseKeys.LEAVES_TYPE
+import `in`.kit.college_management_system.utils.FirebaseKeys.NO_OF_DAYS
+import `in`.kit.college_management_system.utils.FirebaseKeys.REQUESTED_TO
 import `in`.kit.college_management_system.utils.FirebaseKeys.TOTAL_ATTENDANCES
+import `in`.kit.college_management_system.utils.FirebaseKeys.TO_DATE
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
@@ -38,6 +47,19 @@ class FirebaseHelperClass {
 
     fun getClassesRef(): DatabaseReference =
         FirebaseDatabase.getInstance().reference.child("classes")
+
+    fun getAllLeaveReference(): DatabaseReference =
+        FirebaseDatabase.getInstance().reference.child("all_leaves")
+
+    fun getIndividualStdLeaveRef(
+        branch: String,
+        batch: String,
+        studentSem: String,
+        stdUid: String,
+    ): DatabaseReference =
+        getAllLeaveReference().child(branch).child(batch).child(studentSem).child(stdUid).child(
+            LEAVES
+        )
 
     fun getClassAccordingToSemRef(
         branch: String,
@@ -76,7 +98,7 @@ class FirebaseHelperClass {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     val studentDetails = snapshot.getValue(StudentDetailsModel::class.java)
-                    IOnFirebaseActionCallback.getAllStudentDetailsCallback(studentDetails!!)
+                    IOnFirebaseActionCallback.getSingleStudentDetailsCallback(studentDetails!!)
                 }
             }
 
@@ -448,7 +470,7 @@ class FirebaseHelperClass {
                             tempAttendanceDateList.add(calendarInstanceFromDate[Calendar.MONTH])
 
                             val dateOfTheMonth =
-                                calendarHelperClass.getDateOfTheMonth(attendanceDate,"MMM dd yyyy")
+                                calendarHelperClass.getDateOfTheMonth(attendanceDate, "MMM dd yyyy")
 
                             if (tempAttendanceDateList.size > 1) {
                                 if (calendarInstanceFromDate[Calendar.MONTH] != tempAttendanceDateList[tempAttendanceDateList.size - 2]) {
@@ -660,4 +682,33 @@ class FirebaseHelperClass {
 
     }
 
+    fun sendStudentLeaveToFirebase(
+        leaveType: String,
+        leaveReason: String,
+        leaveNoOfDays: String,
+        fromDate: String,
+        toDate: String,
+        branch: String,
+        batch: Int,
+        studentSem: String,
+        studentUid: String,
+        sendLeaveToWhom: String
+    ) {
+        val leaveMap = HashMap<String, Any>()
+        leaveMap[LEAVES_TYPE] = leaveType
+        leaveMap[LEAVES_REASON] = leaveReason
+        leaveMap[NO_OF_DAYS] = leaveNoOfDays
+        leaveMap[REQUESTED_TO] = sendLeaveToWhom
+        leaveMap[IS_PRINCIPAL_PERMISSION_GRANTED] = 0
+        leaveMap[IS_HOD_PERMISSION_GRANTED] = 0
+        leaveMap[FROM_DATE] = fromDate
+        leaveMap[TO_DATE] = toDate
+
+        getIndividualStdLeaveRef(
+            branch,
+            batch.toString(),
+            studentSem,
+            studentUid
+        ).push().setValue(leaveMap)
+    }
 }

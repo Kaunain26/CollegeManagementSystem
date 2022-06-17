@@ -2,7 +2,10 @@ package `in`.kit.college_management_system.studentSection.fragments
 
 import `in`.kit.college_management_system.R
 import `in`.kit.college_management_system.databinding.BottomSheetLeaveRequestBinding
+import `in`.kit.college_management_system.facultySection.model.StudentDetailsModel
+import `in`.kit.college_management_system.interfaces.IOnFirebaseActionCallback
 import `in`.kit.college_management_system.utils.CalendarHelperClass
+import `in`.kit.college_management_system.utils.FirebaseHelperClass
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Context
@@ -17,6 +20,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.firebase.auth.FirebaseAuth
 import java.util.*
 
 class BottomSheetSendLeaveRequests(private var mContext: Context) : BottomSheetDialogFragment() {
@@ -25,6 +29,9 @@ class BottomSheetSendLeaveRequests(private var mContext: Context) : BottomSheetD
     private var selectedDaysForLeavePos = 0
     private var selectedLeaveType = ""
     private var selectedDaysForLeave = ""
+    private var firebaseHelperClass = FirebaseHelperClass()
+    private lateinit var mAuth: FirebaseAuth
+    private var sendLeaveToWhome = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,6 +43,8 @@ class BottomSheetSendLeaveRequests(private var mContext: Context) : BottomSheetD
 
         binding?.tiLChooseToDateOfLeave?.isEnabled = false
         binding?.tiLChooseFromDateOfLeave?.isEnabled = false
+
+        mAuth = FirebaseAuth.getInstance()
 
         handleLeaveTypeMenuOption()
         handleNumberOfDaysMenuOption()
@@ -51,14 +60,56 @@ class BottomSheetSendLeaveRequests(private var mContext: Context) : BottomSheetD
         binding?.rlSendLeaveRequest?.setOnClickListener {
             if (selectedDaysForLeave == "2 or More than 2") {
                 if (validateAllFields()) {
-                    Toast.makeText(mContext, "validated", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(mContext, "validated", Toast.LENGTH_SHORT).show()
+                    firebaseHelperClass.getSingleStudentDetails(mAuth.uid.toString(),
+                        object : IOnFirebaseActionCallback {
+                            override fun getSingleStudentDetailsCallback(studentDetails: StudentDetailsModel) {
+                                val fromDate =
+                                    (binding?.tiLChooseFromDateOfLeave!!.editText as? AutoCompleteTextView)?.text.toString()
+                                val toDate =
+                                    (binding?.tiLChooseToDateOfLeave!!.editText as? AutoCompleteTextView)?.text.toString()
+
+                                val causeOfLeave = binding?.etCauseOfLeave?.text!!.toString()
+                                firebaseHelperClass.sendStudentLeaveToFirebase(
+                                    selectedLeaveType,
+                                    causeOfLeave,
+                                    selectedDaysForLeave,
+                                    fromDate, toDate,
+                                    studentDetails.branch,
+                                    studentDetails.batch,
+                                    studentDetails.sem,
+                                    studentDetails.uid,
+                                    sendLeaveToWhome
+                                )
+                            }
+                        })
                 } else {
                     Toast.makeText(mContext, "Please fill all required fields", Toast.LENGTH_SHORT)
                         .show()
                 }
             } else {
                 if (validateOnlyTopThreeFields()) {
-                    Toast.makeText(mContext, "validated", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(mContext, "validated", Toast.LENGTH_SHORT).show()
+
+                    firebaseHelperClass.getSingleStudentDetails(mAuth.uid.toString(),
+                        object : IOnFirebaseActionCallback {
+                            override fun getSingleStudentDetailsCallback(studentDetails: StudentDetailsModel) {
+                                val causeOfLeave = binding?.etCauseOfLeave?.text!!.toString()
+                                firebaseHelperClass.sendStudentLeaveToFirebase(
+                                    selectedLeaveType,
+                                    causeOfLeave,
+                                    selectedDaysForLeave,
+                                    "",
+                                    "",
+                                    studentDetails.branch,
+                                    studentDetails.batch,
+                                    studentDetails.sem,
+                                    studentDetails.uid,
+                                    "HOD"
+                                )
+                            }
+                        })
+
                 } else {
                     Toast.makeText(mContext, "Please fill all required fields", Toast.LENGTH_SHORT)
                         .show()
@@ -155,6 +206,7 @@ class BottomSheetSendLeaveRequests(private var mContext: Context) : BottomSheetD
             AdapterView.OnItemClickListener { p0, p1, position, p2 ->
                 // ...  Positions ... //
 
+                binding?.llHelperNote?.isVisible = false
                 selectedDaysForLeave = p0.getItemAtPosition(position).toString()
                 selectedDaysForLeavePos = position
                 binding?.llNote?.isVisible = true
@@ -166,9 +218,8 @@ class BottomSheetSendLeaveRequests(private var mContext: Context) : BottomSheetD
                 )
                 when (position) {
                     0 -> {
-                        //half day
                         binding?.noteText1?.text = getString(R.string.half_day_leave_waring)
-                        binding?.noteText2?.text = getString(R.string.faculty_note)
+                        binding?.noteText2?.text = getString(R.string.hod_note)
                         binding?.tiLChooseToDateOfLeave?.isEnabled = false
                         binding?.tiLChooseFromDateOfLeave?.isEnabled = false
                         (binding?.tiLChooseToDateOfLeave!!.editText as? AutoCompleteTextView)?.setText(
@@ -327,6 +378,7 @@ class BottomSheetSendLeaveRequests(private var mContext: Context) : BottomSheetD
                     nextDayDate - currentDate == 2 -> {
                         binding?.noteText1?.text = getString(R.string.two_days_leave_waring)
                         binding?.noteText2?.text = getString(R.string.hod_note)
+                        sendLeaveToWhome = "HOD"
                         binding?.noteText1?.setTextColor(
                             ContextCompat.getColor(
                                 mContext,
@@ -337,6 +389,7 @@ class BottomSheetSendLeaveRequests(private var mContext: Context) : BottomSheetD
                     nextDayDate - currentDate == 3 -> {
                         binding?.noteText1?.text = getString(R.string.three_days_leave_waring)
                         binding?.noteText2?.text = getString(R.string.hod_note)
+                        sendLeaveToWhome = "HOD"
                         binding?.noteText1?.setTextColor(
                             ContextCompat.getColor(
                                 mContext,
@@ -347,6 +400,7 @@ class BottomSheetSendLeaveRequests(private var mContext: Context) : BottomSheetD
                     nextDayDate - currentDate > 3 -> {
                         binding?.noteText1?.text =
                             getString(R.string.more_than_three_days_leave_waring)
+                        sendLeaveToWhome = "Principal"
                         binding?.noteText2?.text = getString(R.string.hod_and_principal_note)
                         binding?.noteText1?.setTextColor(
                             ContextCompat.getColor(
