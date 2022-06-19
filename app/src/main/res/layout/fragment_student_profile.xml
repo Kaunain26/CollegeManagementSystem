@@ -548,7 +548,5 @@
             android:backgroundTint="#E53935"
             android:text="Log Out"
             app:icon="@drawable/ic_logout" />
-
-
     </RelativeLayout>
 </RelativeLayout>
