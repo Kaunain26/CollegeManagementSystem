@@ -3,6 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/circular_normal_white.xml" value="0.2155" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/curved_top_left_right_white.xml" value="0.1555" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/ic_edit.xml" value="0.2155" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/ic_logout.xml" value="0.1755" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/profile_circular_background.xml" value="0.1555" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/activity_faculty_home_page.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/activity_student_home_page.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/activity_student_in_class.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/fragment_faculty_profile.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/fragment_leaves.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/fragment_student_attendances.xml" value="0.2713541666666667" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/fragment_student_leaves.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/fragment_student_profile.xml" value="0.176" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/recycler_students.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/absent_datetextview_selector.xml" value="0.212" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/absent_drawable.xml" value="0.212" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/absent_view_selector.xml" value="0.212" />
