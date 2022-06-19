@@ -7,10 +7,11 @@
     android:orientation="vertical"
     tools:context=".facultySection.fragments.FacultyProfileFragment">
 
+    <!--Upper portion-->
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="285dp">
+        android:layout_height="265dp">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -25,97 +26,6 @@
             android:alpha="0.8"
             android:background="@drawable/app_theme_background_drawable"
             android:contentDescription="@null" />
-
-        <!--profile-->
-        <RelativeLayout
-            android:id="@+id/profilePicContainerRl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/rlToolbar"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/profile_circular_background">
-
-            <TextView
-                android:id="@+id/initialCharOfNameTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:fontFamily="@font/fredoka_semi_bold"
-                android:text="..."
-                android:textColor="@color/white"
-                android:textSize="27sp" />
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/facultyProfileIV"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                app:civ_border_color="@color/white"
-                app:civ_border_width="2dp" />
-
-
-        </RelativeLayout>
-
-        <!--shimmer-->
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/profileHeaderShimmer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/profilePicContainerRl">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="250dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/grey"
-                    android:fontFamily="@font/satisfy"
-                    android:textColor="@color/white"
-                    android:textSize="25sp" />
-
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="6dp"
-                    android:background="@color/grey"
-                    android:fontFamily="@font/fredoka_regular"
-                    android:includeFontPadding="false"
-                    android:textColor="#DDD"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
-
-        </com.facebook.shimmer.ShimmerFrameLayout>
-
-        <TextView
-            android:id="@+id/headerDesignationAndBranchTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/profilePicContainerRl"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/satisfy"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            tools:text="Assistance Professor - CSE" />
-
-        <TextView
-            android:id="@+id/headerFacultyName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/headerDesignationAndBranchTV"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/fredoka_regular"
-            android:includeFontPadding="false"
-            android:textColor="#DDD"
-            android:textSize="18sp"
-            tools:text="Sharukh Khan" />
 
         <!--toolbar-->
         <RelativeLayout
@@ -144,20 +54,8 @@
 
             </RelativeLayout>
 
-            <!--<ImageView
-                android:id="@+id/signUpTVBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="end"
-                android:layout_marginEnd="25dp"
-                android:background="?selectableItemBackgroundBorderless"
-                android:contentDescription="@null"
-                android:src="@drawable/ic_notification_icon"
-                tools:ignore="RelativeOverlap" />-->
-
             <TextView
+                android:id="@+id/profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -167,37 +65,367 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
+            <!--edit button-->
+
+            <ImageView
+                android:id="@+id/edit_btn"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="25dp"
+                android:background="@drawable/circular_normal_white"
+                android:contentDescription="@null"
+                android:foregroundGravity="center"
+                android:padding="5dp"
+                android:src="@drawable/ic_edit" />
+
         </RelativeLayout>
+
+        <!--profile photo-->
+        <RelativeLayout
+            android:id="@+id/profilePicContainerRl"
+            android:layout_width="115dp"
+            android:layout_height="115dp"
+            android:layout_below="@id/rlToolbar"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/profile_circular_background">
+
+            <TextView
+                android:id="@+id/initialCharOfNameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/fredoka_semi_bold"
+                android:text="..."
+                android:textColor="@color/white"
+                android:textSize="27sp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/studentPhoto"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="2dp" />
+        </RelativeLayout>
+
+
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rlToolbar"
+            android:layout_toRightOf="@+id/profilePicContainerRl"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="25dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <!--student name-->
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/grey"
+                    android:textSize="25sp"/>
+                <!--email id-->
+                <TextView
+                    android:id="@+id/emailId"
+                    android:layout_below="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/grey"
+                    android:layout_marginTop="6dp"
+                    android:textSize="18sp" />
+
+                    <!--age-->
+                    <TextView
+                        android:id="@+id/age"
+                        android:layout_below="@+id/emailId"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/grey"
+                        android:layout_marginTop="6dp"
+                        android:textSize="18sp" />
+                    <!--gender-->
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/emailId"
+                        android:layout_marginStart="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:background="@color/grey"
+                        android:layout_marginTop="6dp"
+                        android:textSize="18sp" />
+
+            </RelativeLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <!--Student_details-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rlToolbar"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="25dp"
+            android:layout_toRightOf="@id/profilePicContainerRl"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/nameOfStudent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/satisfy"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                tools:text="Student Name" />
+
+            <TextView
+                android:id="@+id/emailOfStudent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/fredoka_regular"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:textColor="#DDD"
+                android:textSize="18sp"
+                tools:text="email id" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/studentAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:fontFamily="@font/fredoka_regular"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:textColor="#DDD"
+                    android:textSize="18sp"
+                    tools:text="Age - " />
+
+                <TextView
+                    android:id="@+id/studentGender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="25dp"
+                    android:fontFamily="@font/fredoka_regular"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:textColor="#DDD"
+                    android:textSize="18sp"
+                    tools:text="Gender - " />
+            </RelativeLayout>
+        </LinearLayout>
 
     </RelativeLayout>
 
+
+    <!-- lower portion-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/header"
-        android:layout_marginTop="-25dp"
-        android:background="@drawable/curved_top_left_right_white"
-        android:orientation="vertical">
+        android:layout_marginTop="-28dp"
+        android:background="@drawable/curved_top_left_right_white">
 
-        <!--<RelativeLayout
+        <!--college details-->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/collegeDetails"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/curved_top_left_right_white">
-
-            <TextView
-                android:id="@+id/details"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="25dp"
-                android:fontFamily="@font/fredoka_regular"
-                android:text="Details"
-                android:textColor="@color/theme_color_v1"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="20dp">
 
             <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/profileDetailsShimmer"
+                android:id="@+id/collegeDetailsShimmer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!--CollegeDetails-->
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/grey"
+                        android:textSize="17sp" />
+
+                    <!--..................-->
+                    <!--branch-->
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/grey"
+                        android:textSize="17sp" />
+
+                    <!--........................ -->
+                    <!--scheme-->
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/grey"
+                        android:textSize="17sp" />
+
+                    <!--........................ -->
+
+                    <!--usn-->
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/grey"
+                        android:textSize="17sp" />
+
+                    <!--........................ -->
+
+                    <!--Scheme-->
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/grey"
+                        android:textSize="17sp" />
+                    <!--........................ -->
+                </LinearLayout>
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/details"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/fredoka_regular"
+                    android:text="College Details"
+                    android:textColor="@color/theme_color_v1"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/usn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/details"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/fredoka_regular"
+                    android:text="USN -"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/branch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/usn"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="@font/fredoka_regular"
+                    android:text="Branch- "
+                    android:textColor="@color/dark_grey"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/sem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/branch"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/fredoka_regular"
+                    android:text="Sem - "
+                    android:textColor="@color/dark_grey"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/scheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sem"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/fredoka_regular"
+                    android:text="Scheme - "
+                    android:textColor="@color/dark_grey"
+                    android:textSize="18sp" />
+
+                <RelativeLayout
+                    android:id="@+id/view1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/circular_dark_grey"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp">
+
+                    <TextView
+                        android:id="@+id/viewMore1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/fredoka_regular"
+                        android:text="View More"
+                        android:textColor="@color/yellow"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <!--personal details-->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/personalDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/collegeDetails"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="20dp">
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/personalDetailsShimmer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/details">
@@ -207,171 +435,108 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    &lt;!&ndash;name&ndash;&gt;
+                    <!--personal details-->
                     <TextView
-                        android:layout_width="120dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="18dp"
-                        android:layout_marginBottom="14dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
                         android:background="@color/grey"
-                        android:textSize="17sp" />
+                        android:textSize="18sp" />
 
-                    &lt;!&ndash;..................&ndash;&gt;
-
-                    &lt;!&ndash;email&ndash;&gt;
+                    <!--..................-->
+                    <!--emil-->
                     <TextView
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:layout_marginTop="18dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
                         android:background="@color/grey"
-                        android:textSize="17sp" />
+                        android:textSize="18sp" />
 
-                    &lt;!&ndash;........................ &ndash;&gt;
+                    <!--........................ -->
 
-                    &lt;!&ndash;designation&ndash;&gt;
+                    <!--designation-->
                     <TextView
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:background="@color/grey"
-                        android:textSize="17sp" />
-                    &lt;!&ndash;........................ &ndash;&gt;
-
-                    &lt;!&ndash;branch&ndash;&gt;
-                    <TextView
-                        android:layout_width="60dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="10dp"
-                        android:background="@color/grey"
-                        android:textSize="17sp" />
-
+                        android:textSize="18sp" />
+                    <!--........................ -->
 
                 </LinearLayout>
-
             </com.facebook.shimmer.ShimmerFrameLayout>
 
-
-            &lt;!&ndash;name&ndash;&gt;
-            <TextView
-                android:id="@+id/facultyNameTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/details"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="18sp"
-                android:fontFamily="@font/fredoka_regular"
-                android:textSize="17sp"
-                android:textStyle="normal"
-                tools:text="Sharukh Khan" />
-
-            <TextView
-                android:id="@+id/nameDesTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/facultyNameTV"
-                android:layout_marginStart="20dp"
-                android:text="Tap to edit your name"
-                android:textColor="@color/grey"
-                android:textSize="12sp"
-                android:textStyle="normal"
-                android:visibility="invisible" />
-            &lt;!&ndash;..................&ndash;&gt;
-
-            &lt;!&ndash;email&ndash;&gt;
-            <TextView
-                android:id="@+id/facultyEmailTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/nameDesTV"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="13dp"
-                android:fontFamily="@font/fredoka_regular"
-                android:textSize="17sp"
-                android:textStyle="normal"
-                tools:text="sharukhKhan@gmail.com" />
-
-            <TextView
-                android:id="@+id/emailDesTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/facultyEmailTV"
-                android:layout_marginStart="20dp"
-                android:text="Email"
-                android:textColor="@color/grey"
-                android:textSize="12sp"
-                android:textStyle="normal"
-                android:visibility="invisible" />
-            &lt;!&ndash;........................ &ndash;&gt;
-
-            &lt;!&ndash;designation&ndash;&gt;
-            <TextView
-                android:id="@+id/facultyDesignationTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/emailDesTV"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="13dp"
-                android:fontFamily="@font/fredoka_regular"
-                android:textSize="17sp"
-                android:textStyle="normal"
-                tools:text="Assistance Proffessor" />
-
-            <TextView
-                android:id="@+id/designationDes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/facultyDesignationTV"
-                android:layout_marginStart="20dp"
-                android:text="Tap to edit your designation"
-                android:textColor="@color/grey"
-                android:textSize="12sp"
-                android:textStyle="normal"
-                android:visibility="invisible" />
-            &lt;!&ndash;........................ &ndash;&gt;
-
-            &lt;!&ndash;branch&ndash;&gt;
-            <TextView
-                android:id="@+id/branchNameTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/designationDes"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="13dp"
-                android:fontFamily="@font/fredoka_regular"
-                android:textSize="17sp"
-                android:textStyle="normal"
-                tools:text="CSE" />
-
-            <TextView
-                android:id="@+id/branchDes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/branchNameTV"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="10dp"
-                android:text="Branch"
-                android:textColor="@color/grey"
-                android:textSize="12sp"
-                android:textStyle="normal"
-                android:visibility="invisible" />
-
-            <View
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_below="@id/branchDes"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="15dp"
-                android:background="@color/grey" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        </RelativeLayout>-->
+                <TextView
+                    android:id="@+id/personal_details"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/fredoka_regular"
+                    android:text="Personal Details"
+                    android:textColor="@color/theme_color_v1"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:id="@+id/view2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/circular_dark_grey"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp">
+
+                    <TextView
+                        android:id="@+id/viewMore2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/fredoka_regular"
+                        android:text="View More"
+                        android:textColor="@color/yellow"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/mobile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/personal_details"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/fredoka_regular"
+                    android:text="Ph No - "
+                    android:textColor="@color/dark_grey"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/Address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/mobile"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/fredoka_regular"
+                    android:text="Address- "
+                    android:textColor="@color/dark_grey"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/logOutBtn"
@@ -385,158 +550,5 @@
             app:icon="@drawable/ic_logout" />
 
 
-        <!-- <LinearLayout
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:layout_marginTop="10dp"
-             android:background="@color/white"
-             android:orientation="vertical">
-
-             <TextView
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_marginStart="20dp"
-                 android:layout_marginTop="25dp"
-                 android:fontFamily="@font/fredoka_regular"
-                 android:text="Control"
-                 android:textColor="@color/theme_color"
-                 android:textSize="17sp"
-                 android:textStyle="bold" />
-
-             <TextView
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_marginStart="20dp"
-                 android:layout_marginTop="18dp"
-                 android:fontFamily="@font/fredoka_regular"
-                 android:text="Log out"
-                 android:textColor="#E53935"
-                 android:textSize="17sp"
-                 android:textStyle="bold" />
-
-
-
-
-         </LinearLayout>-->
-
     </RelativeLayout>
-
-
-    <!-- &lt;!&ndash;profile&ndash;&gt;
-     <LinearLayout
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_marginStart="20dp"
-         android:layout_marginTop="20dp"
-         android:layout_marginEnd="20dp"
-         android:orientation="vertical">
-
-
-         <RelativeLayout
-             android:id="@+id/profilePicContainerRl"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:background="@drawable/circular">
-
-             <TextView
-                 android:id="@+id/initialCharOfNameTV"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_centerInParent="true"
-                 android:fontFamily="@font/fredoka_semi_bold"
-                 android:text="..."
-                 android:textColor="@color/white"
-                 android:textSize="27sp" />
-
-             <de.hdodenhof.circleimageview.CircleImageView
-                 android:id="@+id/facultyProfileIV"
-                 android:layout_width="65dp"
-                 android:layout_height="65dp"
-                 app:civ_border_color="@color/white"
-                 app:civ_border_width="2dp" />
-
-
-         </RelativeLayout>
-
-         <RelativeLayout
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginTop="2dp">
-
-             <com.facebook.shimmer.ShimmerFrameLayout
-                 android:id="@+id/loadingAnimation"
-                 android:layout_width="200dp"
-                 android:layout_height="wrap_content"
-                 android:layout_marginTop="5dp">
-
-                 <LinearLayout
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:orientation="vertical">
-
-                     <TextView
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:layout_marginStart="3dp"
-                         android:background="@color/grey" />
-
-                     <TextView
-                         android:layout_width="120dp"
-                         android:layout_height="15dp"
-                         android:layout_marginStart="3dp"
-                         android:layout_marginTop="1.5dp"
-                         android:background="@color/grey" />
-
-                     &lt;!&ndash; <TextView
-                          android:layout_width="25dp"
-                          android:layout_height="15dp"
-                          android:layout_marginStart="3dp"
-                          android:layout_marginTop="1.5dp"
-                          android:background="@color/grey" />&ndash;&gt;
-
-                 </LinearLayout>
-
-
-             </com.facebook.shimmer.ShimmerFrameLayout>
-
-             <TextView
-                 android:id="@+id/facultyNameTV"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_marginStart="3dp"
-                 android:fontFamily="@font/fredoka_semi_bold"
-                 android:textColor="@color/white"
-                 android:textSize="22sp"
-                 tools:text="Sharukh Khan" />
-
-             <TextView
-                 android:id="@+id/facultyDesignationTV"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_below="@id/facultyNameTV"
-                 android:layout_marginStart="3dp"
-                 android:fontFamily="@font/fredoka_regular"
-                 android:includeFontPadding="false"
-                 android:textColor="#DDDDDD"
-                 android:textSize="12sp"
-                 tools:text="Assistance Professor" />
-
-             <TextView
-                 android:id="@+id/branchNameTV"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_below="@id/facultyNameTV"
-                 android:layout_marginStart="4dp"
-                 android:layout_toEndOf="@id/facultyDesignationTV"
-                 android:fontFamily="@font/fredoka_regular"
-                 android:includeFontPadding="false"
-                 android:textColor="#DDDDDD"
-                 android:textSize="12sp"
-                 tools:text="- CSE" />
-         </RelativeLayout>
-
-
-     </LinearLayout>-->
-
-
 </RelativeLayout>
