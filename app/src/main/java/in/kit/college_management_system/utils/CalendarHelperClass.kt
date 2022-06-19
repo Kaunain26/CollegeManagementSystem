@@ -21,7 +21,7 @@ class CalendarHelperClass {
     }
 
     @SuppressLint("SimpleDateFormat")
-    fun getDateOfTheMonth(date: String,format:String): Int {
+    fun getDateOfTheMonth(date: String, format: String): Int {
         val parsedDate = SimpleDateFormat(format).parse(date)
         val simpleDateFormat = SimpleDateFormat("dd")
         val onlyFormattedDate: String = simpleDateFormat.format(parsedDate!!)
@@ -33,8 +33,8 @@ class CalendarHelperClass {
     }
 
     @SuppressLint("SimpleDateFormat")
-    fun getCalendarInstanceFromDate(date: String): Calendar {
-        val parsedDate = SimpleDateFormat("MMM dd yyyy").parse(date)
+    fun getCalendarInstanceFromDate(date: String, parsingDateFormat: String): Calendar {
+        val parsedDate = SimpleDateFormat(parsingDateFormat).parse(date)
         //val simpleDateFormat = SimpleDateFormat("MMMM")
         val instance = Calendar.getInstance()
         instance.time = parsedDate!!

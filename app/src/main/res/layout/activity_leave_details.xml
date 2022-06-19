@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/app_theme_background_drawable"
+    android:orientation="vertical"
+    tools:context=".studentSection.activity.StudentLeaveDetailsActivity">
+
+    <!--toolbar-->
+    <RelativeLayout
+        android:id="@+id/rlToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        tools:ignore="UselessParent">
+
+        <!--back arrow-->
+        <RelativeLayout
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="25dp"
+            android:background="@drawable/circular_normal_white"
+            android:elevation="8dp">
+
+            <ImageView
+                android:id="@+id/arrowBack"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="11dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_arrow_back_ios_black" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/fredoka_regular"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="normal"
+            tools:text="Half Day Application" />
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        tools:itemCount="3"
+        android:id="@+id/rvLeaveTimeline"
+        tools:listitem="@layout/item_time_line" />
+
+
+</LinearLayout>

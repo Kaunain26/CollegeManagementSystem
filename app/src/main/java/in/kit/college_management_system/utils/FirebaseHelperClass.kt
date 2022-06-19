@@ -1,10 +1,7 @@
 package `in`.kit.college_management_system.utils
 
-import `in`.kit.college_management_system.model.ClassesModel
-import `in`.kit.college_management_system.model.FacultyDetails
-import `in`.kit.college_management_system.model.StudentAttendanceHistoryModel
-import `in`.kit.college_management_system.model.StudentDetailsModel
 import `in`.kit.college_management_system.interfaces.IOnFirebaseActionCallback
+import `in`.kit.college_management_system.model.*
 import `in`.kit.college_management_system.utils.Constants.ABSENT
 import `in`.kit.college_management_system.utils.Constants.PRESENT
 import `in`.kit.college_management_system.utils.Constants.PRESENT_ABSENT
@@ -15,6 +12,7 @@ import `in`.kit.college_management_system.utils.FirebaseKeys.IS_PRINCIPAL_PERMIS
 import `in`.kit.college_management_system.utils.FirebaseKeys.LEAVES
 import `in`.kit.college_management_system.utils.FirebaseKeys.LEAVES_REASON
 import `in`.kit.college_management_system.utils.FirebaseKeys.LEAVES_TYPE
+import `in`.kit.college_management_system.utils.FirebaseKeys.LEAVE_SENT_DATE
 import `in`.kit.college_management_system.utils.FirebaseKeys.NO_OF_DAYS
 import `in`.kit.college_management_system.utils.FirebaseKeys.REQUESTED_TO
 import `in`.kit.college_management_system.utils.FirebaseKeys.TOTAL_ATTENDANCES
@@ -465,7 +463,8 @@ class FirebaseHelperClass {
                             //Log.d("studentsFound", "onDataChange:${attendanceDate} ")
                             val calendarInstanceFromDate =
                                 calendarHelperClass.getCalendarInstanceFromDate(
-                                    attendanceDate
+                                    attendanceDate,
+                                    "MMM dd yyyy"
                                 )
                             tempAttendanceDateList.add(calendarInstanceFromDate[Calendar.MONTH])
 
@@ -694,6 +693,9 @@ class FirebaseHelperClass {
         studentUid: String,
         sendLeaveToWhom: String
     ) {
+
+        val leaveSentDate =
+            CalendarHelperClass().getFormattedDate(Calendar.getInstance().time, "dd MMM yy")
         val leaveMap = HashMap<String, Any>()
         leaveMap[LEAVES_TYPE] = leaveType
         leaveMap[LEAVES_REASON] = leaveReason
@@ -703,6 +705,7 @@ class FirebaseHelperClass {
         leaveMap[IS_HOD_PERMISSION_GRANTED] = 0
         leaveMap[FROM_DATE] = fromDate
         leaveMap[TO_DATE] = toDate
+        leaveMap[LEAVE_SENT_DATE] = leaveSentDate
 
         getIndividualStdLeaveRef(
             branch,
@@ -710,5 +713,127 @@ class FirebaseHelperClass {
             studentSem,
             studentUid
         ).push().setValue(leaveMap)
+    }
+
+
+    /* fun getSingleStudentCasualLeave(
+         branch: String,
+         batch: String,
+         studentSem: String,
+         studentUid: String,
+         context: Context,
+         iOnFirebaseActionCallback: IOnFirebaseActionCallback
+     ) {
+
+         getIndividualStdLeaveRef(
+             branch,
+             batch,
+             studentSem,
+             studentUid
+         ).addValueEventListener(object : ValueEventListener {
+             override fun onDataChange(snapshot: DataSnapshot) {
+                 if (snapshot.exists()) {
+
+                 } else {
+
+                 }
+             }
+
+             override fun onCancelled(error: DatabaseError) {}
+         })
+     } */
+
+    fun getSingleStudentsLeaves(
+        branch: String,
+        batch: String,
+        studentSem: String,
+        studentUid: String,
+        getLeaveOnType: String,
+        iOnFirebaseActionCallback: IOnFirebaseActionCallback
+    ) {
+        getIndividualStdLeaveRef(
+            branch,
+            batch,
+            studentSem,
+            studentUid
+        ).addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                Log.d("studentLeaveModel", "onDataChange: $snapshot")
+                val studentNewLeaveList = ArrayList<StudentLeaveHelperModel.StudentLeaveModel>()
+                val studentOldLeaveList = ArrayList<StudentLeaveHelperModel.StudentLeaveModel>()
+                val studentLeaveList = ArrayList<StudentLeaveHelperModel>()
+
+                if (snapshot.exists()) {
+                    for (leaves in snapshot.children) {
+                        val leaveType = leaves.child(LEAVES_TYPE).value.toString()
+                        val leaveReason = leaves.child(LEAVES_REASON).value.toString()
+                        val leaveDays = leaves.child(NO_OF_DAYS).value.toString()
+                        val requestedTo = leaves.child(REQUESTED_TO).value.toString()
+                        val leaveSentDate = leaves.child(LEAVE_SENT_DATE).value.toString()
+                        val leaveFromDate = leaves.child(FROM_DATE).value.toString()
+                        val leaveToDate = leaves.child(TO_DATE).value.toString()
+                        val hodPerm =
+                            leaves.child(IS_HOD_PERMISSION_GRANTED).value.toString().toInt()
+                        val princiPerm =
+                            leaves.child(IS_PRINCIPAL_PERMISSION_GRANTED).value.toString().toInt()
+
+                        val studentLeaveModel = StudentLeaveHelperModel.StudentLeaveModel(
+                            leaves.key.toString(),
+                            leaveType,
+                            leaveReason,
+                            leaveDays,
+                            requestedTo,
+                            leaveToDate,
+                            leaveFromDate,
+                            hodPerm,
+                            princiPerm,
+                            leaveSentDate
+                        )
+
+                        //checking new or old leave
+                        val calender = Calendar.getInstance()
+                        val calendarHelperClass = CalendarHelperClass()
+                        val currentDate =
+                            calendarHelperClass.getFormattedDate(calender.time, "dd MMM yy")
+
+                        val leaveSentDateInstance =
+                            calendarHelperClass.getCalendarInstanceFromDate(
+                                studentLeaveModel.leave_sent_date,
+                                "dd MMM yy"
+                            )
+                        val _leaveSentDate =
+                            calendarHelperClass.getFormattedDate(
+                                leaveSentDateInstance.time,
+                                "dd MMM yy"
+                            )
+
+                        if (leaveType == getLeaveOnType || getLeaveOnType == "All leaves") {
+                            if (currentDate == _leaveSentDate) {
+                                // new leave
+                                studentNewLeaveList.add(studentLeaveModel)
+                            } else {
+                                // old leave
+                                studentOldLeaveList.add(studentLeaveModel)
+                            }
+                        }
+                    }
+                    if (studentNewLeaveList.isNotEmpty())
+                        studentLeaveList.add(StudentLeaveHelperModel.SubHeader(0, "Today"))
+                    studentLeaveList.addAll(studentNewLeaveList)
+
+                    if (studentOldLeaveList.isNotEmpty())
+                        studentLeaveList.add(StudentLeaveHelperModel.SubHeader(1, "Older"))
+                    studentLeaveList.addAll(studentOldLeaveList)
+
+                    iOnFirebaseActionCallback.getSingleStudentLeaveCallback(studentLeaveList)
+
+                } else {
+                    //Toast.makeText(context, "", Toast.LENGTH_SHORT).show()
+                    iOnFirebaseActionCallback.getSingleStudentLeaveCallback(studentLeaveList)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
     }
 }

@@ -24,6 +24,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#C6C6C6</color>
     <color name="yellow">#FDD835</color>
+    <color name="yellow_54">#54FDE935</color>
     <color name="dark_yellow">#FFB300</color>
     <color name="dark_grey">#6A6A6A</color>
     <color name="app_theme">#344893</color>
@@ -31,11 +32,13 @@
     <color name="peach_pink">#FFD5F0</color>
     <color name="light_pink">#f6eefd</color>
     <color name="red">#E53935</color>
+    <color name="red_54">#54E53935</color>
     <color name="hint_color">#534646</color>
     <color name="purple">#FF3700B3</color>
     <color name="shimmerBG">#6ADCDCDC</color>
     <color name="green">#008000</color>
     <color name="parrot_green">#12AD2B</color>
+    <color name="parrot_green_54">#5412AD2B</color>
     <color name="splash_bg">#212121</color>
     <color name="edit_text_background">#ECECEC</color>
 
