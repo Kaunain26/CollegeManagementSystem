@@ -1,7 +1,8 @@
 package `in`.kit.college_management_system.model
 
 data class StudentLeaveTimeLineModel(
-    var message: String,
+    var title: String,
     var date: String,
-    var status: LeaveStatus
+    var status: LeaveStatus,
+    var message: String
 )

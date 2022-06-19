@@ -48,11 +48,44 @@ class StudentLeaveTimeLineAdapter(private val mFeedList: List<StudentLeaveTimeLi
         val timeLineModel = mFeedList[position]
 
         when (timeLineModel.status) {
-            LeaveStatus.AWAITING -> {
+            LeaveStatus.REQUESTED -> {
                 setMarker(
                     holderStudentLeave,
                     R.drawable.ic_marker_awaiting,
                     R.color.yellow
+                )
+                holderStudentLeave.timeline.setStartLineColor(
+                    ContextCompat.getColor(
+                        holderStudentLeave.timeline.context,
+                        R.color.yellow
+                    ), holderStudentLeave.itemViewType
+                )
+                holderStudentLeave.timeline.setEndLineColor(
+                    ContextCompat.getColor(
+                        holderStudentLeave.timeline.context,
+                        R.color.yellow
+                    ), holderStudentLeave.itemViewType
+                )
+            }
+            LeaveStatus.AWAITING -> {
+                setMarker(
+                    holderStudentLeave,
+                    R.drawable.ic_marker_approved,
+                    R.color.grey
+                )
+
+                holderStudentLeave.timeline.setEndLineColor(
+                    ContextCompat.getColor(
+                        holderStudentLeave.timeline.context,
+                        R.color.grey
+                    ), holderStudentLeave.itemViewType
+                )
+
+                holderStudentLeave.timeline.setStartLineColor(
+                    ContextCompat.getColor(
+                        holderStudentLeave.timeline.context,
+                        R.color.grey
+                    ), holderStudentLeave.itemViewType
                 )
             }
             LeaveStatus.APPROVED -> {
@@ -61,6 +94,21 @@ class StudentLeaveTimeLineAdapter(private val mFeedList: List<StudentLeaveTimeLi
                     R.drawable.ic_marker_approved,
                     R.color.green
                 )
+
+                holderStudentLeave.timeline.setStartLineColor(
+                    ContextCompat.getColor(
+                        holderStudentLeave.timeline.context,
+                        R.color.green
+                    ), holderStudentLeave.itemViewType
+                )
+
+                holderStudentLeave.timeline.setEndLineColor(
+                    ContextCompat.getColor(
+                        holderStudentLeave.timeline.context,
+                        R.color.green
+                    ), holderStudentLeave.itemViewType
+                )
+
             }
             LeaveStatus.REJECTED -> {
                 setMarker(
@@ -68,9 +116,18 @@ class StudentLeaveTimeLineAdapter(private val mFeedList: List<StudentLeaveTimeLi
                     R.drawable.ic_marker_approved,
                     R.color.red
                 )
-            }
-            else -> {
-                setMarker(holderStudentLeave, R.drawable.ic_marker, R.color.grey)
+                holderStudentLeave.timeline.setEndLineColor(
+                    ContextCompat.getColor(
+                        holderStudentLeave.timeline.context,
+                        R.color.red
+                    ), holderStudentLeave.itemViewType
+                )
+                holderStudentLeave.timeline.setStartLineColor(
+                    ContextCompat.getColor(
+                        holderStudentLeave.timeline.context,
+                        R.color.red
+                    ), holderStudentLeave.itemViewType
+                )
             }
         }
 
@@ -80,6 +137,7 @@ class StudentLeaveTimeLineAdapter(private val mFeedList: List<StudentLeaveTimeLi
         } else
             holderStudentLeave.date.isVisible = false
 
+        holderStudentLeave.title.text = timeLineModel.title
         holderStudentLeave.message.text = timeLineModel.message
     }
 
@@ -101,7 +159,8 @@ class StudentLeaveTimeLineAdapter(private val mFeedList: List<StudentLeaveTimeLi
         RecyclerView.ViewHolder(itemView) {
 
         val date = itemView.findViewById<TextView>(R.id.text_timeline_date)
-        val message = itemView.findViewById<TextView>(R.id.text_timeline_title)
+        val title = itemView.findViewById<TextView>(R.id.text_timeline_title)
+        val message = itemView.findViewById<TextView>(R.id.text_timeline_des)
         val timeline = itemView.findViewById<TimelineView>(R.id.timeline)
 
         init {
