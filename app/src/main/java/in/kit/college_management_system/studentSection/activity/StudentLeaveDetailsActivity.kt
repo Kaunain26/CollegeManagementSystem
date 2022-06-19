@@ -185,7 +185,7 @@ class StudentLeaveDetailsActivity : AppCompatActivity() {
             binding.leaveDates.text =
                 "From ${studentLeaveModel.from_date} - To ${studentLeaveModel.to_date}"
         } else {
-            binding.leaveDates.text = studentLeaveModel.no_of_days
+            binding.leaveDates.text = "${studentLeaveModel.no_of_days} Application"
         }
     }
 
