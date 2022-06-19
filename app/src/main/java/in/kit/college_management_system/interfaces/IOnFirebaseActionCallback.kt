@@ -1,9 +1,6 @@
 package `in`.kit.college_management_system.interfaces
 
-import `in`.kit.college_management_system.facultySection.model.ClassesModel
-import `in`.kit.college_management_system.facultySection.model.FacultyDetails
-import `in`.kit.college_management_system.facultySection.model.StudentAttendanceHistoryModel
-import `in`.kit.college_management_system.facultySection.model.StudentDetailsModel
+import `in`.kit.college_management_system.model.*
 import android.content.Context
 import java.util.concurrent.CopyOnWriteArrayList
 
@@ -36,7 +33,7 @@ interface IOnFirebaseActionCallback {
     ) {
     }
 
-    fun getSingleStudentDetailsCallback(studentDetails: StudentDetailsModel) {
+    fun getSingleStudentDetailsCallback(studentDetails: StudentDetailsModel) {}
 
-    }
+    fun getSingleStudentLeaveCallback(studentLeaveList: ArrayList<StudentLeaveHelperModel>) {}
 }

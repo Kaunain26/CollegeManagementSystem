@@ -24,5 +24,6 @@ object FirebaseKeys {
     const val REQUESTED_TO = "requested_to"
     const val FROM_DATE = "from_date"
     const val TO_DATE = "to_date"
+    const val LEAVE_SENT_DATE = "leave_sent_date"
 
 }

@@ -2,8 +2,8 @@ package `in`.kit.college_management_system.studentSection.fragments
 
 import `in`.kit.college_management_system.R
 import `in`.kit.college_management_system.databinding.BottomSheetLeaveRequestBinding
-import `in`.kit.college_management_system.facultySection.model.StudentDetailsModel
 import `in`.kit.college_management_system.interfaces.IOnFirebaseActionCallback
+import `in`.kit.college_management_system.model.StudentDetailsModel
 import `in`.kit.college_management_system.utils.CalendarHelperClass
 import `in`.kit.college_management_system.utils.FirebaseHelperClass
 import android.annotation.SuppressLint
@@ -73,7 +73,7 @@ class BottomSheetSendLeaveRequests(private var mContext: Context) : BottomSheetD
                                 firebaseHelperClass.sendStudentLeaveToFirebase(
                                     selectedLeaveType,
                                     causeOfLeave,
-                                    selectedDaysForLeave,
+                                    "${getNextDate() - getCurrentDate()} Days",
                                     fromDate, toDate,
                                     studentDetails.branch,
                                     studentDetails.batch,
@@ -81,6 +81,7 @@ class BottomSheetSendLeaveRequests(private var mContext: Context) : BottomSheetD
                                     studentDetails.uid,
                                     sendLeaveToWhome
                                 )
+                                dismiss()
                             }
                         })
                 } else {
@@ -107,6 +108,7 @@ class BottomSheetSendLeaveRequests(private var mContext: Context) : BottomSheetD
                                     studentDetails.uid,
                                     "HOD"
                                 )
+                                dismiss()
                             }
                         })
 
@@ -174,7 +176,7 @@ class BottomSheetSendLeaveRequests(private var mContext: Context) : BottomSheetD
         mCalendar[Calendar.MONTH] = month
         mCalendar[Calendar.YEAR] = year
 
-        return CalendarHelperClass().getFormattedDate(mCalendar.time, "dd MMMM yyyy")
+        return CalendarHelperClass().getFormattedDate(mCalendar.time, "dd MMM yy")
     }
 
     private fun handleLeaveTypeMenuOption() {
@@ -195,7 +197,7 @@ class BottomSheetSendLeaveRequests(private var mContext: Context) : BottomSheetD
     }
 
     private fun handleNumberOfDaysMenuOption() {
-        val numberOfDaysLeaveList = listOf("Half Day", "Full day", "2 or More than 2")
+        val numberOfDaysLeaveList = listOf("Half Day", "Full Day", "2 or More than 2")
         val numberOfDaysListArrayAdapter =
             ArrayAdapter(activity as Context, R.layout.choose_item_layout, numberOfDaysLeaveList)
         (binding?.tiLChooseDaysOfLeave?.editText as? AutoCompleteTextView)?.setAdapter(
@@ -353,11 +355,8 @@ class BottomSheetSendLeaveRequests(private var mContext: Context) : BottomSheetD
         if (chooseToDateOfLeave.isNotEmpty() && chooseFromDateOfLeave.isNotEmpty()) {
             binding?.llNote?.isVisible = true
 
-            val currentDate =
-                CalendarHelperClass().getDateOfTheMonth(chooseFromDateOfLeave, "dd MMMM yyyy")
-            val nextDayDate =
-                CalendarHelperClass().getDateOfTheMonth(chooseToDateOfLeave, "dd MMMM yyyy")
-
+            val currentDate = getCurrentDate()
+            val nextDayDate = getNextDate()
             if (currentDate < nextDayDate) {
                 when {
                     nextDayDate - currentDate == 1 -> {
@@ -390,6 +389,7 @@ class BottomSheetSendLeaveRequests(private var mContext: Context) : BottomSheetD
                         binding?.noteText1?.text = getString(R.string.three_days_leave_waring)
                         binding?.noteText2?.text = getString(R.string.hod_note)
                         sendLeaveToWhome = "HOD"
+
                         binding?.noteText1?.setTextColor(
                             ContextCompat.getColor(
                                 mContext,
@@ -400,7 +400,7 @@ class BottomSheetSendLeaveRequests(private var mContext: Context) : BottomSheetD
                     nextDayDate - currentDate > 3 -> {
                         binding?.noteText1?.text =
                             getString(R.string.more_than_three_days_leave_waring)
-                        sendLeaveToWhome = "Principal"
+                        sendLeaveToWhome = "Principal_HOD"
                         binding?.noteText2?.text = getString(R.string.hod_and_principal_note)
                         binding?.noteText1?.setTextColor(
                             ContextCompat.getColor(
@@ -417,5 +417,17 @@ class BottomSheetSendLeaveRequests(private var mContext: Context) : BottomSheetD
                 Toast.makeText(mContext, "Invalid date selected.", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun getNextDate(): Int {
+        val chooseToDateOfLeave =
+            (binding?.tiLChooseToDateOfLeave!!.editText as? AutoCompleteTextView)?.text.toString()
+        return CalendarHelperClass().getDateOfTheMonth(chooseToDateOfLeave, "dd MMMM yyyy")
+    }
+
+    private fun getCurrentDate(): Int {
+        val chooseFromDateOfLeave =
+            (binding?.tiLChooseFromDateOfLeave!!.editText as? AutoCompleteTextView)?.text.toString()
+        return CalendarHelperClass().getDateOfTheMonth(chooseFromDateOfLeave, "dd MMMM yyyy")
     }
 }

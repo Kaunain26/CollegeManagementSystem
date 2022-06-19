@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="25dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginStart="20dp"
     android:layout_marginTop="10dp"
-    android:layout_marginEnd="25dp">
+    android:layout_marginEnd="20dp">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
@@ -30,7 +31,8 @@
                 android:text="Half Day Application"
                 android:textColor="@color/grey"
                 android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:fontFamily="@font/fredoka_semi_bold" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/leave_date"
@@ -41,9 +43,9 @@
                 android:layout_marginTop="1dp"
                 android:text="Wed,16 Dec"
                 android:textColor="@color/dark_purple"
-                android:textSize="15sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                app:fontFamily="@font/fredoka_regular" />
+                app:fontFamily="@font/fredoka_semi_bold" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/leave_type"
@@ -55,8 +57,9 @@
                 android:layout_marginBottom="10dp"
                 android:text="Causal"
                 android:textColor="@color/yellow"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/fredoka_semi_bold" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/leave_status"
@@ -64,15 +67,13 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/curved_yellow"
                 android:drawablePadding="6dp"
-                android:drawableTint="@color/dark_yellow"
                 android:padding="4dp"
-                android:text="Awaiting"
-                android:textColor="#FFB300"
+                tools:text="Awaiting"
+                android:textColor="@color/dark_yellow"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                app:fontFamily="@font/fredoka_regular" />
+                app:fontFamily="@font/fredoka_semi_bold" />
 
             <!--forward arrow-->
             <RelativeLayout

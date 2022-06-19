@@ -50,8 +50,8 @@
 
         </RelativeLayout>
 
-        <LinearLayout
-            android:id="@+id/llClassesContainer"
+        <RelativeLayout
+            android:id="@+id/llLeavesContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/rlToolbar"
@@ -61,140 +61,179 @@
             android:background="@drawable/curved_top_left_right_white"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/filterTV"
-                android:layout_width="wrap_content"
-                android:layout_height="22dp"
-                android:layout_gravity="start"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="20dp"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/fredoka_semi_bold"
-                android:includeFontPadding="false"
-                android:text="Filter"
-                android:textAllCaps="false"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
-                android:textColor="@color/theme_color_v1"
-                android:textSize="15sp"
-                app:drawableStartCompat="@drawable/ic_filter_black"
-                app:drawableTint="@color/theme_color_v1" />
-
-            <!--<HorizontalScrollView
-                android:id="@+id/filterChipScrollView"
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:id="@+id/chipsContainer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:scrollbars="none">-->
-
-            <!--Filter chips-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:background="#EFEFEF"
-                android:orientation="horizontal">
-
-                <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/searchFilterGroup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="25dp"
-                    app:checkedChip="@+id/chip_all_leaves"
-                    app:selectionRequired="true"
-                    app:singleLine="true"
-                    app:singleSelection="true">
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_all_leaves"
-                        style="@style/SearchChipStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/all_leaves" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_casual"
-                        style="@style/SearchChipStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/casual" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_sick"
-                        style="@style/SearchChipStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/sick" />
-
-                </com.google.android.material.chip.ChipGroup>
-                <!-- <com.google.android.material.chip.ChipGroup
-                     android:id="@+id/filterChipGroup"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:layout_marginStart="10dp" />-->
-
-            </LinearLayout>
-
-            <!--classes text-->
-            <TextView
-                android:id="@+id/classesTV"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_gravity="start"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="10dp"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/fredoka_semi_bold"
-                android:text="Leaves"
-                android:textAllCaps="false"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
-                android:textColor="@color/theme_color_v1"
-                android:textSize="15sp"
-                app:drawableStartCompat="@drawable/ic_leave_request"
-                app:drawableTint="@color/theme_color_v1" />
-
-            <!--classes rv-->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvAllClasses"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:visibility="visible"
-                tools:visibility="visible"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/recycler_student_leaves_items" />
-
-            <!--Lottie - no leaves found-->
-            <RelativeLayout
-                android:id="@+id/llNoLeavesFound"
-                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_margin="15dp"
-                android:orientation="vertical"
-                android:visibility="visible">
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:orientation="vertical">
 
-                <com.airbnb.lottie.LottieAnimationView
-                    android:id="@+id/noLeavesLottie"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_centerInParent="true"
-                    android:layout_gravity="center"
-                    app:lottie_autoPlay="true"
-                    app:lottie_rawRes="@raw/no_leaves_found" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <com.google.android.material.appbar.AppBarLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/noLeavesLottie"
-                    android:layout_marginTop="-20dp"
-                    android:fontFamily="@font/fredoka_regular"
-                    android:text="@string/no_leaves_found"
-                    android:textAlignment="center"
-                    android:textSize="18sp" />
-            </RelativeLayout>
+                    android:background="@drawable/curved_top_left_right_white">
 
 
-        </LinearLayout>
+                    <com.google.android.material.appbar.MaterialToolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="-20dp"
+                        android:title=""
+                        app:layout_scrollFlags="scroll|enterAlways">
+
+                        <!--Filter chips-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/filterTV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="22dp"
+                                android:layout_gravity="start"
+                                android:layout_marginStart="25dp"
+                                android:layout_marginTop="20dp"
+                                android:drawablePadding="10dp"
+                                android:fontFamily="@font/fredoka_semi_bold"
+                                android:includeFontPadding="false"
+                                android:text="Filter"
+                                android:textAllCaps="false"
+                                android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+                                android:textColor="@color/theme_color_v1"
+                                android:textSize="15sp"
+                                app:drawableStartCompat="@drawable/ic_filter_black"
+                                app:drawableTint="@color/theme_color_v1" />
+
+                            <LinearLayout
+                                android:id="@+id/llChip"
+                                android:layout_width="match_parent"
+                                android:layout_height="55dp"
+                                android:layout_below="@id/filterTV"
+                                android:background="#EFEFEF"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.chip.ChipGroup
+                                    android:id="@+id/searchFilterGroup"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="25dp"
+                                    app:checkedChip="@+id/chip_all_leaves"
+                                    app:selectionRequired="true"
+                                    app:singleLine="true"
+                                    app:singleSelection="true">
+
+                                    <com.google.android.material.chip.Chip
+                                        android:id="@+id/chip_all_leaves"
+                                        style="@style/SearchChipStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/all_leaves" />
+
+                                    <com.google.android.material.chip.Chip
+                                        android:id="@+id/chip_casual"
+                                        style="@style/SearchChipStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/casual" />
+
+                                    <com.google.android.material.chip.Chip
+                                        android:id="@+id/chip_sick"
+                                        style="@style/SearchChipStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/sick" />
+
+                                </com.google.android.material.chip.ChipGroup>
+                                <!-- <com.google.android.material.chip.ChipGroup
+                                     android:id="@+id/filterChipGroup"
+                                     android:layout_width="wrap_content"
+                                     android:layout_height="wrap_content"
+                                     android:layout_marginStart="10dp" />-->
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </com.google.android.material.appbar.MaterialToolbar>
+                </com.google.android.material.appbar.AppBarLayout>
+
+                <!-- <LinearLayout
+                     android:id="@+id/ll"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="vertical"
+                     app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+ -->
+                <!--classes text-->
+                <TextView
+                    android:id="@+id/classesTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="10dp"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/fredoka_semi_bold"
+                    android:text="Leaves"
+                    android:textAllCaps="false"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+                    android:textColor="@color/theme_color_v1"
+                    android:textSize="15sp"
+                    android:visibility="gone"
+                    app:drawableStartCompat="@drawable/ic_leave_request"
+                    app:drawableTint="@color/theme_color_v1" />
+
+                <!--classes rv-->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvAllLeaves"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/classesTV"
+                    android:layout_marginTop="5dp"
+                    android:visibility="visible"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+                    tools:listitem="@layout/recycler_student_leaves_items"
+                    tools:visibility="visible" />
+
+                <!--                </LinearLayout>-->
+
+                <!--Lottie - no leaves found-->
+                <RelativeLayout
+                    android:id="@+id/llNoLeavesFound"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="15dp"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/noLeavesLottie"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        app:lottie_autoPlay="true"
+                        app:lottie_rawRes="@raw/no_leaves_found" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/noLeavesLottie"
+                        android:layout_marginTop="-20dp"
+                        android:fontFamily="@font/fredoka_regular"
+                        android:text="@string/no_leaves_found"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        </RelativeLayout>
 
     </RelativeLayout>
 

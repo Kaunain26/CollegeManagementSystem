@@ -3,8 +3,8 @@ package `in`.kit.college_management_system.facultySection.activity
 import `in`.kit.college_management_system.R
 import `in`.kit.college_management_system.databinding.ActivityStudentAttendanceDetailsBinding
 import `in`.kit.college_management_system.facultySection.fragments.BottomSheetAttendanceHistory
-import `in`.kit.college_management_system.facultySection.model.StudentAttendanceHistoryModel
-import `in`.kit.college_management_system.facultySection.model.StudentDetailsModel
+import `in`.kit.college_management_system.model.StudentAttendanceHistoryModel
+import `in`.kit.college_management_system.model.StudentDetailsModel
 import `in`.kit.college_management_system.interfaces.IOnFirebaseActionCallback
 import `in`.kit.college_management_system.utils.*
 import `in`.kit.college_management_system.utils.Constants.ABSENT

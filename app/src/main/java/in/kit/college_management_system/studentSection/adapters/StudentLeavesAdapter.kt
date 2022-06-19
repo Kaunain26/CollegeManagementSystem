@@ -1,77 +1,69 @@
 package `in`.kit.college_management_system.studentSection.adapters
 
 import `in`.kit.college_management_system.R
-import `in`.kit.college_management_system.model.StudentLeaveModel
-import `in`.kit.college_management_system.utils.CalendarHelperClass
+import `in`.kit.college_management_system.databinding.RecyclerStudentLeavesItemsBinding
+import `in`.kit.college_management_system.databinding.SubHeaderBinding
+import `in`.kit.college_management_system.model.StudentLeaveHelperModel
+import `in`.kit.college_management_system.studentSection.viewHolder.StudentLeavesHelperViewHolder
+import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import java.util.*
 
-class StudentLeavesAdapter() :
-    ListAdapter<StudentLeaveModel, StudentLeavesAdapter.StudentLeavesViewHolder>(
-        StudentLeavesCallback()
-    ) {
+class StudentLeavesAdapter(
+    private var context: Context,
+) :
+    RecyclerView.Adapter<StudentLeavesHelperViewHolder>() {
 
-    class StudentLeavesCallback : DiffUtil.ItemCallback<StudentLeaveModel>() {
-        override fun areItemsTheSame(
-            oldItem: StudentLeaveModel,
-            newItem: StudentLeaveModel
-        ): Boolean {
-            return oldItem.leaveKey == newItem.leaveKey
+    var studentLeaveList = listOf<StudentLeaveHelperModel>()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
         }
 
-        override fun areContentsTheSame(
-            oldItem: StudentLeaveModel,
-            newItem: StudentLeaveModel
-        ): Boolean {
-            return oldItem == newItem
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): StudentLeavesHelperViewHolder {
+
+        return when (viewType) {
+            R.layout.sub_header -> {
+                StudentLeavesHelperViewHolder.StudentLeaveSubHeaderHolder(
+                    SubHeaderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                )
+            }
+            R.layout.recycler_student_leaves_items -> {
+                StudentLeavesHelperViewHolder.StudentLeaveHolder(
+                    RecyclerStudentLeavesItemsBinding.inflate(
+                        LayoutInflater.from(parent.context),
+                        parent,
+                        false
+                    ), context
+                )
+            }
+            else -> throw IllegalArgumentException("Invalid ViewType Provider")
         }
     }
 
-    override fun getItemViewType(position: Int): Int {
-        val calender = Calendar.getInstance()
-        val currentDate = CalendarHelperClass().getFormattedDate(calender.time, "dd MMMM yyyy")
-        CalendarHelperClass().getFormattedDate(currentList[position].leaveSentDate)
-        return if (position == 0) {
-            HEADER
-        } else {
-            ITEMS
-        }
-    }
-
-    class StudentLeavesViewHolder(itemView: View, itemViewType: Int) :
-        RecyclerView.ViewHolder(itemView) {
-
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudentLeavesViewHolder {
-        return if (viewType == HEADER) StudentLeavesViewHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.sub_header,
-                parent,
-                false
-            ), viewType
-        ) else {
-            StudentLeavesViewHolder(
-                LayoutInflater.from(parent.context).inflate(
-                    R.layout.recycler_student_leaves_items,
-                    parent,
-                    false
-                ), viewType
+    override fun onBindViewHolder(holder: StudentLeavesHelperViewHolder, position: Int) {
+        when (holder) {
+            is StudentLeavesHelperViewHolder.StudentLeaveHolder -> holder.bind(studentLeaveList[position] as StudentLeaveHelperModel.StudentLeaveModel)
+            is StudentLeavesHelperViewHolder.StudentLeaveSubHeaderHolder -> holder.bind(
+                studentLeaveList[position] as StudentLeaveHelperModel.SubHeader
             )
         }
     }
 
-    override fun onBindViewHolder(holder: StudentLeavesViewHolder, position: Int) {
+    override fun getItemCount() = studentLeaveList.size
+
+    override fun getItemViewType(position: Int): Int {
+        return when (studentLeaveList[position]) {
+            is StudentLeaveHelperModel.SubHeader -> R.layout.sub_header
+
+            is StudentLeaveHelperModel.StudentLeaveModel -> R.layout.recycler_student_leaves_items
+        }
 
     }
 
-    companion object {
-        private const val HEADER = 0
-        private const val ITEMS = 0
-    }
+
 }

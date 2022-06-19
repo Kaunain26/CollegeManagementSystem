@@ -15,6 +15,9 @@
         tools:replace="android:allowBackup"
         tools:targetApi="m">
         <activity
+            android:name=".studentSection.activity.StudentLeaveDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".facultySection.activity.StudentAttendanceDetailsActivity"
             android:exported="true"
             android:screenOrientation="portrait"
