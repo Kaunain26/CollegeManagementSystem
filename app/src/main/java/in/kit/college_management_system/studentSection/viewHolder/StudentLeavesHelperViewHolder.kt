@@ -4,11 +4,14 @@ import `in`.kit.college_management_system.R
 import `in`.kit.college_management_system.databinding.RecyclerStudentLeavesItemsBinding
 import `in`.kit.college_management_system.databinding.SubHeaderBinding
 import `in`.kit.college_management_system.model.StudentLeaveHelperModel
+import `in`.kit.college_management_system.studentSection.activity.StudentLeaveDetailsActivity
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
+import com.google.gson.Gson
 
 sealed class StudentLeavesHelperViewHolder(binding: ViewBinding) :
     RecyclerView.ViewHolder(binding.root) {
@@ -20,6 +23,19 @@ sealed class StudentLeavesHelperViewHolder(binding: ViewBinding) :
         StudentLeavesHelperViewHolder(binding) {
 
         fun bind(item: StudentLeaveHelperModel.StudentLeaveModel) {
+
+            binding.root.setOnClickListener {
+                val gson = Gson()
+                val studentLeaveModelGson: String = gson.toJson(item)
+                context.startActivity(
+                    Intent(
+                        context,
+                        StudentLeaveDetailsActivity::class.java
+                    ).apply {
+                        putExtra("studentLeaveModel", studentLeaveModelGson)
+                    })
+            }
+
             binding.leaveType.text = item.leave_type
             binding.leaveDay.text = "${item.no_of_days} Application"
             if (item.no_of_days == "Half Day" || item.no_of_days == "Full Day") {
@@ -32,7 +48,10 @@ sealed class StudentLeavesHelperViewHolder(binding: ViewBinding) :
             } else {
                 binding.leaveType.setTextColor(ContextCompat.getColor(context, R.color.yellow))
             }
-            Log.d("ItemData", "bind:requested_to ${item.requested_to } , ${item.is_hod_permission_granted}, ${item.is_principal_permission_granted}")
+            Log.d(
+                "ItemData",
+                "bind:requested_to ${item.requested_to} , ${item.is_hod_permission_granted}, ${item.is_principal_permission_granted}"
+            )
             if (item.requested_to == "HOD") {
                 Log.d("requestedTo", "onBindViewHolder:${item.is_hod_permission_granted} ")
                 when (item.is_hod_permission_granted) {
@@ -59,7 +78,7 @@ sealed class StudentLeavesHelperViewHolder(binding: ViewBinding) :
                 } else if (item.is_hod_permission_granted == 1 && item.is_principal_permission_granted == -1) {
                     //Rejected by principal
                     showRejectedStatus()
-                }else{
+                } else {
                     //Awaiting
                     showAwaitingStatus()
                 }
