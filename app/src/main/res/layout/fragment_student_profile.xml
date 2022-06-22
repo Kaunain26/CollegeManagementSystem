@@ -184,7 +184,7 @@
                 android:gravity="center"
                 android:textColor="@color/white"
                 android:textSize="25sp"
-                tools:text="Student Name" />
+                android:text="Student Name" />
 
             <TextView
                 android:id="@+id/emailOfStudent"
@@ -196,7 +196,7 @@
                 android:includeFontPadding="false"
                 android:textColor="#DDD"
                 android:textSize="18sp"
-                tools:text="email -" />
+                android:text="email -" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -214,7 +214,7 @@
                     android:includeFontPadding="false"
                     android:textColor="#DDD"
                     android:textSize="18sp"
-                    tools:text="Age - " />
+                    android:text="Age - " />
 
                 <TextView
                     android:id="@+id/studentGender"
@@ -227,7 +227,7 @@
                     android:includeFontPadding="false"
                     android:textColor="#DDD"
                     android:textSize="18sp"
-                    tools:text="Gender - " />
+                    android:text="Gender - " />
             </RelativeLayout>
         </LinearLayout>
 
