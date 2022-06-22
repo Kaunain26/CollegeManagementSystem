@@ -13,3 +13,11 @@
 .externalNativeBuild
 .cxx
 local.properties
+Kaunain Cse, [20-06-2022 00:23]
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/assetWizardSettings.xml
+.idea/dictionaries
+# Android Studio 3 in .gitignore file.
+# Comment next line if keeping position of elements in Navigation Editor is relevant for you
+
