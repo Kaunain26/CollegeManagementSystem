@@ -3,10 +3,10 @@ package `in`.kit.college_management_system.studentSection.adapters
 import `in`.kit.college_management_system.R
 import `in`.kit.college_management_system.databinding.RecyclerAllClassesItemsForStdBinding
 import `in`.kit.college_management_system.facultySection.activity.StudentAttendanceDetailsActivity
+import `in`.kit.college_management_system.interfaces.IOnFirebaseActionCallback
 import `in`.kit.college_management_system.model.ClassesModel
 import `in`.kit.college_management_system.model.FacultyDetails
 import `in`.kit.college_management_system.model.StudentDetailsModel
-import `in`.kit.college_management_system.interfaces.IOnFirebaseActionCallback
 import `in`.kit.college_management_system.utils.Constants
 import `in`.kit.college_management_system.utils.FirebaseHelperClass
 import android.annotation.SuppressLint
@@ -81,11 +81,10 @@ class StudentAttendanceAdapter(
                         putExtra(Constants.CLASS_KEY, classData.classSubKey)
                         putExtra(Constants.CLASS_SEM, classData.sem)
                         putExtra(Constants.FACULTY_UID, classData.facultyUid)
-                        putExtra(Constants.IS_STUDENT, true)
+                        putExtra(Constants.IS_FACULTY, false)
                     })
             }
         }
-
     }
 
     class AllClassesCallback : DiffUtil.ItemCallback<ClassesModel>() {

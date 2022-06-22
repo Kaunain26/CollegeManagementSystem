@@ -6,9 +6,9 @@ import `in`.kit.college_management_system.facultySection.adapter.ClassesAdapter
 import `in`.kit.college_management_system.facultySection.adapter.ClassesShimmerAdapter
 import `in`.kit.college_management_system.facultySection.database.DatabaseClient
 import `in`.kit.college_management_system.facultySection.database.FilterClassesChip
+import `in`.kit.college_management_system.interfaces.IOnFirebaseActionCallback
 import `in`.kit.college_management_system.model.ClassesModel
 import `in`.kit.college_management_system.model.FacultyDetails
-import `in`.kit.college_management_system.interfaces.IOnFirebaseActionCallback
 import `in`.kit.college_management_system.utils.AlertDialogHelperClass
 import `in`.kit.college_management_system.utils.FirebaseHelperClass
 import android.annotation.SuppressLint
@@ -21,7 +21,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -62,22 +61,6 @@ class ClassesFragment : Fragment() {
         classesAdapter = ClassesAdapter(activity as Context)
         mAuth = FirebaseAuth.getInstance()
         firebaseHelperClass = FirebaseHelperClass()
-        firebaseHelperClass.getFacultyDetails(
-            mAuth.uid.toString(),
-            object : IOnFirebaseActionCallback {
-                @SuppressLint("SetTextI18n")
-                override fun getAllFacultyDetailsCallback(facultyDetails: FacultyDetails) {
-                    tempFacultyDetails = facultyDetails
-                    binding!!.facultyNameTV.text = facultyDetails.name
-                    //binding!!.branchNameTV.text = facultyDetails.branch
-                    binding!!.greetingTV.text = "Hello,"
-                    // binding!!.facultyDesignationTV.text = "Assistance Professor"
-                    binding!!.headerLoadingAnimation.stopShimmerAnimation()
-                    binding!!.headerLoadingAnimation.visibility = View.GONE
-
-                    extractTwoCharFromName(facultyDetails.name)
-                }
-            })
 
         loadShimmer(activity as Context)
         setUpRecyclerView()
@@ -92,6 +75,27 @@ class ClassesFragment : Fragment() {
         //return inflater.inflate(R.layout.fragment_classes, container, false)
     }
 
+    private fun getFacultyDetails(b: Boolean) {
+        firebaseHelperClass.getFacultyDetails(
+            mAuth.uid.toString(),
+            object : IOnFirebaseActionCallback {
+                @SuppressLint("SetTextI18n")
+                override fun getAllFacultyDetailsCallback(facultyDetails: FacultyDetails) {
+                    tempFacultyDetails = facultyDetails
+                    binding!!.facultyNameTV.text = facultyDetails.name
+                    //binding!!.branchNameTV.text = facultyDetails.branch
+                    binding!!.greetingTV.text = "Hello,"
+                    // binding!!.facultyDesignationTV.text = "Assistance Professor"
+                    binding!!.headerLoadingAnimation.stopShimmerAnimation()
+                    binding!!.headerLoadingAnimation.visibility = View.GONE
+
+                    extractTwoCharFromName(facultyDetails.name)
+                    getAllClassesFromFirebase(b)
+                }
+            })
+
+    }
+
     private fun getFilterClassesFromRDB() {
         lifecycleScope.launch(Dispatchers.IO) {
             val allChips: List<FilterClassesChip> = getAllChips(activity as Context)
@@ -104,10 +108,11 @@ class ClassesFragment : Fragment() {
 
                 // we are fetching all the classes from server but not notifying the recycler view
                 // since filtered class is available
-                getAllClassesFromFirebase(notifyAdapter = false)
+                getFacultyDetails(false)
+
             } else {
                 // we are fetching all the classes and also notifying the recycler view
-                getAllClassesFromFirebase(notifyAdapter = true)
+                getFacultyDetails(true)
             }
         }
     }
@@ -226,18 +231,16 @@ class ClassesFragment : Fragment() {
     }
 
     private fun getAllClassesFromFirebase(notifyAdapter: Boolean) {
+        Log.d("branchess", "getFacultyClassFromFirebase:${tempFacultyDetails.branch} ")
         firebaseHelperClass.getFacultyClassFromFirebase(
             mAuth,
-            tempFacultyDetails.branch,
             object : IOnFirebaseActionCallback {
-                override fun getAllClassesCallback(classModel: ClassesModel?, context: Context) {
+                override fun getFacultyAllClassesCallback(classModel: ClassesModel?, context: Context) {
                     if (classModel != null) {
                         if (!classList.contains(classModel)) {
                             classList.add(classModel)
 
                             if (notifyAdapter) {
-                                Toast.makeText(context, "New class detected", Toast.LENGTH_SHORT)
-                                    .show()
                                 Log.d("classList", "getAllClassesCallback:$classList ")
                                 /** this is a hack to refresh the recycler view */
                                 // making a newTempList and adding all data to it, In this way adapter refresh itself when we submit this newTempLl̥ist
@@ -264,7 +267,8 @@ class ClassesFragment : Fragment() {
                         binding?.classesTV?.visibility = View.GONE
                     }
                 }
-            }, activity as Context
+            },
+            activity as Context
         )
     }
 

@@ -2,24 +2,13 @@ package `in`.kit.college_management_system.studentSection.activity
 
 import `in`.kit.college_management_system.R
 import `in`.kit.college_management_system.databinding.ActivityStudentHomePageBinding
-import `in`.kit.college_management_system.facultySection.fragments.LeavesFragment
-import `in`.kit.college_management_system.singin_signup.AuthenticationActivity
 import `in`.kit.college_management_system.studentSection.fragments.StudentAttendancesFragment
 import `in`.kit.college_management_system.studentSection.fragments.StudentLeavesFragment
 import `in`.kit.college_management_system.studentSection.fragments.StudentProfileFragment
-import `in`.kit.college_management_system.utils.AlertDialogHelperClass
 import `in`.kit.college_management_system.utils.MakeStatusBarTransparent
-import `in`.kit.college_management_system.utils.Preferences
-import android.content.DialogInterface
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.firebase.auth.FirebaseAuth
 
 class StudentHomePage : AppCompatActivity() {
 

@@ -8,5 +8,5 @@ object Constants {
     const val CLASS_KEY = "class_key"
     const val CLASS_SEM = "class_sem"
     const val FACULTY_UID = "faculty_uid"
-    const val IS_STUDENT = "is_student"
+    const val IS_FACULTY = "is_faculty"
 }

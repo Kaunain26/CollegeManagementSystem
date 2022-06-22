@@ -2,8 +2,8 @@ package `in`.kit.college_management_system.facultySection.fragments
 
 import `in`.kit.college_management_system.R
 import `in`.kit.college_management_system.databinding.FragmentFacultyProfileBinding
-import `in`.kit.college_management_system.model.FacultyDetails
 import `in`.kit.college_management_system.interfaces.IOnFirebaseActionCallback
+import `in`.kit.college_management_system.model.FacultyDetails
 import `in`.kit.college_management_system.singin_signup.AuthenticationActivity
 import `in`.kit.college_management_system.utils.AlertDialogHelperClass
 import `in`.kit.college_management_system.utils.FirebaseHelperClass

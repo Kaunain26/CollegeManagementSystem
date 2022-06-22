@@ -33,7 +33,7 @@ class StudentLeaveTimeLineAdapter(private val mFeedList: List<StudentLeaveTimeLi
 
         return StudentLeaveTimeLineViewHolder(
             mLayoutInflater.inflate(
-                R.layout.item_time_line,
+                R.layout.item_leave_time_line_std_sec,
                 parent,
                 false
             ), viewType

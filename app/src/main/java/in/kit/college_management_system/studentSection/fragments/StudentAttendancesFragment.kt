@@ -4,9 +4,9 @@ import `in`.kit.college_management_system.R
 import `in`.kit.college_management_system.databinding.FragmentStudentAttendancesBinding
 import `in`.kit.college_management_system.facultySection.adapter.ClassesShimmerAdapter
 import `in`.kit.college_management_system.facultySection.database.DatabaseClient
+import `in`.kit.college_management_system.interfaces.IOnFirebaseActionCallback
 import `in`.kit.college_management_system.model.ClassesModel
 import `in`.kit.college_management_system.model.StudentDetailsModel
-import `in`.kit.college_management_system.interfaces.IOnFirebaseActionCallback
 import `in`.kit.college_management_system.studentSection.adapters.StudentAttendanceAdapter
 import `in`.kit.college_management_system.utils.FirebaseHelperClass
 import android.annotation.SuppressLint
@@ -233,7 +233,7 @@ class StudentAttendancesFragment : Fragment() {
             studentSem,
             tempStudentDetails.usn,
             object : IOnFirebaseActionCallback {
-                override fun getAllClassesCallback(classModel: ClassesModel?, context: Context) {
+                override fun getFacultyAllClassesCallback(classModel: ClassesModel?, context: Context) {
                     if (classModel != null) {
                         if (!classList.contains(classModel)) {
                             prevSelectedSemForMenu = studentSem

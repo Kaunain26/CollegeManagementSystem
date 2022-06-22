@@ -3,15 +3,15 @@ package `in`.kit.college_management_system.facultySection.activity
 import `in`.kit.college_management_system.R
 import `in`.kit.college_management_system.databinding.ActivityStudentAttendanceDetailsBinding
 import `in`.kit.college_management_system.facultySection.fragments.BottomSheetAttendanceHistory
+import `in`.kit.college_management_system.interfaces.IOnFirebaseActionCallback
 import `in`.kit.college_management_system.model.StudentAttendanceHistoryModel
 import `in`.kit.college_management_system.model.StudentDetailsModel
-import `in`.kit.college_management_system.interfaces.IOnFirebaseActionCallback
 import `in`.kit.college_management_system.utils.*
 import `in`.kit.college_management_system.utils.Constants.ABSENT
 import `in`.kit.college_management_system.utils.Constants.CLASS_KEY
 import `in`.kit.college_management_system.utils.Constants.CLASS_SEM
 import `in`.kit.college_management_system.utils.Constants.FACULTY_UID
-import `in`.kit.college_management_system.utils.Constants.IS_STUDENT
+import `in`.kit.college_management_system.utils.Constants.IS_FACULTY
 import `in`.kit.college_management_system.utils.Constants.PRESENT
 import `in`.kit.college_management_system.utils.Constants.PRESENT_ABSENT
 import `in`.kit.college_management_system.utils.Constants.STUDENT_DATA_MODEL
@@ -48,7 +48,7 @@ class StudentAttendanceDetailsActivity : AppCompatActivity(), IOnFirebaseActionC
     private var classKey = ""
     private var classSem = ""
     private var facultyUid = ""
-    private var isStudent = false
+    private var isfaculty = false //default value
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,11 +66,11 @@ class StudentAttendanceDetailsActivity : AppCompatActivity(), IOnFirebaseActionC
         classKey = intent?.getStringExtra(CLASS_KEY)!!
         classSem = intent?.getStringExtra(CLASS_SEM)!!
         facultyUid = intent?.getStringExtra(FACULTY_UID)!!
-        isStudent = intent?.getBooleanExtra(IS_STUDENT, false)!!
+        isfaculty = intent?.getBooleanExtra(IS_FACULTY, false)!!
 
         Log.d(
             "students_details",
-            "onDataChange:classKey $classKey , classSem$classSem , studentDataModel $studentDataModel  "
+            "onDataChange:classKey $classKey , classSem$classSem , studentDataModel $studentDataModel , facultyUid $facultyUid "
         )
 
         val gson = Gson()
@@ -104,7 +104,7 @@ class StudentAttendanceDetailsActivity : AppCompatActivity(), IOnFirebaseActionC
             this
         )
 
-        binding.editReqBtn.isVisible = !isStudent
+        binding.editReqBtn.isVisible = isfaculty
 
         binding.customCalender.setOnDateSelectedListener { view, selectedDate, desc ->
             val formattedDate =
@@ -127,7 +127,7 @@ class StudentAttendanceDetailsActivity : AppCompatActivity(), IOnFirebaseActionC
                 }
                 ABSENT -> {
                     //mark his/her present
-                    if (!isStudent) {
+                    if (isfaculty) {
                         //Student are not allowed to edit attendance
                         updateAttendancePresentOrAbsent(formattedDate, false, "PRESENT")
                     }
@@ -135,14 +135,13 @@ class StudentAttendanceDetailsActivity : AppCompatActivity(), IOnFirebaseActionC
                 }
                 PRESENT -> {
                     //mark his/her absent
-                    if (!isStudent) {
+                    if (isfaculty) {
                         //Student are not allowed to edit attendance
                         updateAttendancePresentOrAbsent(formattedDate, true, "ABSENT")
                     }
                 }
             }
         }
-
 
     }
 
@@ -164,6 +163,7 @@ class StudentAttendanceDetailsActivity : AppCompatActivity(), IOnFirebaseActionC
             object : AlertDialogHelperClass.OnAlertDialogActionPerformed {
                 override fun positiveAction(dialog: DialogInterface) {
 
+                    binding.rlUpdatingProgress.isVisible = true
                     val classesRef = firebaseHelperClass.getClassDataRef(
                         studentData.branch,
                         studentData.batch,
@@ -189,16 +189,24 @@ class StudentAttendanceDetailsActivity : AppCompatActivity(), IOnFirebaseActionC
                                 //mark present
                                     attendanceRef.child(data.key.toString())
                                         .child(studentData.usn).setValue(map)
+                                        .addOnCompleteListener {
+                                            binding.rlUpdatingProgress.isVisible = false
+                                        }
                                 else
                                 // mark absent
                                     attendanceRef.child(data.key.toString())
                                         .child(studentData.usn).setValue(null)
+                                        .addOnCompleteListener {
+                                            binding.rlUpdatingProgress.isVisible = false
+                                        }
 
                                 break
                             }
                         }
 
-                        override fun onCancelled(error: DatabaseError) {}
+                        override fun onCancelled(error: DatabaseError) {
+                            binding.rlUpdatingProgress.isVisible = false
+                        }
                     })
                 }
 
@@ -237,7 +245,7 @@ class StudentAttendanceDetailsActivity : AppCompatActivity(), IOnFirebaseActionC
     private fun setUpStudentDetailsToViews() {
         binding.studentName.text = studentData.name
         binding.studentUsn.text = studentData.usn
-        binding.progressBar.progress = 0
+        updateAttendanceProgress(0) //default to zero
 
         if (studentData.photo_url != "") {
             Glide.with(this).load(studentData.photo_url)
@@ -293,8 +301,8 @@ class StudentAttendanceDetailsActivity : AppCompatActivity(), IOnFirebaseActionC
                 binding.totalAttendancePercent.text = "$attendancePercentage "
                 updateAttendanceProgress(attendancePercentage.toInt())
             } else {
-                binding.progressBar.progress = 0
-                //updateAttendanceProgress(0)
+                //binding.progressBar.progress = 0
+                updateAttendanceProgress(0)
                 binding.totalAttendancePercent.text = "0 "
             }
         } else {
@@ -302,7 +310,8 @@ class StudentAttendanceDetailsActivity : AppCompatActivity(), IOnFirebaseActionC
             binding.presentDaysValue.text = "$presentDays day"
             val absentDays = totalAttendanceValue.toInt()
             binding.absentDaysValue.text = "$absentDays days"
-            binding.progressBar.progress = 0
+            updateAttendanceProgress(0)
+            // binding.progressBar.progress = 0
             binding.totalAttendancePercent.text = "0 "
         }
     }
@@ -316,7 +325,7 @@ class StudentAttendanceDetailsActivity : AppCompatActivity(), IOnFirebaseActionC
             BottomSheetAttendanceHistory(
                 studentAttendanceHistoryModelList,
                 date,
-                studentData, classKey, facultyUid, isStudent
+                studentData, classKey, facultyUid, isfaculty
             )
         bottomSheetAttendanceHistory.show(supportFragmentManager, "bottomSheetAttendanceHistory")
 
@@ -330,18 +339,34 @@ class StudentAttendanceDetailsActivity : AppCompatActivity(), IOnFirebaseActionC
         whichButton: Int,
         newMonth: Calendar
     ): Array<MutableMap<Int, Any>?> {
-        val nextOrPrevMonthAttendance: HashMap<Int, Any>? =
-            attendanceHistoryMap[newMonth[Calendar.MONTH]]
+        val currentCalendar = Calendar.getInstance()
+        val currentYear = currentCalendar[Calendar.YEAR]
+        val year = newMonth[Calendar.YEAR]
+
         val arr: Array<MutableMap<Int, Any>?> = arrayOfNulls<MutableMap<Int, Any>?>(2)
-        if (attendanceHistoryMap[newMonth[Calendar.MONTH]] == null) {
+        if (currentYear == year) {
+            val nextOrPrevMonthAttendance: HashMap<Int, Any>? =
+                attendanceHistoryMap[newMonth[Calendar.MONTH]]
+            if (attendanceHistoryMap[newMonth[Calendar.MONTH]] == null) {
+                //this is hack to avoid app crash if there is no prev attendance
+                val hashMap = HashMap<Int, Any>()
+                hashMap[1] = ""
+                arr[0] = hashMap
+            } else {
+                arr[0] = nextOrPrevMonthAttendance
+            }
+        } else {
             //this is hack to avoid app crash if there is no prev attendance
             val hashMap = HashMap<Int, Any>()
             hashMap[1] = ""
             arr[0] = hashMap
-        } else {
-            arr[0] = nextOrPrevMonthAttendance
         }
         return arr
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        updateAttendanceProgress(0)
     }
 
 }

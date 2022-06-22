@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 class StudentNoOfAttendancePerDayAdapter(
     private var context: Context,
     private var listener: IMarkAbsentAndPresent,
-    private var isStudent: Boolean
+    private var isFaculty: Boolean
 ) :
     ListAdapter<StudentAttendanceHistoryModel, StudentNoOfAttendancePerDayAdapter.StudentNoOfAttendancePerDayViewHolder>(
         StudentNoOfAttendancePerDayCallback()
@@ -97,7 +97,7 @@ class StudentNoOfAttendancePerDayAdapter(
         holder.bind(item, context)
 
         holder.binding.presentAbsentBtn.setOnClickListener {
-            if (!isStudent) {
+            if (isFaculty) {
                 //Student are not allowed to edit attendance
                 item.isPresent = !item.isPresent
                 if (!studentPresentAbsentList.contains(item)) {

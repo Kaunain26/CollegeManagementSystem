@@ -46,7 +46,7 @@ class FirebaseHelperClass {
     fun getClassesRef(): DatabaseReference =
         FirebaseDatabase.getInstance().reference.child("classes")
 
-    fun getAllLeaveReference(): DatabaseReference =
+    fun getAllLeaveRef(): DatabaseReference =
         FirebaseDatabase.getInstance().reference.child("all_leaves")
 
     fun getIndividualStdLeaveRef(
@@ -55,7 +55,7 @@ class FirebaseHelperClass {
         studentSem: String,
         stdUid: String,
     ): DatabaseReference =
-        getAllLeaveReference().child(branch).child(batch).child(studentSem).child(stdUid).child(
+        getAllLeaveRef().child(branch).child(batch).child(studentSem).child(stdUid).child(
             LEAVES
         )
 
@@ -153,33 +153,43 @@ class FirebaseHelperClass {
 
     fun getFacultyClassFromFirebase(
         mAuth: FirebaseAuth,
-        branch: String,
-        IOnFirebaseActionCallback: IOnFirebaseActionCallback, context: Context
+        IOnFirebaseActionCallback: IOnFirebaseActionCallback,
+        context: Context
     ) {
-        getClassesRef().child(branch).addValueEventListener(object : ValueEventListener {
+        getClassesRef().addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
-                    for (batches in snapshot.children) {
-                        //iterate through all batches
-                        Log.d("batches11", "onDataChange: ${batches.key} ")
-                        for (sem in batches.children) {
-                            //iterate through semesters
-                            Log.d("sem222", "onDataChange: $sem ")
-                            for (faculty in sem.children) {
-                                // iterate through faculty
-                                Log.d(
-                                    "faculty222",
-                                    "onDataChange: ${mAuth.uid.toString()} or ${faculty.child(mAuth.uid.toString()).key} "
-                                )
-                                for (classes in faculty.children) {
-                                    //iterate through classes - i.e., how many classes they are taking in this sem
-                                    //this will be happen in rare case
-                                    val facultyUID = classes.key
-                                    if (mAuth.uid.toString() == facultyUID) {
-                                        Log.d("facultyChildren", "onDataChange: ${classes.key} ")
+                    for (branches in snapshot.children) {
+                        for (batches in branches.children) {
+                            //iterate through all batches
+                            Log.d("batches11", "onDataChange: ${batches.key} ")
+                            for (sem in batches.children) {
+                                //iterate through semesters
+                                Log.d("sem222", "onDataChange: ${sem.key} ")
+                                for (faculty in sem.children) {
+                                    // iterate through faculty
+                                    Log.d("Fecccc222", "onDataChange: ${faculty.key} ")
 
-                                        for (classDetails in classes.children) {
-                                            // classDetails iteration
+                                    for (classDetails in faculty.children) {
+                                        //iterate through classes - i.e., how many classes they are taking in this sem
+                                        //this will be happen in rare case
+                                        Log.d("classes222", "onDataChange: ${classDetails.key} ")
+
+
+                                        val facultyUID = faculty.key
+                                        if (mAuth.uid.toString() == facultyUID) {
+                                            Log.d(
+                                                "facultyChildren",
+                                                "onDataChange: ${classDetails.key} "
+                                            )
+                                            Log.d(
+                                                "faculty222",
+                                                "onDataChange: ${mAuth.uid.toString()} or ${
+                                                    faculty.child(
+                                                        mAuth.uid.toString()
+                                                    ).key
+                                                } "
+                                            )
                                             val className =
                                                 classDetails.child("className").value.toString()
                                             val batchOrYear =
@@ -197,23 +207,33 @@ class FirebaseHelperClass {
                                                 _branch,
                                                 batchOrYear
                                             )
+                                            classModel.facultyUid = facultyUID
 
                                             Log.d("ClassesDetails", "onDataChange: $classModel ")
-                                            IOnFirebaseActionCallback.getAllClassesCallback(
+                                            IOnFirebaseActionCallback.getFacultyAllClassesCallback(
                                                 classModel, context
                                             )
+                                        } else {
+                                            IOnFirebaseActionCallback.getFacultyAllClassesCallback(
+                                                null, context
+                                            )
+                                            Log.d(
+                                                "faculty222..",
+                                                "onDataChange: ${mAuth.uid.toString()} or ${
+                                                    faculty.child(
+                                                        mAuth.uid.toString()
+                                                    ).key
+                                                } "
+                                            )
                                         }
-                                    } else {
-                                        IOnFirebaseActionCallback.getAllClassesCallback(
-                                            null, context
-                                        )
                                     }
                                 }
                             }
                         }
                     }
+
                 } else {
-                    IOnFirebaseActionCallback.getAllClassesCallback(
+                    IOnFirebaseActionCallback.getFacultyAllClassesCallback(
                         null, context
                     )
                 }
@@ -292,7 +312,7 @@ class FirebaseHelperClass {
                                                 classModel.totalAttendancePercentage = "0"
                                             }
 
-                                            IOnFirebaseActionCallback.getAllClassesCallback(
+                                            IOnFirebaseActionCallback.getFacultyAllClassesCallback(
                                                 classModel, context
                                             )
                                         } else {
@@ -305,7 +325,7 @@ class FirebaseHelperClass {
                                                 batch
                                             )
                                             classModel.facultyUid = facultyUid
-                                            IOnFirebaseActionCallback.getAllClassesCallback(
+                                            IOnFirebaseActionCallback.getFacultyAllClassesCallback(
                                                 classModel, context
                                             )
                                         }
@@ -315,7 +335,7 @@ class FirebaseHelperClass {
                         }
                     }
                 } else {
-                    IOnFirebaseActionCallback.getAllClassesCallback(
+                    IOnFirebaseActionCallback.getFacultyAllClassesCallback(
                         null, context
                     )
                 }
@@ -385,12 +405,8 @@ class FirebaseHelperClass {
                             val sem = studentsData.child(FirebaseKeys.SEM).value.toString()
                             val uid = studentsData.child(FirebaseKeys.UID).value.toString()
                             val usn = studentsData.child(FirebaseKeys.USN).value.toString()
-                            //val presentDays =
-                            // studentsData.child(FirebaseKeys.PRESENT).value.toString()
-                            //val absentDays =
-                            //  studentsData.child(FirebaseKeys.ABSENT).value.toString()
                             val leaveDays =
-                                studentsData.child(FirebaseKeys.LEAVES).value.toString()
+                                studentsData.child(LEAVES).value.toString()
                             val photoUrl = if (studentsData.hasChild(FirebaseKeys.PHOTO_URL)) {
                                 studentsData.child(FirebaseKeys.PHOTO_URL).value.toString()
                             } else {
@@ -440,6 +456,10 @@ class FirebaseHelperClass {
         usn: String,
         iOnFirebaseActionCallback: IOnFirebaseActionCallback
     ) {
+        Log.d(
+            "dateListMapWithMonth..",
+            "onDataChange:branch $branch , batchOrYear $batchOrYear , sem $sem , classKey $classKey , facultyUid $facultyUid "
+        )
         getAttendanceHistoryRef(
             branch,
             batchOrYear,
@@ -512,7 +532,6 @@ class FirebaseHelperClass {
                                     }
                                 }
                             }
-
 
                             //At last
                             if (index == (snapshot.childrenCount - 1).toInt()) {
@@ -835,5 +854,185 @@ class FirebaseHelperClass {
 
             override fun onCancelled(error: DatabaseError) {}
         })
+    }
+
+    fun getStdLeavesAccordingToBatchForFaculty(
+        branch: String,
+        batch: String,
+        filter: String,
+        iOnFirebaseActionCallback: IOnFirebaseActionCallback,
+        context: Context
+    ) {
+
+        val _batch: String = if (filter != "All Batches") {
+            filter.split('-')[0]
+        } else {
+            batch
+        }
+
+        getAllLeaveRef().child(branch.trim()).child(_batch.trim())
+            .addValueEventListener(object : ValueEventListener {
+
+                val leaveList = ArrayList<FacultySecStudentLeaveModel>()
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        Log.d("mAuthclassModel2", "onDataChange:${_batch} $branch")
+
+                        leaveList.clear()
+                        for (stdSem in snapshot.children) {
+
+                            //iterate through sem
+                            for (students in stdSem.children) {
+                                //iterate through students
+                                val leaveTimeLineList =
+                                    ArrayList<FacultySectionStudtLeaveTimeLineModel>()
+                                getSingleStudentDetails(students.key.toString(),
+                                    object : IOnFirebaseActionCallback {
+                                        override fun getSingleStudentDetailsCallback(
+                                            studentDetails: StudentDetailsModel
+                                        ) {
+                                            for (leaves in students.child(LEAVES).children) {
+                                                Log.d(
+                                                    "CheckSemester",
+                                                    "getSingleStudentDetailsCallback:  ${stdSem.key.toString()} , ${studentDetails.sem}"
+                                                )
+
+                                                if (studentDetails.sem != stdSem.key.toString()) {
+                                                    break
+                                                }
+
+                                                val value = leaves.getValue(
+                                                    FacultySectionStudtLeaveTimeLineModel::class.java
+                                                )
+                                                value!!.is_hod_permission_granted =
+                                                    leaves.child(
+                                                        IS_HOD_PERMISSION_GRANTED
+                                                    ).value.toString()
+                                                        .toInt()
+                                                value.is_principal_permission_granted =
+                                                    leaves.child(
+                                                        IS_PRINCIPAL_PERMISSION_GRANTED
+                                                    ).value.toString()
+                                                        .toInt()
+                                                value.sem = students.key.toString()
+
+                                                if (value.requested_to == "HOD") {
+                                                    when (value.is_hod_permission_granted) {
+                                                        0 -> {
+                                                            value.title = "Awaiting"
+                                                            value.status =
+                                                                LeaveStatus.AWAITING
+                                                        }
+                                                        1 -> {
+                                                            value.title = "Approved"
+                                                            value.status =
+                                                                LeaveStatus.APPROVED
+                                                        }
+                                                        -1 -> {
+                                                            value.title = "Rejected"
+                                                            value.status =
+                                                                LeaveStatus.REJECTED
+                                                        }
+                                                    }
+                                                } else if (value.requested_to == "Principal_HOD") {
+                                                    when (value.is_hod_permission_granted) {
+                                                        1 -> {
+                                                            when (value.is_principal_permission_granted) {
+                                                                1 -> {
+                                                                    value.title =
+                                                                        "Approved"
+                                                                    value.status =
+                                                                        LeaveStatus.APPROVED
+                                                                }
+                                                                0 -> {
+                                                                    value.title =
+                                                                        "Awaiting"
+                                                                    value.status =
+                                                                        LeaveStatus.AWAITING
+                                                                }
+                                                                -1 -> {
+                                                                    value.title =
+                                                                        "Rejected"
+                                                                    value.status =
+                                                                        LeaveStatus.REJECTED
+                                                                }
+                                                            }
+
+                                                        }
+                                                        0 -> {
+                                                            value.title = "Awaiting"
+                                                            value.status =
+                                                                LeaveStatus.AWAITING
+                                                        }
+                                                        -1 -> {
+                                                            value.title = "Rejected"
+                                                            value.status =
+                                                                LeaveStatus.REJECTED
+                                                        }
+                                                    }
+                                                }
+                                                value.date = value.leave_sent_date
+
+                                                leaveTimeLineList.add(value)
+
+                                            }
+
+                                            if (leaveTimeLineList.isNotEmpty()) {
+
+                                                val studtLeaveTimeLineModel =
+                                                    leaveTimeLineList[leaveTimeLineList.size - 1]
+
+                                                leaveList.add(
+                                                    FacultySecStudentLeaveModel(
+                                                        studtLeaveTimeLineModel.leave_type,
+                                                        studtLeaveTimeLineModel.leave_reason,
+                                                        studtLeaveTimeLineModel.no_of_days,
+                                                        studtLeaveTimeLineModel.requested_to,
+                                                        studtLeaveTimeLineModel.to_date,
+                                                        studtLeaveTimeLineModel.from_date,
+                                                        studtLeaveTimeLineModel.is_hod_permission_granted,
+                                                        studtLeaveTimeLineModel.is_principal_permission_granted,
+                                                        studtLeaveTimeLineModel.leave_sent_date,
+                                                        studentDetails.name,
+                                                        studentDetails.usn,
+                                                        studentDetails.sem,
+                                                        studentDetails.batch.toString(),
+                                                        leaveTimeLineList,
+                                                        studentDetails.photo_url
+                                                    )
+                                                )
+
+                                                Log.d(
+                                                    "StdLeaves...2",
+                                                    "onDataChange:${leaveList} "
+                                                )
+
+                                                //update on last index
+                                                iOnFirebaseActionCallback.getStdLeavesAccordingToBatchForFacultyCallBack(
+                                                    leaveList,context
+                                                )
+
+                                            }
+                                        }
+                                    }
+                                )
+                            }
+
+                        }
+                    } else {
+                        //null
+                        Log.d("mAuthclassModel", "onDataChange:${_batch} $branch")
+
+                        iOnFirebaseActionCallback.getStdLeavesAccordingToBatchForFacultyCallBack(
+                            leaveList,
+                            context
+                        )
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {}
+            })
+
     }
 }

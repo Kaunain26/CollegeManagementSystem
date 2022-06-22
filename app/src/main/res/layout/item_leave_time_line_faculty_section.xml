@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <com.github.vipulasri.timelineview.TimelineView
+        android:id="@+id/timeline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:lineOrientation="horizontal"
+        app:lineStyle="dash"
+        app:lineWidth="3dp"
+        app:markerPaddingTop="10dp"
+        app:markerSize="20dp" />
+
+    <LinearLayout
+        android:id="@+id/llLeave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_timeline_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:gravity="center_horizontal"
+            android:textSize="11sp"
+            tools:text="24 Jan 22" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_timeline_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:gravity="center_horizontal"
+            android:textColor="@android:color/black"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/fredoka_regular"
+            tools:text="Approved" />
+
+    </LinearLayout>
+
+    <!--<com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="15dp"
+        app:contentPadding="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            &lt;!&ndash;<com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_timeline_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                tools:text="24 JAN" />&ndash;&gt;
+
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>-->
+
+</RelativeLayout>

@@ -21,7 +21,7 @@ class BottomSheetAttendanceHistory(
     private var studentData: StudentDetailsModel,
     private var classKey: String,
     private var facultyUid: String,
-    private var isStudent: Boolean
+    private var isFaculty: Boolean
 ) :
     BottomSheetDialogFragment(), IMarkAbsentAndPresent {
 
@@ -47,7 +47,7 @@ class BottomSheetAttendanceHistory(
     }
 
     private fun setUpRecyclerView() {
-        adapter = StudentNoOfAttendancePerDayAdapter(requireContext(), this, isStudent)
+        adapter = StudentNoOfAttendancePerDayAdapter(requireContext(), this, isFaculty)
         binding?.rvAttendanceHistory?.adapter = adapter
         adapter.submitList(studentAttendanceHistoryModelList)
     }

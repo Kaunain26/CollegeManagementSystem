@@ -4,7 +4,7 @@ import `in`.kit.college_management_system.R
 import `in`.kit.college_management_system.databinding.ActivityFacultyHomePageBinding
 import `in`.kit.college_management_system.facultySection.fragments.ClassesFragment
 import `in`.kit.college_management_system.facultySection.fragments.FacultyProfileFragment
-import `in`.kit.college_management_system.facultySection.fragments.LeavesFragment
+import `in`.kit.college_management_system.facultySection.fragments.LeavesFragmentFacultySection
 import `in`.kit.college_management_system.utils.FirebaseHelperClass
 import `in`.kit.college_management_system.utils.MakeStatusBarTransparent
 import android.os.Bundle
@@ -16,7 +16,7 @@ class FacultyHomePage : AppCompatActivity() {
     private lateinit var binding: ActivityFacultyHomePageBinding
     private lateinit var firebaseHelperClass: FirebaseHelperClass
     private var classesFragment = ClassesFragment()
-    private var leavesFragment = LeavesFragment()
+    private var leavesFragment = LeavesFragmentFacultySection()
     private var profileFragment = FacultyProfileFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,7 +84,7 @@ class FacultyHomePage : AppCompatActivity() {
         val oldClassesFragment =
             supportFragmentManager.findFragmentByTag("classesFragment") as ClassesFragment
         val oldLeavesFragment =
-            supportFragmentManager.findFragmentByTag("leavesFragment") as LeavesFragment
+            supportFragmentManager.findFragmentByTag("leavesFragment") as LeavesFragmentFacultySection
         val oldProfileFragment =
             supportFragmentManager.findFragmentByTag("profileFragment") as FacultyProfileFragment
 

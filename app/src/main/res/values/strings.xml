@@ -18,6 +18,7 @@
     <string name="semester">Semester</string>
     <string name="no_classes_found">Click on ( + ) icon to add a new class</string>
     <string name="no_leaves_found">Looks like you did\'t have taken any leaves &#128515;</string>
+    <string name="no_leaves_found_of_std">Looks like no student have taken any leaves &#128515;</string>
     <string name="no_classes_found_for_student">It seems you don\'t have classes for this sem.</string>
     <string name="add_student">Add Student</string>
     <string name="no_students_in_class">Looks like there is no students in class</string>
@@ -41,4 +42,13 @@
     <string name="half_day_leave_waring">\u25CF Since you are taking leave of Half day.</string>
     <string name="full_day_leave_waring">\u25CF Since you are taking leave of Full day.</string>
     <string name="helper_leave_note"><b>Note:</b>\n\u25CF <u>From Half Day to 3 days</u> - Leave will be requested to HOD.\n\u25CF <u>More than 3 days</u> - Leave will be requested to Principal.</string>
+    <!--<string name="_1st_sem">1st Sem</string>
+    <string name="_2nd_sem">2nd Sem</string>
+    <string name="_3rd_sem">3rd Sem</string>
+    <string name="_4th_sem">4th Sem</string>
+    <string name="_5th_sem">5th Sem</string>-->
+    <string name="_6th_sem">2020</string>
+    <string name="_7th_sem">2019</string>
+    <string name="_8th_sem">2018</string>
+    <string name="all_batch">All batch</string>
 </resources>

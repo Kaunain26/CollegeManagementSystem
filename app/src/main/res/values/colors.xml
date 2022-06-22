@@ -23,6 +23,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#C6C6C6</color>
+    <color name="grey_54">#54C6C6C6</color>
     <color name="yellow">#FDD835</color>
     <color name="yellow_54">#54FDE935</color>
     <color name="dark_yellow">#FFB300</color>

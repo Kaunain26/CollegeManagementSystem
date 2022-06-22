@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginStart="20dp"
     android:layout_marginTop="10dp"
     android:layout_marginEnd="20dp">
@@ -14,7 +14,6 @@
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="10dp"
         app:strokeWidth="0dp">
-
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -69,11 +68,11 @@
                 android:layout_marginTop="8dp"
                 android:drawablePadding="6dp"
                 android:padding="4dp"
-                tools:text="Awaiting"
                 android:textColor="@color/dark_yellow"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                app:fontFamily="@font/fredoka_semi_bold" />
+                app:fontFamily="@font/fredoka_semi_bold"
+                tools:text="Awaiting" />
 
             <!--forward arrow-->
             <RelativeLayout

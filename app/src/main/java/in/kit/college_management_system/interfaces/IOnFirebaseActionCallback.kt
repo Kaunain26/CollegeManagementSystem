@@ -7,7 +7,7 @@ import java.util.concurrent.CopyOnWriteArrayList
 interface IOnFirebaseActionCallback {
 
     fun getAllFacultyDetailsCallback(facultyDetails: FacultyDetails) {}
-    fun getAllClassesCallback(classModel: ClassesModel?, context: Context) {}
+    fun getFacultyAllClassesCallback(classModel: ClassesModel?, context: Context) {}
     fun getFilteredClass(classModel: ClassesModel, context: Context) {}
     fun getStudentDetails(
         studentDetailsList: CopyOnWriteArrayList<StudentDetailsModel>?,
@@ -36,4 +36,9 @@ interface IOnFirebaseActionCallback {
     fun getSingleStudentDetailsCallback(studentDetails: StudentDetailsModel) {}
 
     fun getSingleStudentLeaveCallback(studentLeaveList: ArrayList<StudentLeaveHelperModel>) {}
+
+    fun getStdLeavesAccordingToBatchForFacultyCallBack(
+        leaveList: ArrayList<FacultySecStudentLeaveModel>,
+        context: Context
+    ){}
 }

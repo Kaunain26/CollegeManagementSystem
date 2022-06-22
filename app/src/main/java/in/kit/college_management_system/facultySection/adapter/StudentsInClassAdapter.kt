@@ -3,10 +3,14 @@ package `in`.kit.college_management_system.facultySection.adapter
 import `in`.kit.college_management_system.R
 import `in`.kit.college_management_system.databinding.RecyclerStudentsBinding
 import `in`.kit.college_management_system.facultySection.activity.StudentAttendanceDetailsActivity
-import `in`.kit.college_management_system.model.ClassesModel
-import `in`.kit.college_management_system.model.StudentDetailsModel
 import `in`.kit.college_management_system.interfaces.IOnClickAndLongClickListener
 import `in`.kit.college_management_system.interfaces.IOnFirebaseActionCallback
+import `in`.kit.college_management_system.model.ClassesModel
+import `in`.kit.college_management_system.model.StudentDetailsModel
+import `in`.kit.college_management_system.utils.Constants.CLASS_KEY
+import `in`.kit.college_management_system.utils.Constants.CLASS_SEM
+import `in`.kit.college_management_system.utils.Constants.FACULTY_UID
+import `in`.kit.college_management_system.utils.Constants.IS_FACULTY
 import `in`.kit.college_management_system.utils.FirebaseHelperClass
 import `in`.kit.college_management_system.utils.SplitAndGetNameInitials
 import android.annotation.SuppressLint
@@ -126,10 +130,10 @@ class StudentsInClassAdapter(
                             StudentAttendanceDetailsActivity::class.java
                         ).apply {
                             putExtra("studentDataModel", studentDataModel)
-                            putExtra("class_key", classData.classSubKey)
-                            putExtra("class_sem", classData.sem)
-                            putExtra("faculty_uid", classData.facultyUid)
-                            putExtra("is_student", false)
+                            putExtra(CLASS_KEY, classData.classSubKey)
+                            putExtra(CLASS_SEM, classData.sem)
+                            putExtra(FACULTY_UID, classData.facultyUid)
+                            putExtra(IS_FACULTY, true)
                         })
                 }
             }
