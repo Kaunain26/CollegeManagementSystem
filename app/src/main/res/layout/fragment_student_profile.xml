@@ -85,8 +85,8 @@
         <!--profile photo-->
         <RelativeLayout
             android:id="@+id/profilePicContainerRl"
-            android:layout_width="115dp"
-            android:layout_height="115dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_below="@id/rlToolbar"
             android:layout_marginStart="25dp"
             android:layout_marginTop="25dp"
@@ -104,67 +104,66 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/studentPhoto"
-                android:layout_width="115dp"
-                android:layout_height="115dp"
-                app:civ_border_color="@color/white"
-                app:civ_border_width="2dp" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/a_logo_512" />
         </RelativeLayout>
 
 
 
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rlToolbar"
-            android:layout_toRightOf="@+id/profilePicContainerRl"
-            android:layout_marginTop="25dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="25dp">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <!--student name-->
-                <TextView
-                    android:id="@+id/name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/grey"
-                    android:textSize="25sp"/>
-                <!--email id-->
-                <TextView
-                    android:id="@+id/emailId"
-                    android:layout_below="@+id/name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/grey"
-                    android:layout_marginTop="6dp"
-                    android:textSize="18sp" />
+<!--        <com.facebook.shimmer.ShimmerFrameLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/rlToolbar"-->
+<!--            android:layout_toRightOf="@+id/profilePicContainerRl"-->
+<!--            android:layout_marginTop="25dp"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginEnd="25dp">-->
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+<!--                &lt;!&ndash;student name&ndash;&gt;-->
+<!--                <TextView-->
+<!--                    android:id="@+id/name"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:background="@color/grey"-->
+<!--                    android:textSize="25sp" />-->
+<!--                &lt;!&ndash;email id&ndash;&gt;-->
+<!--                <TextView-->
+<!--                    android:id="@+id/emailId"-->
+<!--                    android:layout_below="@+id/name"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@color/grey"-->
+<!--                    android:layout_marginTop="6dp"-->
+<!--                    android:textSize="18sp" />-->
 
-                    <!--age-->
-                    <TextView
-                        android:id="@+id/age"
-                        android:layout_below="@+id/emailId"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:background="@color/grey"
-                        android:layout_marginTop="6dp"
-                        android:textSize="18sp" />
-                    <!--gender-->
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/emailId"
-                        android:layout_marginStart="20dp"
-                        android:layout_alignParentEnd="true"
-                        android:background="@color/grey"
-                        android:layout_marginTop="6dp"
-                        android:textSize="18sp" />
+<!--                    &lt;!&ndash;age&ndash;&gt;-->
+<!--                    <TextView-->
+<!--                        android:id="@+id/age"-->
+<!--                        android:layout_below="@+id/emailId"-->
+<!--                        android:layout_width="100dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@color/grey"-->
+<!--                        android:layout_marginTop="6dp"-->
+<!--                        android:textSize="18sp" />-->
+<!--                    &lt;!&ndash;gender&ndash;&gt;-->
+<!--                    <TextView-->
+<!--                        android:layout_width="100dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_below="@id/emailId"-->
+<!--                        android:layout_marginStart="20dp"-->
+<!--                        android:layout_alignParentEnd="true"-->
+<!--                        android:background="@color/grey"-->
+<!--                        android:layout_marginTop="6dp"-->
+<!--                        android:textSize="18sp" />-->
 
-            </RelativeLayout>
-        </com.facebook.shimmer.ShimmerFrameLayout>
+<!--            </RelativeLayout>-->
+<!--        </com.facebook.shimmer.ShimmerFrameLayout>-->
 
-        <!--Student_details-->
+        <!--Profile_details-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -185,7 +184,7 @@
                 android:gravity="center"
                 android:textColor="@color/white"
                 android:textSize="25sp"
-                tools:text="Student Name" />
+                android:text="Student Name" />
 
             <TextView
                 android:id="@+id/emailOfStudent"
@@ -197,13 +196,14 @@
                 android:includeFontPadding="false"
                 android:textColor="#DDD"
                 android:textSize="18sp"
-                tools:text="email id" />
+                android:text="email -" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/studentAge"
                     android:layout_width="wrap_content"
@@ -214,7 +214,7 @@
                     android:includeFontPadding="false"
                     android:textColor="#DDD"
                     android:textSize="18sp"
-                    tools:text="Age - " />
+                    android:text="Age - " />
 
                 <TextView
                     android:id="@+id/studentGender"
@@ -227,7 +227,7 @@
                     android:includeFontPadding="false"
                     android:textColor="#DDD"
                     android:textSize="18sp"
-                    tools:text="Gender - " />
+                    android:text="Gender - " />
             </RelativeLayout>
         </LinearLayout>
 
@@ -251,72 +251,72 @@
             android:layout_marginTop="30dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
-            app:cardCornerRadius="20dp">
+            app:cardCornerRadius="10dp">
 
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/collegeDetailsShimmer"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <!--            <com.facebook.shimmer.ShimmerFrameLayout-->
+            <!--                android:id="@+id/collegeDetailsShimmer"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="match_parent">-->
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+            <!--                <LinearLayout-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:orientation="vertical">-->
 
-                    <!--CollegeDetails-->
-                    <TextView
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@color/grey"
-                        android:textSize="17sp" />
+            <!--                    &lt;!&ndash;CollegeDetails&ndash;&gt;-->
+            <!--                    <TextView-->
+            <!--                        android:layout_width="150dp"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_marginStart="10dp"-->
+            <!--                        android:layout_marginTop="10dp"-->
+            <!--                        android:background="@color/grey"-->
+            <!--                        android:textSize="17sp" />-->
 
-                    <!--..................-->
-                    <!--branch-->
-                    <TextView
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@color/grey"
-                        android:textSize="17sp" />
+            <!--                    &lt;!&ndash;..................&ndash;&gt;-->
+            <!--                    &lt;!&ndash;branch&ndash;&gt;-->
+            <!--                    <TextView-->
+            <!--                        android:layout_width="200dp"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_marginStart="20dp"-->
+            <!--                        android:layout_marginTop="10dp"-->
+            <!--                        android:background="@color/grey"-->
+            <!--                        android:textSize="17sp" />-->
 
-                    <!--........................ -->
-                    <!--scheme-->
-                    <TextView
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@color/grey"
-                        android:textSize="17sp" />
+            <!--                    &lt;!&ndash;........................ &ndash;&gt;-->
+            <!--                    &lt;!&ndash;scheme&ndash;&gt;-->
+            <!--                    <TextView-->
+            <!--                        android:layout_width="200dp"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_marginStart="20dp"-->
+            <!--                        android:layout_marginTop="10dp"-->
+            <!--                        android:background="@color/grey"-->
+            <!--                        android:textSize="17sp" />-->
 
-                    <!--........................ -->
+            <!--                    &lt;!&ndash;........................ &ndash;&gt;-->
 
-                    <!--usn-->
-                    <TextView
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@color/grey"
-                        android:textSize="17sp" />
+            <!--                    &lt;!&ndash;usn&ndash;&gt;-->
+            <!--                    <TextView-->
+            <!--                        android:layout_width="200dp"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_marginStart="20dp"-->
+            <!--                        android:layout_marginTop="10dp"-->
+            <!--                        android:background="@color/grey"-->
+            <!--                        android:textSize="17sp" />-->
 
-                    <!--........................ -->
+            <!--                    &lt;!&ndash;........................ &ndash;&gt;-->
 
-                    <!--Scheme-->
-                    <TextView
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="6dp"
-                        android:layout_marginBottom="10dp"
-                        android:background="@color/grey"
-                        android:textSize="17sp" />
-                    <!--........................ -->
-                </LinearLayout>
-            </com.facebook.shimmer.ShimmerFrameLayout>
+            <!--                    &lt;!&ndash;Scheme&ndash;&gt;-->
+            <!--                    <TextView-->
+            <!--                        android:layout_width="200dp"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_marginStart="20dp"-->
+            <!--                        android:layout_marginTop="6dp"-->
+            <!--                        android:layout_marginBottom="10dp"-->
+            <!--                        android:background="@color/grey"-->
+            <!--                        android:textSize="17sp" />-->
+            <!--                    &lt;!&ndash;........................ &ndash;&gt;-->
+            <!--                </LinearLayout>-->
+            <!--            </com.facebook.shimmer.ShimmerFrameLayout>-->
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -332,7 +332,7 @@
                     android:fontFamily="@font/fredoka_regular"
                     android:text="College Details"
                     android:textColor="@color/theme_color_v1"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
 
@@ -346,7 +346,7 @@
                     android:fontFamily="@font/fredoka_regular"
                     android:text="USN -"
                     android:textColor="@color/dark_grey"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/branch"
@@ -359,7 +359,7 @@
                     android:fontFamily="@font/fredoka_regular"
                     android:text="Branch- "
                     android:textColor="@color/dark_grey"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/sem"
@@ -371,7 +371,7 @@
                     android:fontFamily="@font/fredoka_regular"
                     android:text="Sem - "
                     android:textColor="@color/dark_grey"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/scheme"
@@ -384,7 +384,7 @@
                     android:fontFamily="@font/fredoka_regular"
                     android:text="Scheme - "
                     android:textColor="@color/dark_grey"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <RelativeLayout
                     android:id="@+id/view1"
@@ -405,7 +405,8 @@
                         android:fontFamily="@font/fredoka_regular"
                         android:text="View More"
                         android:textColor="@color/yellow"
-                        android:textSize="17sp"
+                        android:padding="3dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
             </RelativeLayout>
@@ -422,53 +423,53 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
-            app:cardCornerRadius="20dp">
+            app:cardCornerRadius="10dp">
 
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/personalDetailsShimmer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/details">
+            <!--            <com.facebook.shimmer.ShimmerFrameLayout-->
+            <!--                android:id="@+id/personalDetailsShimmer"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_below="@id/details">-->
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+            <!--                <LinearLayout-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:orientation="vertical">-->
 
-                    <!--personal details-->
-                    <TextView
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@color/grey"
-                        android:textSize="18sp" />
+            <!--                    &lt;!&ndash;personal details&ndash;&gt;-->
+            <!--                    <TextView-->
+            <!--                        android:layout_width="150dp"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_marginStart="10dp"-->
+            <!--                        android:layout_marginTop="10dp"-->
+            <!--                        android:background="@color/grey"-->
+            <!--                        android:textSize="18sp" />-->
 
-                    <!--..................-->
-                    <!--emil-->
-                    <TextView
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@color/grey"
-                        android:textSize="18sp" />
+            <!--                    &lt;!&ndash;..................&ndash;&gt;-->
+            <!--                    &lt;!&ndash;emil&ndash;&gt;-->
+            <!--                    <TextView-->
+            <!--                        android:layout_width="200dp"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_marginStart="20dp"-->
+            <!--                        android:layout_marginTop="10dp"-->
+            <!--                        android:background="@color/grey"-->
+            <!--                        android:textSize="18sp" />-->
 
-                    <!--........................ -->
+            <!--                    &lt;!&ndash;........................ &ndash;&gt;-->
 
-                    <!--designation-->
-                    <TextView
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:background="@color/grey"
-                        android:textSize="18sp" />
-                    <!--........................ -->
+            <!--                    &lt;!&ndash;designation&ndash;&gt;-->
+            <!--                    <TextView-->
+            <!--                        android:layout_width="200dp"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_marginStart="20dp"-->
+            <!--                        android:layout_marginTop="10dp"-->
+            <!--                        android:layout_marginBottom="10dp"-->
+            <!--                        android:background="@color/grey"-->
+            <!--                        android:textSize="18sp" />-->
+            <!--                    &lt;!&ndash;........................ &ndash;&gt;-->
 
-                </LinearLayout>
-            </com.facebook.shimmer.ShimmerFrameLayout>
+            <!--                </LinearLayout>-->
+            <!--            </com.facebook.shimmer.ShimmerFrameLayout>-->
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -484,7 +485,7 @@
                     android:fontFamily="@font/fredoka_regular"
                     android:text="Personal Details"
                     android:textColor="@color/theme_color_v1"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <RelativeLayout
@@ -506,7 +507,8 @@
                         android:fontFamily="@font/fredoka_regular"
                         android:text="View More"
                         android:textColor="@color/yellow"
-                        android:textSize="17sp"
+                        android:padding="3dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
 
@@ -520,7 +522,7 @@
                     android:fontFamily="@font/fredoka_regular"
                     android:text="Ph No - "
                     android:textColor="@color/dark_grey"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/Address"
@@ -529,10 +531,11 @@
                     android:layout_below="@+id/mobile"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:fontFamily="@font/fredoka_regular"
                     android:text="Address- "
                     android:textColor="@color/dark_grey"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -548,7 +551,5 @@
             android:backgroundTint="#E53935"
             android:text="Log Out"
             app:icon="@drawable/ic_logout" />
-
-
     </RelativeLayout>
 </RelativeLayout>
