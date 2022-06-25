@@ -196,7 +196,7 @@
                 android:includeFontPadding="false"
                 android:textColor="#DDD"
                 android:textSize="18sp"
-                android:text="email -" />
+                android:text="usn - " />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -403,9 +403,9 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:fontFamily="@font/fredoka_regular"
+                        android:padding="3dp"
                         android:text="View More"
                         android:textColor="@color/yellow"
-                        android:padding="3dp"
                         android:textSize="14sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
@@ -505,9 +505,9 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:fontFamily="@font/fredoka_regular"
+                        android:padding="3dp"
                         android:text="View More"
                         android:textColor="@color/yellow"
-                        android:padding="3dp"
                         android:textSize="14sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
