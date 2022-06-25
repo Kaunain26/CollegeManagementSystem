@@ -9,4 +9,10 @@ object Constants {
     const val CLASS_SEM = "class_sem"
     const val FACULTY_UID = "faculty_uid"
     const val IS_FACULTY = "is_faculty"
+
+    //ROLES
+    const val STUDENT = 0L
+    const val PRINCIPAL = 1L
+    const val HOD = 2L
+    const val FACULTY = 3L
 }

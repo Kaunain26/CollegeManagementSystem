@@ -5,7 +5,7 @@ import `in`.kit.college_management_system.databinding.RecyclerAllClassesItemsFor
 import `in`.kit.college_management_system.facultySection.activity.StudentAttendanceDetailsActivity
 import `in`.kit.college_management_system.interfaces.IOnFirebaseActionCallback
 import `in`.kit.college_management_system.model.ClassesModel
-import `in`.kit.college_management_system.model.FacultyDetails
+import `in`.kit.college_management_system.model.FacultyOrHODDetails
 import `in`.kit.college_management_system.model.StudentDetailsModel
 import `in`.kit.college_management_system.utils.Constants
 import `in`.kit.college_management_system.utils.FirebaseHelperClass
@@ -61,12 +61,18 @@ class StudentAttendanceAdapter(
             binding.totalStudentPercentage.text = classData.totalAttendancePercentage
 
 
-            FirebaseHelperClass().getFacultyDetails(classData.facultyUid,
+            FirebaseHelperClass().getSingleFacultyDetails(
+                classData.facultyUid,
                 object : IOnFirebaseActionCallback {
-                    override fun getAllFacultyDetailsCallback(facultyDetails: FacultyDetails) {
-                        binding.facultyNameTV.text = "${facultyDetails.name}'s"
+                    override fun getFacultyOrHODDetailsCallback(
+                        facultyOrHODDetails: FacultyOrHODDetails,
+                        context: Context
+                    ) {
+                        binding.facultyNameTV.text = "${facultyOrHODDetails.name}'s"
                     }
-                })
+                },
+                context
+            )
             //binding.batchTV.text = "${batch}th Batch"
 
             binding.root.setOnClickListener {

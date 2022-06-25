@@ -24,7 +24,6 @@ class FacultyHomePage : AppCompatActivity() {
         binding = ActivityFacultyHomePageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         MakeStatusBarTransparent().transparent(this)
 
         if (savedInstanceState == null) {

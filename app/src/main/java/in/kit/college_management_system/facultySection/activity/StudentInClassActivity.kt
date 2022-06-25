@@ -103,11 +103,12 @@ class StudentInClassActivity : AppCompatActivity(), IOnClickAndLongClickListener
             this,
             object : IOnFirebaseActionCallback {
                 override fun getStudentDetails(
-                    studentDetailsList: CopyOnWriteArrayList<StudentDetailsModel>?,
-                    context: Context
+                    studentDetailsList: CopyOnWriteArrayList<StudentDetailsModel>,
+                    context: Context,
+                    batchList: ArrayList<String>
                 ) {
                     this@StudentInClassActivity.studentDetailsList.clear()
-                    if (studentDetailsList != null) {
+                    if (studentDetailsList.isNotEmpty()) {
                         binding.llNoStudentFound.visibility = View.GONE
                         binding.rvStudents.visibility = View.VISIBLE
                         binding.llMarkAllPresent.visibility = View.VISIBLE

@@ -108,79 +108,26 @@
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
-                    <LinearLayout
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/viewAttendanceBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
                         android:layout_weight="1"
-                        android:orientation="vertical"
-                        tools:ignore="UselessParent">
+                        android:text="Attendance"
+                        android:textColor="@color/black"
+                        app:backgroundTint="@color/purple_54" />
 
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Present"
-                            android:textSize="17sp"
-                            android:textStyle="bold"
-                            app:fontFamily="@font/fredoka_regular" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/present_days"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0 day"
-                            android:textSize="12sp"
-                            app:fontFamily="@font/roboto" />
-                    </LinearLayout>
-
-                    <LinearLayout
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/viewProfileBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="30dp"
                         android:layout_weight="1"
-                        android:orientation="vertical"
-                        tools:ignore="UselessParent">
+                        android:text="Profile"
+                        android:textColor="@color/black"
+                        app:backgroundTint="@color/grey_54" />
 
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Absent"
-                            android:textColor="@color/red"
-                            android:textSize="17sp"
-                            android:textStyle="bold"
-                            app:fontFamily="@font/fredoka_regular" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/absent_days"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0 day"
-                            android:textColor="@color/red"
-                            android:textSize="12sp"
-                            app:fontFamily="@font/roboto" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        tools:ignore="UselessParent">
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Leaves"
-                            android:textSize="17sp"
-                            android:textStyle="bold"
-                            app:fontFamily="@font/fredoka_regular" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/leaves_days"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0"
-                            android:textSize="12sp"
-                            app:fontFamily="@font/roboto" />
-                    </LinearLayout>
 
                 </LinearLayout>
 

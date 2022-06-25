@@ -51,4 +51,7 @@
     <string name="_7th_sem">2019</string>
     <string name="_8th_sem">2018</string>
     <string name="all_batch">All batch</string>
+    <string name="notification">Notification</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="no_faculties_found">No faculties found &#129300;.</string>
 </resources>

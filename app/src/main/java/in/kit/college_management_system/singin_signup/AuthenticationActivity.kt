@@ -3,7 +3,7 @@ package `in`.kit.college_management_system.singin_signup
 import `in`.kit.college_management_system.R
 import `in`.kit.college_management_system.databinding.ActivitySignInSignUpHostBinding
 import `in`.kit.college_management_system.singin_signup.fragments.ChooseRoleFragment
-import `in`.kit.college_management_system.singin_signup.fragments.FacultyExtraDetailsFragment
+import `in`.kit.college_management_system.singin_signup.fragments.FacultyOrHODExtraDetailsFragment
 import `in`.kit.college_management_system.singin_signup.fragments.SignInWithGoogleFragment
 import `in`.kit.college_management_system.singin_signup.fragments.StudentExtraDetailsFragment
 import `in`.kit.college_management_system.utils.MakeStatusBarTransparent
@@ -42,7 +42,7 @@ class AuthenticationActivity : AppCompatActivity() {
                     .commit()
             }
 
-            is FacultyExtraDetailsFragment -> {
+            is FacultyOrHODExtraDetailsFragment -> {
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.fragmentContainer, ChooseRoleFragment(), "chooseRoleFragment")
                     .commit()

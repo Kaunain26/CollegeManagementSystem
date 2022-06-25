@@ -103,7 +103,7 @@
             android:fontFamily="@font/satisfy"
             android:textColor="@color/white"
             android:textSize="25sp"
-            tools:text="Assistance Professor - CSE" />
+            tools:text="Assistant Professor - CSE" />
 
         <TextView
             android:id="@+id/headerFacultyName"
@@ -321,7 +321,7 @@
                 android:fontFamily="@font/fredoka_regular"
                 android:textSize="17sp"
                 android:textStyle="normal"
-                tools:text="Assistance Proffessor" />
+                tools:text="Assistant Professor" />
 
             <TextView
                 android:id="@+id/designationDes"

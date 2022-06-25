@@ -3,7 +3,7 @@ package `in`.kit.college_management_system.facultySection.fragments
 import `in`.kit.college_management_system.R
 import `in`.kit.college_management_system.databinding.FragmentFacultyProfileBinding
 import `in`.kit.college_management_system.interfaces.IOnFirebaseActionCallback
-import `in`.kit.college_management_system.model.FacultyDetails
+import `in`.kit.college_management_system.model.FacultyOrHODDetails
 import `in`.kit.college_management_system.singin_signup.AuthenticationActivity
 import `in`.kit.college_management_system.utils.AlertDialogHelperClass
 import `in`.kit.college_management_system.utils.FirebaseHelperClass
@@ -45,33 +45,38 @@ class FacultyProfileFragment : Fragment() {
 
         logOut()
         firebaseHelperClass = FirebaseHelperClass()
-        firebaseHelperClass.getFacultyDetails(
+        firebaseHelperClass.getSingleFacultyDetails(
             FirebaseAuth.getInstance().uid.toString(),
             object : IOnFirebaseActionCallback {
-                override fun getAllFacultyDetailsCallback(facultyDetails: FacultyDetails) {
+                override fun getFacultyOrHODDetailsCallback(
+                    facultyOrHODDetails: FacultyOrHODDetails,
+                    context: Context
+                ) {
 
                     binding!!.nameDesTV.visibility = View.VISIBLE
                     binding!!.emailDesTV.visibility = View.VISIBLE
                     binding!!.designationDes.visibility = View.VISIBLE
                     binding!!.branchDes.visibility = View.VISIBLE
 
-                    binding!!.facultyNameTV.text = facultyDetails.name
-                    binding!!.branchNameTV.text = facultyDetails.branch
-                    binding!!.facultyEmailTV.text = facultyDetails.email
+                    binding!!.facultyNameTV.text = facultyOrHODDetails.name
+                    binding!!.branchNameTV.text = facultyOrHODDetails.branch
+                    binding!!.facultyEmailTV.text = facultyOrHODDetails.email
                     binding!!.facultyDesignationTV.text = "Assistance Professor"
 
-                    binding!!.headerFacultyName.text = facultyDetails.name
+                    binding!!.headerFacultyName.text = facultyOrHODDetails.name
                     binding!!.headerDesignationAndBranchTV.text =
-                        "Assistance Professor - ${facultyDetails.branch}"
+                        "Assistance Professor - ${facultyOrHODDetails.branch}"
 
                     binding!!.profileHeaderShimmer.stopShimmerAnimation()
                     binding!!.profileDetailsShimmer.stopShimmerAnimation()
                     binding!!.profileHeaderShimmer.visibility = View.GONE
                     binding!!.profileDetailsShimmer.visibility = View.GONE
 
-                    extractTwoCharFromName(facultyDetails.name)
+                    extractTwoCharFromName(facultyOrHODDetails.name)
                 }
-            })
+            },
+            requireContext()
+        )
         return view
     }
 

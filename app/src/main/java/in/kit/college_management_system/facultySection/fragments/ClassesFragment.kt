@@ -8,7 +8,7 @@ import `in`.kit.college_management_system.facultySection.database.DatabaseClient
 import `in`.kit.college_management_system.facultySection.database.FilterClassesChip
 import `in`.kit.college_management_system.interfaces.IOnFirebaseActionCallback
 import `in`.kit.college_management_system.model.ClassesModel
-import `in`.kit.college_management_system.model.FacultyDetails
+import `in`.kit.college_management_system.model.FacultyOrHODDetails
 import `in`.kit.college_management_system.utils.AlertDialogHelperClass
 import `in`.kit.college_management_system.utils.FirebaseHelperClass
 import android.annotation.SuppressLint
@@ -39,7 +39,7 @@ class ClassesFragment : Fragment() {
     private val binding get() = _binding
     private lateinit var firebaseHelperClass: FirebaseHelperClass
     private lateinit var mAuth: FirebaseAuth
-    private var tempFacultyDetails = FacultyDetails()
+    private var tempFacultyDetails = FacultyOrHODDetails()
     private val classList = CopyOnWriteArrayList<ClassesModel>()
     private lateinit var classesAdapter: ClassesAdapter
     private var databaseClient: DatabaseClient? = null
@@ -75,24 +75,29 @@ class ClassesFragment : Fragment() {
         //return inflater.inflate(R.layout.fragment_classes, container, false)
     }
 
-    private fun getFacultyDetails(b: Boolean) {
-        firebaseHelperClass.getFacultyDetails(
+    private fun getFacultyDetails(notifyAdapter: Boolean) {
+        firebaseHelperClass.getSingleFacultyDetails(
             mAuth.uid.toString(),
             object : IOnFirebaseActionCallback {
                 @SuppressLint("SetTextI18n")
-                override fun getAllFacultyDetailsCallback(facultyDetails: FacultyDetails) {
-                    tempFacultyDetails = facultyDetails
-                    binding!!.facultyNameTV.text = facultyDetails.name
+                override fun getFacultyOrHODDetailsCallback(
+                    facultyOrHODDetails: FacultyOrHODDetails,
+                    context: Context
+                ) {
+                    tempFacultyDetails = facultyOrHODDetails
+                    binding!!.facultyNameTV.text = facultyOrHODDetails.name
                     //binding!!.branchNameTV.text = facultyDetails.branch
                     binding!!.greetingTV.text = "Hello,"
                     // binding!!.facultyDesignationTV.text = "Assistance Professor"
                     binding!!.headerLoadingAnimation.stopShimmerAnimation()
                     binding!!.headerLoadingAnimation.visibility = View.GONE
 
-                    extractTwoCharFromName(facultyDetails.name)
-                    getAllClassesFromFirebase(b)
+                    //extractTwoCharFromName(facultyOrHODDetails.name)
+                    getAllClassesFromFirebase(notifyAdapter)
                 }
-            })
+            },
+            requireContext()
+        )
 
     }
 
@@ -342,11 +347,11 @@ class ClassesFragment : Fragment() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun extractTwoCharFromName(facultyName: String) {
+    /*private fun extractTwoCharFromName(facultyName: String) {
         val indexOfSpaceInName = facultyName.indexOf(" ")
         binding!!.initialCharOfNameTV.text =
             "${facultyName[0]}${facultyName[indexOfSpaceInName + 1]}"
-    }
+    }*/
 
     private suspend fun insertChipToDatabase(chip: String, mContext: Context) {
         val filterClassesChip = FilterClassesChip(System.currentTimeMillis().toString(), chip)

@@ -6,6 +6,7 @@ import `in`.kit.college_management_system.utils.Constants.ABSENT
 import `in`.kit.college_management_system.utils.Constants.PRESENT
 import `in`.kit.college_management_system.utils.Constants.PRESENT_ABSENT
 import `in`.kit.college_management_system.utils.FirebaseKeys.Attendances_history
+import `in`.kit.college_management_system.utils.FirebaseKeys.BRANCH
 import `in`.kit.college_management_system.utils.FirebaseKeys.FROM_DATE
 import `in`.kit.college_management_system.utils.FirebaseKeys.IS_HOD_PERMISSION_GRANTED
 import `in`.kit.college_management_system.utils.FirebaseKeys.IS_PRINCIPAL_PERMISSION_GRANTED
@@ -104,19 +105,38 @@ class FirebaseHelperClass {
         })
     }
 
-    fun getFacultyDetails(
+    fun getSingleFacultyDetails(
         mAuth: String,
-        IOnFirebaseActionCallback: IOnFirebaseActionCallback
+        IOnFirebaseActionCallback: IOnFirebaseActionCallback,
+        context: Context
     ) {
         getFacultyRef().child(mAuth)
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    val facultyDetails = snapshot.getValue(FacultyDetails::class.java)
-                    IOnFirebaseActionCallback.getAllFacultyDetailsCallback(facultyDetails!!)
+                    val facultyDetails = snapshot.getValue(FacultyOrHODDetails::class.java)
+                    IOnFirebaseActionCallback.getFacultyOrHODDetailsCallback(
+                        facultyDetails!!,
+                        context
+                    )
                 }
 
                 override fun onCancelled(error: DatabaseError) {}
             })
+    }
+
+    fun getHODDetails(
+        mAuth: String,
+        IOnFirebaseActionCallback: IOnFirebaseActionCallback,
+        context: Context
+    ) {
+        getHodRef().child(mAuth).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val hodDetails = snapshot.getValue(FacultyOrHODDetails::class.java)
+                IOnFirebaseActionCallback.getFacultyOrHODDetailsCallback(hodDetails!!, context)
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
     }
 
     fun addClassToFirebase(
@@ -397,7 +417,7 @@ class FirebaseHelperClass {
                             val batch =
                                 studentsData.child(FirebaseKeys.BATCH).value.toString().toInt()
                             val _branch =
-                                studentsData.child(FirebaseKeys.BRANCH).value.toString()
+                                studentsData.child(BRANCH).value.toString()
                             val email =
                                 studentsData.child(FirebaseKeys.EMAIL).value.toString()
                             val gender =
@@ -434,10 +454,19 @@ class FirebaseHelperClass {
 
                             studentDetailsList.add(studentDetails)
                         }
-                        IOnFirebaseActionCallback.getStudentDetails(studentDetailsList, context)
+                        IOnFirebaseActionCallback.getStudentDetails(
+                            studentDetailsList,
+                            context,
+                            ArrayList()
+                        )
 
                     } else {
-                        IOnFirebaseActionCallback.getStudentDetails(null, context)
+                        IOnFirebaseActionCallback.getStudentDetails(
+                            studentDetailsList,
+                            context,
+                            ArrayList()
+
+                        )
                     }
                 }
 
@@ -1010,7 +1039,7 @@ class FirebaseHelperClass {
 
                                                 //update on last index
                                                 iOnFirebaseActionCallback.getStdLeavesAccordingToBatchForFacultyCallBack(
-                                                    leaveList,context
+                                                    leaveList, context
                                                 )
 
                                             }
@@ -1034,5 +1063,116 @@ class FirebaseHelperClass {
                 override fun onCancelled(error: DatabaseError) {}
             })
 
+    }
+
+    fun getFacultyDetailsBranchWise(
+        branch: String,
+        iOnFirebaseActionCallback: IOnFirebaseActionCallback
+    ) {
+        getFacultyRef().addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val facultiesList = ArrayList<FacultyOrHODDetails>()
+                if (snapshot.exists()) {
+                    for (faculties in snapshot.children) {
+                        if (faculties.child(BRANCH).value.toString() == branch) {
+                            faculties.getValue(FacultyOrHODDetails::class.java)
+                                ?.let { facultiesList.add(it) }
+                        }
+                    }
+                    Log.d(
+                        "facultiesList",
+                        "onDataChange: $facultiesList "
+                    )
+                    iOnFirebaseActionCallback.getFacultyDetailsBranchWiseCallBack(facultiesList)
+                } else {
+                    //no ref exist
+                    iOnFirebaseActionCallback.getFacultyDetailsBranchWiseCallBack(facultiesList)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
+    }
+
+    fun getStudentsAccordingToBatch(
+        branch: String,
+        context: Context,
+        iOnFirebaseActionCallback: IOnFirebaseActionCallback
+    ) {
+        getAllStudentDetailsRef().child(branch).addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val studentDetailsList = CopyOnWriteArrayList<StudentDetailsModel>()
+                val batchList = ArrayList<String>()
+
+                if (snapshot.exists()) {
+                    for (batches in snapshot.children) {
+                        batchList.add(batches.key.toString())
+                        for (studentsData in batches.child("details").children) {
+                            val name =
+                                studentsData.child(FirebaseKeys.NAME).value.toString()
+                            val address =
+                                studentsData.child(FirebaseKeys.ADDRESS).value.toString()
+                            val batch =
+                                studentsData.child(FirebaseKeys.BATCH).value.toString().toInt()
+                            val _branch =
+                                studentsData.child(BRANCH).value.toString()
+                            val email =
+                                studentsData.child(FirebaseKeys.EMAIL).value.toString()
+                            val gender =
+                                studentsData.child(FirebaseKeys.GENDER).value.toString()
+                            val sem = studentsData.child(FirebaseKeys.SEM).value.toString()
+                            val uid = studentsData.child(FirebaseKeys.UID).value.toString()
+                            val usn = studentsData.child(FirebaseKeys.USN).value.toString()
+                            val leaveDays =
+                                studentsData.child(LEAVES).value.toString()
+                            val photoUrl = if (studentsData.hasChild(FirebaseKeys.PHOTO_URL)) {
+                                studentsData.child(FirebaseKeys.PHOTO_URL).value.toString()
+                            } else {
+                                ""
+                            }
+
+                            Log.d("SemValue", "onDataChange: $sem")
+
+                            val studentDetails = StudentDetailsModel(
+                                uid,
+                                name,
+                                usn,
+                                sem,
+                                _branch,
+                                batch,
+                                address,
+                                email,
+                                gender,
+                                photoUrl,
+                            )
+
+                            studentDetails.leaves = "0"
+                            studentDetails.isSelected = false
+                            studentDetails.isExpanded = false
+
+                            studentDetailsList.add(studentDetails)
+
+                            Log.d("stdDetails", "onDataChange: $studentDetails")
+                        }
+
+                    }
+
+                    iOnFirebaseActionCallback.getStudentDetails(
+                        studentDetailsList,
+                        context,
+                        batchList
+                    )
+
+                } else {
+                    iOnFirebaseActionCallback.getStudentDetails(
+                        studentDetailsList,
+                        context,
+                        batchList
+                    )
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
     }
 }

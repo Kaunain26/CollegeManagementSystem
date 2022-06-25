@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".hodSection.activity.HODHomePage">
+
+        <RelativeLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="UselessParent">
+
+            <!--back arrow-->
+            <RelativeLayout
+                android:id="@+id/rlBack"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/circular_normal_white"
+                android:elevation="8dp">
+
+                <ImageView
+                    android:id="@+id/arrowBack"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="11dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_arrow_back_ios_black" />
+
+            </RelativeLayout>
+
+            <!--header circle image-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@null"
+                android:src="@drawable/header_circle"
+                android:translationX="-15dp"
+                android:translationY="-60dp" />
+
+            <!--greeting text-->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/greetingTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rlBack"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/fredoka_regular"
+                android:text="Hello,"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <!--name-->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/hodNameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/greetingTV"
+                android:layout_marginStart="26dp"
+                android:fontFamily="@font/fredoka_semi_bold"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                tools:text="@tools:sample/full_names[1]" />
+
+            <!--profile-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rlBack"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="start"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardProfile"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    app:cardCornerRadius="50dp"
+                    app:cardElevation="8dp"
+                    app:strokeColor="@color/black"
+                    app:strokeWidth="1dp">
+
+                    <ImageView
+                        android:id="@+id/profile_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start"
+                        android:contentDescription="@null"
+                        android:scaleType="centerCrop"
+                        tools:src="@tools:sample/avatars" />
+
+                    <TextView
+                        android:id="@+id/name_initials_TV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        tools:text="KN" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/designationDes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/curved_yellow"
+                    android:fontFamily="@font/fredoka_regular"
+                    android:padding="5dp"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    tools:text="HOD of CS" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/classesTV"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_gravity="start"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="-45dp"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/fredoka_semi_bold"
+            android:text="Faculties"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+            android:textColor="@color/theme_color_v1"
+            android:textSize="15sp"
+            app:drawableStartCompat="@drawable/ic_user"
+            app:drawableTint="@color/theme_color_v1" />
+
+        <!--<com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp"
+            app:strokeWidth="0dp">-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvFacultyList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/recycler_faculties_profile_items" />
+
+            <FrameLayout
+                android:id="@+id/flNoFacultiesFound"
+                android:layout_width="match_parent"
+                android:layout_height="145dp"
+                android:layout_gravity="center"
+                android:visibility="visible"
+                tools:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/fredoka_regular"
+                    android:text="@string/no_faculties_found"
+                    android:textSize="17sp" />
+
+            </FrameLayout>
+
+        </RelativeLayout>
+
+
+        <!--        </com.google.android.material.card.MaterialCardView>-->
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/manageTV"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_gravity="start"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/fredoka_semi_bold"
+            android:text="Manage"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+            android:textColor="@color/theme_color_v1"
+            android:textSize="15sp"
+            app:drawableStartCompat="@drawable/ic_more"
+            app:drawableTint="@color/theme_color_v1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardStdList"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp"
+                app:strokeWidth="0dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/studentsIV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="115dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/students" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/studentsIV"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/curved_yellow"
+                        android:fontFamily="@font/fredoka_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Student List"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardLeaves"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp"
+                app:strokeWidth="0dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/leavesIV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="115dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/holiday" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/leavesIV"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/curved_yellow"
+                        android:fontFamily="@font/fredoka_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Leaves"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

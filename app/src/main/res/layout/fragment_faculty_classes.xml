@@ -67,40 +67,11 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp">
 
-        <RelativeLayout
-            android:id="@+id/profilePicContainerRl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/profile_circular_background"
-            android:visibility="gone">
-
-            <TextView
-                android:id="@+id/initialCharOfNameTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:fontFamily="@font/fredoka_semi_bold"
-                android:text="..."
-                android:textColor="@color/white"
-                android:textSize="27sp" />
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/facultyProfileIV"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                app:civ_border_color="@color/white"
-                app:civ_border_width="2dp" />
-
-
-        </RelativeLayout>
-
-
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/header_loading_animation"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/profilePicContainerRl">
+            android:layout_marginTop="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -133,7 +104,7 @@
 
         </com.facebook.shimmer.ShimmerFrameLayout>
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/greetingTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -145,45 +116,44 @@
             android:textStyle="normal"
             tools:text="Hello," />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/facultyNameTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/greetingTV"
             android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/profilePicContainerRl"
             android:fontFamily="@font/fredoka_semi_bold"
             android:textColor="@color/white"
             android:textSize="22sp"
             tools:text="@tools:sample/full_names[1]" />
 
-        <TextView
-            android:id="@+id/facultyDesignationTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/facultyNameTV"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/profilePicContainerRl"
-            android:fontFamily="@font/fredoka_regular"
-            android:includeFontPadding="false"
-            android:textColor="#DDDDDD"
-            android:textSize="12sp"
-            android:visibility="gone"
-            tools:text="Assistance Professor" />
+        <!-- <TextView
+             android:id="@+id/facultyDesignationTV"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_below="@id/facultyNameTV"
+             android:layout_marginStart="10dp"
+             android:layout_toEndOf="@id/profilePicContainerRl"
+             android:fontFamily="@font/fredoka_regular"
+             android:includeFontPadding="false"
+             android:textColor="#DDDDDD"
+             android:textSize="12sp"
+             android:visibility="gone"
+             tools:text="Assistance Professor" />-->
 
-        <TextView
-            android:id="@+id/branchNameTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/facultyDesignationTV"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/profilePicContainerRl"
-            android:fontFamily="@font/fredoka_regular"
-            android:includeFontPadding="false"
-            android:textColor="#DDDDDD"
-            android:textSize="12sp"
-            android:visibility="gone"
-            tools:text="CSE" />
+        <!--  <TextView
+              android:id="@+id/branchNameTV"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@id/facultyDesignationTV"
+              android:layout_marginStart="10dp"
+              android:layout_toEndOf="@id/profilePicContainerRl"
+              android:fontFamily="@font/fredoka_regular"
+              android:includeFontPadding="false"
+              android:textColor="#DDDDDD"
+              android:textSize="12sp"
+              android:visibility="gone"
+              tools:text="CSE" />-->
 
     </RelativeLayout>
 
@@ -227,8 +197,7 @@
                 android:layout_height="wrap_content"
                 android:background="#A9F6F6F6"
                 android:gravity="center"
-                android:scrollbars="none"
-                >
+                android:scrollbars="none">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -249,8 +218,8 @@
                         android:id="@+id/filterChipGroup"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="25dp"
-                        android:layout_marginStart="10dp" />
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="25dp" />
 
                 </LinearLayout>
 

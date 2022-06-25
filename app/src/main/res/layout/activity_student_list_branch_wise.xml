@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/app_theme_background_drawable"
+    tools:context=".facultySection.activity.StudentInClassActivity">
+
+    <!--toolbar-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <!--back arrow-->
+        <RelativeLayout
+            android:id="@+id/rlBack"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="25dp"
+            android:background="@drawable/circular_normal_white"
+            android:elevation="8dp">
+
+            <ImageView
+                android:id="@+id/arrowBack"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="11dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_arrow_back_ios_black" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/classNameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/fredoka_regular"
+            android:text="Student List"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="normal" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="65dp"
+        android:background="@drawable/curved_top_left_right_white">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/llClassesContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:animateLayoutChanges="true"
+            android:layout_marginEnd="5dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:background="@drawable/curved_top_left_right_white">
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-13dp"
+                    android:title=""
+                    app:layout_scrollFlags="enterAlways">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!--filter-->
+                        <TextView
+                            android:id="@+id/filterTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="22dp"
+                            android:layout_gravity="start"
+                            android:layout_marginStart="25dp"
+                            android:layout_marginTop="10dp"
+                            android:drawablePadding="10dp"
+                            android:fontFamily="@font/fredoka_semi_bold"
+                            android:includeFontPadding="false"
+                            android:text="Filter"
+                            android:textAllCaps="false"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+                            android:textColor="@color/theme_color_v1"
+                            android:textSize="15sp"
+                            android:visibility="gone"
+                            app:drawableStartCompat="@drawable/ic_filter_black"
+                            app:drawableTint="@color/theme_color_v1" />
+
+                        <!--Lottie choose batch-->
+                        <LinearLayout
+                            android:id="@+id/llLottieChoose"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:animateLayoutChanges="true"
+                            android:orientation="vertical">
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                app:lottie_autoPlay="true"
+                                app:lottie_loop="true"
+                                app:lottie_rawRes="@raw/lottie_choose" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:fontFamily="@font/fredoka_regular"
+                                android:text="Choose batch to show students here."
+                                android:textSize="17sp" />
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/filterClassesBySem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:animateLayoutChanges="true"
+                            android:background="#A9ECECEC"
+                            android:orientation="horizontal"
+                            android:padding="8dp">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/chooseBatchMenu"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                android:layout_width="180dp"
+                                android:layout_height="50dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginStart="15dp"
+                                android:hint="Choose Batch"
+                                android:textColorHint="@color/black"
+                                android:visibility="visible"
+                                app:boxBackgroundMode="filled"
+                                app:boxStrokeColor="@color/pink"
+                                app:expandedHintEnabled="true"
+                                app:helperTextEnabled="true"
+                                app:helperTextTextColor="@color/white"
+                                app:hintAnimationEnabled="true"
+                                app:hintEnabled="true"
+                                app:hintTextColor="@color/pink"
+                                app:startIconTint="@color/night_theme_color">
+
+                                <AutoCompleteTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:focusableInTouchMode="true"
+                                    android:inputType="none"
+                                    android:maxLines="1"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    tools:ignore="LabelFor" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                </com.google.android.material.appbar.MaterialToolbar>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvStudents"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+                tools:listitem="@layout/recycler_students_v2"
+                tools:visibility="visible" />
+
+            <!--no Student found-->
+            <!-- <LinearLayout
+                 android:id="@+id/llNoStudentFound"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_centerInParent="true"
+                 android:layout_gravity="center"
+                 android:gravity="center"
+                 android:orientation="vertical"
+                 android:visibility="gone"
+                 tools:visibility="gone">
+
+                 <com.airbnb.lottie.LottieAnimationView
+                     android:layout_width="180dp"
+                     android:layout_height="180dp"
+                     app:lottie_autoPlay="true"
+                     app:lottie_loop="false"
+                     app:lottie_rawRes="@raw/no_student_found" />
+
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:fontFamily="@font/fredoka_regular"
+                     android:text="@string/no_students_in_class" />
+
+             </LinearLayout>-->
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="20dp"
+            android:text="@string/add_student"
+            android:visibility="gone"
+            app:icon="@drawable/ic_add_student"
+            tools:visibility="visible" />
+
+    </RelativeLayout>
+</RelativeLayout>

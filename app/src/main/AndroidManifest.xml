@@ -15,6 +15,9 @@
         tools:replace="android:allowBackup"
         tools:targetApi="m">
         <activity
+            android:name=".hodSection.activity.StudentListBranchWiseActivity"
+            android:exported="false" />
+        <activity
             android:name=".studentSection.activity.StudentLeaveDetailsActivity"
             android:exported="false" />
         <activity
@@ -33,7 +36,7 @@
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".hodSection.HODHomePage"
+            android:name=".hodSection.activity.HODHomePage"
             android:exported="true"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />

@@ -3,7 +3,7 @@ package `in`.kit.college_management_system.singin_signup.fragments
 import `in`.kit.college_management_system.R
 import `in`.kit.college_management_system.databinding.FragmentSignInBinding
 import `in`.kit.college_management_system.facultySection.activity.FacultyHomePage
-import `in`.kit.college_management_system.hodSection.HODHomePage
+import `in`.kit.college_management_system.hodSection.activity.HODHomePage
 import `in`.kit.college_management_system.principalSection.PrincipalHomePage
 import `in`.kit.college_management_system.studentSection.activity.StudentHomePage
 import `in`.kit.college_management_system.utils.FirebaseHelperClass
@@ -174,12 +174,12 @@ class SignInFragment : Fragment() {
                 startActivity(Intent(activity as Context, PrincipalHomePage::class.java))
                 (activity as AppCompatActivity).finishAffinity()
 
-                /* val FacultyDetails = HashMap<String, Any>()
-                 FacultyDetails["uid"] = mAuth.uid.toString()
-                 FacultyDetails["email"] = user?.email.toString()
-                 FacultyDetails["name"] = user?.displayName.toString()
+                /* val FacultyOrHODDetails = HashMap<String, Any>()
+                 FacultyOrHODDetails["uid"] = mAuth.uid.toString()
+                 FacultyOrHODDetails["email"] = user?.email.toString()
+                 FacultyOrHODDetails["name"] = user?.displayName.toString()
 
-                 mRef.child(mAuth.uid.toString()).setValue(FacultyDetails).addOnCompleteListener {
+                 mRef.child(mAuth.uid.toString()).setValue(FacultyOrHODDetails).addOnCompleteListener {
 
                  }.addOnFailureListener {
                      binding?.progressBar?.visibility = View.GONE

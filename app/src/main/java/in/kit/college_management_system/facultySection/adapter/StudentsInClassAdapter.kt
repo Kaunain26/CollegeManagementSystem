@@ -58,7 +58,7 @@ class StudentsInClassAdapter(
             if (selectionModeEnabled) {
                 //if selection mode enabled
                 binding.flExpandedView.isVisible = false
-                binding.rlForwardArrow.isVisible = false
+                binding.rlExtendCard.isVisible = false
                 binding.profileImg.isVisible = true
 
                 Log.d("StudentAdapter", "bind: ${studentDetailsModel.isSelected}")
@@ -69,7 +69,7 @@ class StudentsInClassAdapter(
                 // if selection model is not enabled then clicking on a card will expand the view
                 // Log.d("StudentAdapter", "bind: ${studentDetailsModel.isExpanded}")
 
-                binding.rlForwardArrow.isVisible = true
+                binding.rlExtendCard.isVisible = true
                 binding.flExpandedView.isVisible = studentDetailsModel.isExpanded
                 if (binding.flExpandedView.isVisible) {
                     binding.stdDetailsCard.elevation = 20f
@@ -203,7 +203,7 @@ class StudentsInClassAdapter(
         holder.bind(studentDetailsModel, context, selectionModeEnabled, classData)
 
         if (!selectionModeEnabled) {
-            holder.binding.rlForwardArrow.setOnClickListener {
+            holder.binding.rlExtendCard.setOnClickListener {
                 studentDetailsModel.isExpanded = !studentDetailsModel.isExpanded
                 notifyItemChanged(position)
             }

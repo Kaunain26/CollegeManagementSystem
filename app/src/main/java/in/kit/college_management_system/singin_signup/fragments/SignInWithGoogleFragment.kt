@@ -3,7 +3,13 @@ package `in`.kit.college_management_system.singin_signup.fragments
 import `in`.kit.college_management_system.R
 import `in`.kit.college_management_system.databinding.FragmentSignInWithGoogleBinding
 import `in`.kit.college_management_system.facultySection.activity.FacultyHomePage
+import `in`.kit.college_management_system.hodSection.activity.HODHomePage
+import `in`.kit.college_management_system.principalSection.PrincipalHomePage
 import `in`.kit.college_management_system.studentSection.activity.StudentHomePage
+import `in`.kit.college_management_system.utils.Constants.FACULTY
+import `in`.kit.college_management_system.utils.Constants.HOD
+import `in`.kit.college_management_system.utils.Constants.PRINCIPAL
+import `in`.kit.college_management_system.utils.Constants.STUDENT
 import `in`.kit.college_management_system.utils.FirebaseHelperClass
 import `in`.kit.college_management_system.utils.FirebaseKeys.ADDRESS
 import `in`.kit.college_management_system.utils.FirebaseKeys.BATCH
@@ -80,12 +86,19 @@ class SignInWithGoogleFragment : Fragment() {
         firebaseHelperClass = FirebaseHelperClass()
 
         mRef = when (selectedRole) {
-            0L -> {
+            STUDENT -> {
                 firebaseHelperClass.getStudentRef()
             }
-            else -> {
+            PRINCIPAL -> {
+                firebaseHelperClass.getPrincipalRef()
+            }
+            HOD -> {
+                firebaseHelperClass.getHodRef()
+            }
+            FACULTY -> {
                 firebaseHelperClass.getFacultyRef()
             }
+            else -> throw IllegalArgumentException("Invalid ViewType Provider")
         }
 
         mAuth = FirebaseAuth.getInstance()
@@ -149,43 +162,55 @@ class SignInWithGoogleFragment : Fragment() {
             }
     }
 
-
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         mAuth.signInWithCredential(credential).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 // Sign in success, update UI with the signed-in user's information
 
-                if (selectedRole == 0L) {
-                    signInAsStudent(task)
-                } else {
-                    signInAsFaculty(task)
-                }
+                when (selectedRole) {
+                    STUDENT -> signInAsStudent(task)
 
+                    PRINCIPAL -> signInAsPrincipal()
+
+                    HOD -> signInAsFacultyAndHod(task)
+
+                    FACULTY -> signInAsFacultyAndHod(task)
+
+                }
 
             } else {
                 // If sign in fails, display a message to the user.
                 //Log.w(TAG, "signInWithCredential:failure", task.exception)
-                Toast.makeText(activity as Context, "Signed in un-successful", Toast.LENGTH_SHORT)
+                Toast.makeText(
+                    activity as Context,
+                    "Signed in un-successful",
+                    Toast.LENGTH_SHORT
+                )
                     .show()
             }
         }
     }
 
-    private fun signInAsFaculty(task: Task<AuthResult>) {
+    private fun signInAsFacultyAndHod(task: Task<AuthResult>) {
         val user = mAuth.currentUser
 
-        val facultyDetails = HashMap<String, Any>()
-        facultyDetails[UID] = mAuth.uid.toString()
-        facultyDetails[EMAIL] = user?.email.toString()
-        facultyDetails[NAME] = user?.displayName.toString()
+        val facultyOrHODDetails = HashMap<String, Any>()
+        facultyOrHODDetails[UID] = mAuth.uid.toString()
+        facultyOrHODDetails[EMAIL] = user?.email.toString()
+        facultyOrHODDetails[NAME] = user?.displayName.toString()
+        if (user?.photoUrl != null) {
+            facultyOrHODDetails[PHOTO_URL] = user.photoUrl?.toString()!!
+        } else {
+            facultyOrHODDetails[PHOTO_URL] = ""
+        }
 
-        val facultyExtraDetailsFrag = FacultyExtraDetailsFragment()
+        val facultyOrHodExtraDetailsFrag = FacultyOrHODExtraDetailsFragment()
 
         mRef.child(mAuth.uid.toString())
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.hasChild("branch") && !task.result.additionalUserInfo?.isNewUser!!) {
+                    if (snapshot.hasChild(BRANCH) && !task.result.additionalUserInfo?.isNewUser!!) {
                         //old user
                         binding?.progressBar?.visibility = View.GONE
                         binding?.signInWithGoogleBtn?.visibility = View.VISIBLE
@@ -195,16 +220,27 @@ class SignInWithGoogleFragment : Fragment() {
                         jsonObject.put("selectedRole", selectedRole)
                         sharedPrefs.saveUserRole(jsonObject)
 
-                        startActivity(
-                            Intent(
-                                activity as Context,
-                                FacultyHomePage::class.java
+                        if (selectedRole == FACULTY) {
+                            //faculty
+                            startActivity(
+                                Intent(
+                                    activity as Context,
+                                    FacultyHomePage::class.java
+                                )
                             )
-                        )
+                        } else {
+                            startActivity(
+                                Intent(
+                                    activity as Context,
+                                    HODHomePage::class.java
+                                )
+                            )
+                        }
+
                         (activity as AppCompatActivity).finishAffinity()
                     } else {
                         //new user
-                        mRef.child(mAuth.uid.toString()).setValue(facultyDetails)
+                        mRef.child(mAuth.uid.toString()).setValue(facultyOrHODDetails)
                             .addOnCompleteListener {
                                 binding?.progressBar?.visibility = View.GONE
                                 binding?.signInWithGoogleBtn?.visibility = View.VISIBLE
@@ -221,10 +257,14 @@ class SignInWithGoogleFragment : Fragment() {
                                 jsonObject.put("selectedRole", selectedRole)
                                 sharedPrefs.saveUserRole(jsonObject)
 
+                                val bundle = Bundle()
+                                bundle.putLong("selectedRole", selectedRole)
+                                facultyOrHodExtraDetailsFrag.arguments = bundle
+
                                 (activity as AppCompatActivity).supportFragmentManager.beginTransaction()
                                     .replace(
                                         R.id.fragmentContainer,
-                                        facultyExtraDetailsFrag,
+                                        facultyOrHodExtraDetailsFrag,
                                         "fragmentFacultyExtraDetailsFrag"
                                     ).commit()
 
@@ -234,6 +274,57 @@ class SignInWithGoogleFragment : Fragment() {
                             }
 
                     }
+                }
+
+                override fun onCancelled(error: DatabaseError) {}
+            })
+    }
+
+    private fun signInAsPrincipal() {
+        val user = mAuth.currentUser
+
+        val principalDetails = HashMap<String, Any>()
+        principalDetails[UID] = mAuth.uid.toString()
+        principalDetails[EMAIL] = user?.email.toString()
+        principalDetails[NAME] = user?.displayName.toString()
+        if (user?.photoUrl != null) {
+            principalDetails[PHOTO_URL] = user.photoUrl?.toString()!!
+        } else {
+            principalDetails[PHOTO_URL] = ""
+        }
+
+        mRef.child(mAuth.uid.toString())
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    mRef.child(mAuth.uid.toString()).setValue(principalDetails)
+                        .addOnCompleteListener {
+                            binding?.progressBar?.visibility = View.GONE
+                            binding?.signInWithGoogleBtn?.visibility = View.VISIBLE
+
+                            Toast.makeText(
+                                activity as Context,
+                                "Signed in successful!!",
+                                Toast.LENGTH_SHORT
+                            ).show()
+
+                            //save role of user
+                            val jsonObject = JSONObject()
+                            jsonObject.put("selectedRole", selectedRole)
+                            sharedPrefs.saveUserRole(jsonObject)
+
+                            startActivity(
+                                Intent(
+                                    activity as Context,
+                                    PrincipalHomePage::class.java
+                                )
+                            )
+
+                        }.addOnFailureListener {
+                            binding?.progressBar?.visibility = View.GONE
+                            binding?.signInWithGoogleBtn?.visibility = View.VISIBLE
+                        }
+
+
                 }
 
                 override fun onCancelled(error: DatabaseError) {}
@@ -286,7 +377,8 @@ class SignInWithGoogleFragment : Fragment() {
                         }
                         FirebaseHelperClass().getAllStudentDetailsRef()
                             .child(branch)
-                            .child(batch.toString()).child("details").child(mAuth.uid.toString())
+                            .child(batch.toString()).child("details")
+                            .child(mAuth.uid.toString())
                             .setValue(stdDetails).addOnCompleteListener {
                                 binding?.progressBar?.visibility = View.GONE
                                 binding?.signInWithGoogleBtn?.visibility = View.VISIBLE

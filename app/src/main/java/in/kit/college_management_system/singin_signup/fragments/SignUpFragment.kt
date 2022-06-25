@@ -3,7 +3,7 @@ package `in`.kit.college_management_system.singin_signup.fragments
 import `in`.kit.college_management_system.R
 import `in`.kit.college_management_system.databinding.FragmentSignUpBinding
 import `in`.kit.college_management_system.facultySection.activity.FacultyHomePage
-import `in`.kit.college_management_system.hodSection.HODHomePage
+import `in`.kit.college_management_system.hodSection.activity.HODHomePage
 import `in`.kit.college_management_system.principalSection.PrincipalHomePage
 import `in`.kit.college_management_system.studentSection.activity.StudentHomePage
 import `in`.kit.college_management_system.utils.FirebaseHelperClass
