@@ -3,19 +3,59 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable-anydpi/ic_camera.xml" value="0.1535" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/app_theme_background_drawable.xml" value="0.1535" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/circular_normal_green.xml" value="0.1505" />
         <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/circular_normal_white.xml" value="0.2155" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/circular_theme_color.xml" value="0.1535" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/curved_red.xml" value="0.1535" />
         <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/curved_top_left_right_white.xml" value="0.1555" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/ic_arrow_back_ios_black.xml" value="0.1535" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/ic_arrow_back_white.xml" value="0.1535" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/ic_arrow_forward_ios.xml" value="0.1535" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/ic_baseline_phone_android_24.xml" value="0.1505" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/ic_baseline_school_24.xml" value="0.1505" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/ic_calender.xml" value="0.1535" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/ic_camera.xml" value="0.176" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/ic_cause_icon.xml" value="0.1535" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/ic_check_circle.xml" value="0.1535" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/ic_close_white.xml" value="0.1535" />
         <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/ic_edit.xml" value="0.2155" />
         <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/ic_logout.xml" value="0.1755" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/ic_marker_approved.xml" value="0.1535" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/ic_more.xml" value="0.1535" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/ic_notification.xml" value="0.1535" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/ic_notification_icon.xml" value="0.1535" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/ic_outline_email.xml" value="0.1535" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/ic_outline_lock.xml" value="0.1535" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/present_absent_datetextview_selector.xml" value="0.1535" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/present_datetextview_selector.xml" value="0.1535" />
         <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/profile_circular_background.xml" value="0.1555" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/drawable/splash.xml" value="0.1535" />
         <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/activity_faculty_home_page.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/activity_hodhome_page.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/activity_leave_details.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/activity_student_home_page.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/activity_student_in_class.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/bottom_sheet_filter_classes.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/bottom_sheet_leave_request.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/bottom_sheet_student_details_edit_layout.xml" value="0.264" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/bottom_sheet_student_details_show_layout.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/cal_present_view.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/fragment_choose_role.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/fragment_faculty_profile.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/fragment_leaves.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/fragment_sign_in.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/fragment_student_attendances.xml" value="0.2713541666666667" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/fragment_student_extra_details.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/fragment_student_leaves.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/fragment_student_profile.xml" value="0.176" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/fragment_student_profile.xml" value="0.264" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/recycler_all_classes_items.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/recycler_all_classes_items_for_std.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/recycler_faculty_std_leave_section_items.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/recycler_no_of_attendance_per_day_item.xml" value="0.1334853090172239" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/recycler_shimmer_classes_items.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/recycler_student_leaves_items.xml" value="0.1334853090172239" />
         <entry key="..\:/Users/User/OneDrive/Desktop/CollegeManagementSystem/app/src/main/res/layout/recycler_students.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/absent_datetextview_selector.xml" value="0.212" />
         <entry key="..\:/Users/k.nesar/AndroidStudioProjects/CollegeManagementSystem/app/src/main/res/drawable/absent_drawable.xml" value="0.212" />
