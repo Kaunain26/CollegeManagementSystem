@@ -41,7 +41,6 @@ class HODProfileFragment : Fragment() {
         return view
     }
 
-
     private fun logOut() {
         binding?.logOutBtn?.setOnClickListener {
             AlertDialogHelperClass(activity as Context).apply {
